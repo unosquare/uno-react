@@ -1,2 +1,2 @@
-export * from './hooks/useStateForModel';
-export * from './classes/ErrorBoundary';
+export * from './hooks';
+export * from './classes';

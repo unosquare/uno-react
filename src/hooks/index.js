@@ -1,1 +1,5 @@
-export * from './useStateForModel';
+import useStateForModel from './useStateForModel';
+
+export {
+    useStateForModel 
+};

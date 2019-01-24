@@ -1,6 +1,6 @@
 {
   "name": "uno-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Common functions and hooks for React",
   "main": "lib/index.js",
   "scripts": {

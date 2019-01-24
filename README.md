@@ -1,8 +1,7 @@
-[![npm version](https://badge.fury.io/js/uno-react.svg)]
+[![npm version](https://badge.fury.io/js/uno-react.svg)](https://badge.fury.io/js/uno-react)
 # uno-react
 Common functions and hooks for React
 
-(https://badge.fury.io/js/uno-react)
 
 ```bash
 > npm i uno-react
