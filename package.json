@@ -1,10 +1,13 @@
 {
   "name": "uno-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Common functions and hooks for React",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./test",
+    "build": "babel ./src -d ./lib",
+    "prepublish": "npm run build",
+    "lint": "eslint src/**/*.jsx src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +24,22 @@
   "bugs": {
     "url": "https://github.com/unosquare/uno-react/issues"
   },
-  "homepage": "https://github.com/unosquare/uno-react#readme"
+  "homepage": "https://github.com/unosquare/uno-react#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.1",
+    "eslint-plugin-react": "^7.12.4"
+  },
+  "dependencies": {
+    "react": "^16.8.0-alpha.1",
+    "react-form-validator-core": "^0.5.1"
+  },
+  "files": [
+    "lib"
+  ]
 }
