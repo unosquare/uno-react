@@ -1,7 +1,7 @@
 [![npm version](https://badge.fury.io/js/uno-react.svg)](https://badge.fury.io/js/uno-react)
-# uno-react
-Common functions and hooks for React
 
+# uno-react
+Common functions and hooks for React.
 
 ```bash
 > npm i uno-react
@@ -24,7 +24,7 @@ const myComponent = () => {
 
     return (
         <div>
-        <h1>{model.name}</h1>
+        <h1>{model.id} - {model.name}</h1>
 
         <input onChange={handleChange} name="name" />
         <button onClick={onClick}>Set Name</button>

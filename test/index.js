@@ -1,3 +1,3 @@
-const { useStateForModel } = require('../lib');
+const lib = require('../lib');
 
-console.log(useStateForModel);
+console.log(lib.createFetchController());
