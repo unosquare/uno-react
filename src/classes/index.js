@@ -1,5 +1,3 @@
-import ErrorBoundary from './ErrorBoundary';
-
-export {
-    ErrorBoundary
-};
+export * from './ErrorBoundary';
+export * from './TextValidator';
+export * from './Title';
