@@ -1,6 +1,6 @@
 {
   "name": "uno-react",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Common functions and hooks for React",
   "main": "lib/index.js",
   "scripts": {
@@ -38,6 +38,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.0",
     "react": "^16.8.0-alpha.1",
+    "react-dom": "^16.8.0-alpha.1",
     "react-form-validator-core": "^0.5.1"
   },
   "files": [
