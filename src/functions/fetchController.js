@@ -12,24 +12,7 @@ function defaultHeadersResolver(url, accessToken) {
     return headers;
 }
 
-function getRequest(url, accessToken, requestMethod, requestBody, headersResolver) {
-    const init = {
-        body: requestBody ? requestBody : null,
-        headers: headersResolver(url, accessToken),
-        method: requestMethod,
-    };
-
-    return new Request(url, init);
-}
-
-export async function requestController(
-    url,
-    accessToken,
-    requestMethod,
-    requestBody,
-    options) {
-    const request = getRequest(url, accessToken, requestMethod, requestBody, options.headersResolver);
-    const response = await fetch(request);
+async function defaultResponseResolver(response) {
     const responseBody = await response.text();
     const responseJson = responseBody ? JSON.parse(responseBody) : {};
 
@@ -57,10 +40,35 @@ export async function requestController(
     }
 }
 
+function getRequest(url, accessToken, requestMethod, requestBody, headersResolver) {
+    const init = {
+        body: requestBody ? requestBody : null,
+        headers: headersResolver(url, accessToken),
+        method: requestMethod,
+    };
+
+    return new Request(url, init);
+}
+
+export async function requestController(
+    url,
+    accessToken,
+    requestMethod,
+    requestBody,
+    options) {
+    const request = getRequest(url, accessToken, requestMethod, requestBody, options.headersResolver);
+    const response = await fetch(request);
+
+    return await options.responseResolver(response);
+}
+
+const defaultOptions = { 
+    headersResolver: defaultHeadersResolver,
+    responseResolver: defaultResponseResolver
+};
+
 export function createFetchController(options) {
-    options = Object.assign({}, options, {
-        headersResolver: defaultHeadersResolver
-    });
+    options = Object.assign({}, defaultOptions, options);
 
     return (url, accessToken, requestMethod, requestBody) => requestController(url, accessToken, requestMethod, requestBody, options);
 }
