@@ -70,5 +70,5 @@ const defaultOptions = {
 export function createFetchController(options) {
     options = Object.assign({}, defaultOptions, options);
 
-    return (url, accessToken, requestMethod, requestBody) => requestController(url, accessToken, requestMethod, requestBody, options);
+    return async (url, accessToken, requestMethod, requestBody) => requestController(url, accessToken, requestMethod, requestBody, options);
 }
