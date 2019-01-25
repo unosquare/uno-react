@@ -1,6 +1,6 @@
 {
   "name": "uno-react",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Common functions and hooks for React",
   "main": "lib/index.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
