@@ -1,6 +1,37 @@
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Typography from '@material-ui/core/Typography';
 
-export default class ErrorBoundary extends React.Component {
+const styles = ({ palette }) => ({
+    error: {
+        backgroundColor: palette.error.dark,
+    },
+    errorBoundBody: {
+        color: 'red',
+        fontFamily: 'verdana',
+        fontSize: 10,
+    },
+    errorBoundDetails: {
+        fontFamily: 'verdana',
+        fontSize: 9,
+        whiteSpace: 'pre-wrap',
+    },
+    errorBoundPaper: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        padding: '50px',
+        width: '80%',
+    },
+    errorBoundTitle: {
+        fontFamily: 'verdana',
+        fontSize: 9,
+        whiteSpace: 'pre-wrap',
+    },
+});
+
+export class ErrorBoundary extends React.Component {
     state = {
         error: null,
         errorInfo: null
@@ -15,15 +46,40 @@ export default class ErrorBoundary extends React.Component {
 
     render() {
         if (this.state.errorInfo) {
+            const { classes } = this.props;
+
+            const errorDesc = this.state.error && this.state.error.toString()
+                ? this.state.error.toString()
+                : null;
+
             return (
-                <div>
-                    <h2>Something went wrong.</h2>
-                    <details style={{ whiteSpace: 'pre-wrap' }}>
-                        {this.state.error && this.state.error.toString()}
+                <React.Fragment>
+                    <Typography variant='h4'>
+                        Something went terribly wrong...
+                    </Typography>
+                    <Paper
+                        className={classes.errorBoundPaper}
+                        elevation={8}
+                    >
+                        <Typography
+                            className={classes.errorBoundTitle}
+                            variant='subtitle1'
+                        >
+                            {errorDesc}
+                        </Typography>
                         <br />
-                        {this.state.errorInfo.componentStack}
-                    </details>
-                </div>
+                        <details
+                            className={classes.errorBoundDetails}
+                        >
+                            <Typography
+                                className={classes.errorBoundBody}
+                                variant='body2'
+                            >
+                                {this.state.errorData.componentStack}
+                            </Typography>
+                        </details>
+                    </Paper>
+                </React.Fragment>
             );
         }
 
@@ -31,3 +87,5 @@ export default class ErrorBoundary extends React.Component {
         return this.props.children;
     }
 }
+
+export default withStyles(styles)(ErrorBoundary);
