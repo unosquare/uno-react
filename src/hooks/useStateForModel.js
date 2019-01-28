@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default function useStateForModel(initialValue) {
+export function useStateForModel(initialValue) {
   const [getter, setter] = React.useState(initialValue);
 
   const handleChange = event => {

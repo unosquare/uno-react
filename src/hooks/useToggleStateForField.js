@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default function useToggleStateForField(defaultValue) {
+export function useToggleStateForField(defaultValue) {
     const [getField, setField] = React.useState(defaultValue);
 
     const changeHandler = ({ target }) => {
