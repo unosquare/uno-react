@@ -1,3 +1,4 @@
+export { default as ButtonWithLoading } from './ButtonWithLoading';
 export * from './colorGenerator';
 export * from './fetchController';
 export * from './LoadingIcon';
