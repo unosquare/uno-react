@@ -9,5 +9,9 @@ export function useToggleStateForField(defaultValue) {
         }
     };
 
-    return [getField, changeHandler];
+    const toggleField = () => {
+        setField(!getField);
+    };
+
+    return [getField, changeHandler, toggleField];
 }

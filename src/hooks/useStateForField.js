@@ -8,5 +8,5 @@ export function useStateForField(defaultValue) {
         setField(value);
     };
 
-    return [getField, changeHandler];
+    return [getField, changeHandler, setField];
 }

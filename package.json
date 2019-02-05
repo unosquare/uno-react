@@ -1,6 +1,6 @@
 {
   "name": "uno-react",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Common functions and hooks for React",
   "main": "lib/index.js",
   "scripts": {
@@ -33,13 +33,13 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.1",
+    "eslint": "^5.13.0",
     "eslint-plugin-react": "^7.12.4"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.0",
+    "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
-    "@material-ui/styles": "^3.0.0-alpha.9",
+    "@material-ui/styles": "^3.0.0-alpha.10",
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",
     "react-form-validator-core": "^0.5.1"
