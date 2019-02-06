@@ -5,8 +5,8 @@ import {
     DialogContentText, DialogTitle,
 } from '@material-ui/core';
 
-const DialogModal = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree' }) => {
-    const handleAgree = (e) => onAgreeAction(e);
+const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree' }) => {
+    const handleAgree = e => onAgreeAction(e);
 
     return (
         <Dialog
@@ -37,4 +37,4 @@ const DialogModal = ({ contentText, title, onAgreeAction, onClose, open, agree =
     );
 };
 
-export default DialogModal;
+export default ConfirmationDialog;
