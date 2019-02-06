@@ -5,7 +5,7 @@ import {
     DialogContentText, DialogTitle,
 } from '@material-ui/core';
 
-const DialogModal = ({ contentText, title, onAgreeAction, onClose, open }) => {
+const DialogModal = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree' }) => {
     const handleAgree = (e) => onAgreeAction(e);
 
     return (
@@ -22,12 +22,16 @@ const DialogModal = ({ contentText, title, onAgreeAction, onClose, open }) => {
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose} color='secondary'>
-                    Disagree
-                        </Button>
-                <Button onClick={handleAgree} color='primary' autoFocus={true}>
-                    Agree
-                        </Button>
+                {onClose &&
+                    <Button onClick={onClose} color='secondary'>
+                        {disagree}
+                    </Button>
+                }
+                {onAgreeAction &&
+                    <Button onClick={handleAgree} color='primary' autoFocus={true}>
+                        {agree}
+                    </Button>
+                }
             </DialogActions>
         </Dialog>
     );
