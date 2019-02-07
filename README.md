@@ -1,4 +1,5 @@
 [![npm version](https://badge.fury.io/js/uno-react.svg)](https://badge.fury.io/js/uno-react)
+[![Build Status](https://travis-ci.org/unosquare/uno-react.svg?branch=master)](https://travis-ci.org/unosquare/uno-react)
 
 # uno-react
 Common functions and hooks for React.
