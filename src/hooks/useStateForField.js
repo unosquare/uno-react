@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { TextField } from '@material-ui/core';
 
 export function useStateForField(defaultValue) {
     const [getField, setField] = React.useState(defaultValue);
@@ -10,3 +11,6 @@ export function useStateForField(defaultValue) {
 
     return [getField, changeHandler, setField];
 }
+const [getField, changeHandler] = useStateForField(defaultValue);
+<TextField
+onchange={changeHandler}/>
