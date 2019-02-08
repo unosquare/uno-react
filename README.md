@@ -113,6 +113,32 @@ const myComponent = () => {
 }
 ```
 
+### `useToggleStateForField`
+Keep it simple to switch `values` in your boolean `variables` using hooks. Just sending a `default` value and change it each time you call your `hook` change method.
+
+```javascript
+const myComponent = () => {
+    const [ myValue, handleChange ] = useToggleStateForField(false);
+    
+    function async handleSubmit(e: any) => {
+        handleChange();
+        await callMyActionMethod(someData, someUrl);
+    };
+    
+    <div>
+        <ValidatorForm
+            onSubmit={handleSubmit}
+        >
+            <Button
+                disabled={myValue}
+            >
+                Save
+            </Button>
+        </ValidatorForm>
+    </div>
+}
+```
+
 ### `useNow`
 Keep the current date just in one `variable`, without calling `date` method whenever it's needed.
 
