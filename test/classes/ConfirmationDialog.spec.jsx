@@ -1,6 +1,6 @@
 import * as React from 'react';
 import context from '../dataSource/__mocks__/TestContextHelper';
-import { createMount } from '@material-ui/core/test-utils';
+import createShallow from '@material-ui/core/test-utils/createShallow';
 import ConfirmationDialog from '../../src/classes/ConfirmationDialog';
 import {
     Button, Dialog, DialogActions, DialogContent,
@@ -8,12 +8,12 @@ import {
 } from '@material-ui/core';
 
 describe('ConfirmationDialog', () => {
-    let mount;
     let wrapper;
+    let shallow;
     beforeEach(() => {
         jest.resetModules();
-        mount = createMount();
-        wrapper = mount(<ConfirmationDialog
+        shallow = createShallow();
+        wrapper = shallow(<ConfirmationDialog
             contentText='Are you sure?'
             title='Do action'
             onAgreeAction={context.actions.onAgreeAction}
@@ -44,5 +44,21 @@ describe('ConfirmationDialog', () => {
 
     test('Should contain a <Button />', () => {
         expect(wrapper.find(Button)).toHaveLength(2);
+    });
+
+    test('Test OnAgreeAction', () => { 
+        const agreeButton = wrapper.find( { color: 'primary' } );
+        expect(agreeButton).toHaveLength(1);
+        
+        agreeButton.simulate('click');
+        expect(context.actions.onAgreeAction).toHaveBeenCalled();
+    });
+
+    test('Test OnCloseAction', () => { 
+        const agreeButton = wrapper.find( { color: 'secondary' } );
+        expect(agreeButton).toHaveLength(1);
+        
+        agreeButton.simulate('click');
+        expect(context.actions.onDesagreeAction).toHaveBeenCalled();
     });
 });
