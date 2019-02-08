@@ -53,6 +53,67 @@ const myComponent = () => {
 }
 ```
 
+### `useEffectWithLoading`
+Combine the power of create a hook `variable` and control its loading state by calling a method using `effects`, just passing the `function` name, the `default` value and the `argument` to check for re-call method (optional).
+
+```javascript
+const myInfo = {};
+
+const myComponent = () => {
+    const getMyData = () => someActionToCallMyData(myId);
+    const [ data, isLoading ] = useEffectWithLoading(getMyData, default, argument);
+    
+    useEffect(() => {
+       myInfo = data;
+    }, [data]);
+    
+    <Card>
+        <CardContent>
+            {isLoading ?
+            <LoadingIcon />
+            :
+            <Line
+                data={myInfo}
+            />
+        </CardContent>
+    </Card>
+}
+```
+
+### `useNow`
+Keep the current date just in one `variable`, without calling `date` method whenever it's needed.
+
+```javascript
+const myComponent = () => {
+    const date = useNow();
+    
+    const handleSubmit(e: any) => {
+        actionSubmit(date, someUrl);
+    };
+    
+    const handleDelete(e: any) => {
+        actionDelete(date, someUrl);
+    };
+    
+    return (
+        <div>
+            <Button
+                onClick={handleDelete}
+            >
+                <DeleteIcon />
+            </Button>
+            <ValidatorForm
+                onSubmit={handleSubmit}
+            >
+                <TextField
+                    value={myValue}
+                />
+            </ValidatorForm>
+        </div>
+    );
+}
+```
+
 ## Classes
 
 ### `ErrorBoundary`
