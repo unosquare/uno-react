@@ -18,7 +18,7 @@ describe('ButtonWithLoading', () => {
     });
 
     test('Should not appeard the <Button/> component', () => {
-        wrapper = shallow(<ButtonWithLoading />);
+        wrapper = shallow(<ButtonWithLoading isFetching={true} />);
         expect(wrapper.find(Button)).toHaveLength(0);
     });
     
