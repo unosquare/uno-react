@@ -11,7 +11,7 @@ Common functions and hooks for React.
 
 ### `useStateForModel`
 
-Similar to `useState` but with a twist. The setter function can merge another object in the state or when the input is `Input Event` read the `target` property and populate by `name` and `value`.
+Similar to `useState` but with a twist. When the input `onChange` event is called, `useStateForModel` allows you to read the `target` property in the `event` and populate a specif model's property taking the `name` and the `value`.
 
 ```javascript
 const myComponent = () => {
@@ -77,6 +77,39 @@ const myComponent = () => {
             />
         </CardContent>
     </Card>
+}
+```
+
+### `useStateForModelWithLoading`
+Similar to `useEffectWithLoading` but allows you to create and populate data into an `object variable` with a defined `model`.
+
+```javascript
+const myComponent = () => {
+    const myModel = {
+        id: 1,
+        name: 'My Test Name'
+    };
+    
+    const getMyData = () => someActionToCallMyData(myId);
+    const [ data, isLoadingData, handleChange ] = useStateForModelWithLoading(getMyData, myModel, argument || []);
+    
+    const handleSubmit(e: any) => {
+        actionSubmit(data, someUrl);
+    };
+    
+    <div>
+        {isLoadingData ?
+            <LoadingIcon />
+        :
+        <ValidatorForm
+                onSubmit={handleSubmit}
+        >
+            <TextValidator
+               value={data.name}
+                onChange={handleChange}
+            />
+        </ValidatorForm>}
+    </div>
 }
 ```
 
