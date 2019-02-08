@@ -33,6 +33,26 @@ const myComponent = () => {
 };
 ```
 
+### `useStateForField`
+The easiest way to create a new state variable using hooks, it automatically takes the `target` property and populate the `variable` with the `value` when `set method` is called.
+
+```javascript
+const myComponent = () => {
+    const [ variable, setMethod ] = useStateForField('');
+    
+    return (
+        <div>
+            <ValidatorForm>
+                <TextField
+                    value={variable}
+                    onChange={setMethod}
+                />
+            </ValidatorForm>
+        </div>
+    );
+}
+```
+
 ## Classes
 
 ### `ErrorBoundary`
