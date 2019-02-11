@@ -11,7 +11,7 @@ Common functions and hooks for React.
 
 ### `useStateForModel`
 
-Similar to `useState` but with a twist. When the input `onChange` event is called, `useStateForModel` allows you to read the `target` property in the `event` and populate a specif model's property taking the `name` and the `value`.
+Similar to `useState` but with a twist. When the input `onChange` event is called, `useStateForModel` allows you to read the `target` property in the `event` and populate a specific model's property taking the `name` and the `value`.
 
 ```javascript
 const myComponent = () => {
@@ -24,10 +24,10 @@ const myComponent = () => {
 
     return (
         <div>
-        <h1>{model.id} - {model.name}</h1>
+            <h1>{model.id} - {model.name}</h1>
 
-        <input onChange={handleChange} name="name" />
-        <button onClick={onClick}>Set Name</button>
+            <input onChange={handleChange} name="name" />
+            <button onClick={onClick}>Set Name</button>
         </div>
     );
 };
@@ -50,18 +50,18 @@ const myComponent = () => {
             </ValidatorForm>
         </div>
     );
-}
+};
 ```
 
 ### `useEffectWithLoading`
-Combine the power of create a hook `variable` and control its loading state by calling a method using `effects`, just passing the `function` name, the `default` value and the `argument` to check for re-call method (optional).
+Combine the power of create a hook `variable` and control its loading state by calling a method using `effects`, just passing the `function`, the `default` value and the `argument (optional)` to check for re-call method.
 
 ```javascript
 const myInfo = {};
 
-const myComponent = () => {
-    const getMyData = () => someActionToCallMyData(myId);
-    const [ data, isLoading ] = useEffectWithLoading(getMyData, default, argument);
+const myComponent = ({ myId }) => {
+    const myDefault = 'Some default information.';
+    const [ data, isLoading ] = useEffectWithLoading(someActionToCallMyData(myId), myDefault, argument || []);
     
     useEffect(() => {
        myInfo = data;
@@ -77,24 +77,24 @@ const myComponent = () => {
             />
         </CardContent>
     </Card>
-}
+};
 ```
 
 ### `useStateForModelWithLoading`
 Similar to `useEffectWithLoading` but allows you to create and populate data into an `object variable` with a defined `model`.
 
 ```javascript
-const myComponent = () => {
+const myComponent = ({ myId }) => {
     const myModel = {
         id: 1,
         name: 'My Test Name'
     };
     
-    const getMyData = () => someActionToCallMyData(myId);
-    const [ data, isLoadingData, handleChange ] = useStateForModelWithLoading(getMyData, myModel, argument || []);
+    const myUrl = 'example/api/actions';
+    const [ data, isLoadingData, handleChange ] = useStateForModelWithLoading(someActionToCallMyData(myId), myModel, argument || []);
     
-    const handleSubmit(e: any) => {
-        actionSubmit(data, someUrl);
+    const handleSubmit(e) => {
+        actionSubmit(data, myUrl);
     };
     
     <div>
@@ -110,19 +110,21 @@ const myComponent = () => {
             />
         </ValidatorForm>}
     </div>
-}
+};
 ```
 
 ### `useToggleStateForField`
-Keep it simple to switch `values` in your boolean `variables` using hooks. Just sending a `default` value and change it each time you call your `hook` change method.
+Keep it simple to switch `values` in your boolean `variables` using hooks. Just sending a `default` value and change it each time you call your `hook` method.
 
 ```javascript
 const myComponent = () => {
-    const [ myValue, handleChange ] = useToggleStateForField(false);
+    const myUrl = 'example/api/actions';
+    const defaultValue = false;
+    const [ myValue, handleChange ] = useToggleStateForField(defaultValue);
     
-    function async handleSubmit(e: any) => {
+    function async handleSubmit(e) => {
         handleChange();
-        await callMyActionMethod(someData, someUrl);
+        await callMyActionMethod(someDataToSend, myUrl);
     };
     
     <div>
@@ -136,7 +138,7 @@ const myComponent = () => {
             </Button>
         </ValidatorForm>
     </div>
-}
+};
 ```
 
 ### `useNow`
@@ -145,13 +147,14 @@ Keep the current date just in one `variable`, without calling `date` method when
 ```javascript
 const myComponent = () => {
     const date = useNow();
+    const myUrl = 'example/api/actions';
     
-    const handleSubmit(e: any) => {
-        actionSubmit(date, someUrl);
+    const handleSubmit(e) => {
+        actionSubmit(date, myUrl);
     };
     
-    const handleDelete(e: any) => {
-        actionDelete(date, someUrl);
+    const handleDelete(e) => {
+        actionDelete(date, myUrl);
     };
     
     return (
@@ -170,7 +173,7 @@ const myComponent = () => {
             </ValidatorForm>
         </div>
     );
-}
+};
 ```
 
 ## Classes
