@@ -20,7 +20,7 @@ const myComponent = () => {
         name: 'Mario Di Vece'
     });
 
-    const onClick = () => handleChange({name: 'Geo Perez'});
+    const changeName = () => handleChange({name: 'Geo Perez'});
 
     return (
         <div>
@@ -31,7 +31,7 @@ const myComponent = () => {
                 onChange={handleChange} 
                 value={model.name}
             />
-            <button onClick={onClick}>Set Name</button>
+            <button onClick={changeName}>Set Name</button>
         </div>
     );
 };
@@ -61,24 +61,18 @@ const myComponent = () => {
 Combine the power of create a hook `variable` and control its loading state by calling a method using `effects`, just passing the `function`, the `default` value and the `argument (optional)` to check for re-call method.
 
 ```javascript
-const myInfo = {};
-
 const myComponent = ({ myId }) => {
-    const myDefault = 'Some default information.';
-    const myArgument = myId ? myId : [];
-    const [ data, isLoading ] = useEffectWithLoading(someActionToCallMyData(myId), myDefault, myArgument);
-    
-    useEffect(() => {
-       myInfo = data;
-    }, [data]);
-    
+    const myDefault = {};
+    const myArgument = [];
+    const [ myData, isLoading ] = useEffectWithLoading(someActionToCallMyData(myId), myDefault, myArgument);
+   
     <Card>
         <CardContent>
             {isLoading ?
             <LoadingIcon />
             :
             <Line
-                data={myInfo}
+                data={myData}
             />
         </CardContent>
     </Card>
@@ -96,7 +90,7 @@ const myComponent = ({ myId }) => {
     };
     
     const myUrl = 'example/api/actions';
-    const myArgument = myId ? myId : [];
+    const myArgument = [];
     const [ data, isLoadingData, handleChange ] = useStateForModelWithLoading(someActionToCallMyData(myId), myModel, myArgument);
     
     const handleSubmit(e) => {
