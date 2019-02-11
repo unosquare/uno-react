@@ -1,32 +1,43 @@
 import * as React from 'react';
-import useStateForModel from '../../src/hooks/useStateForModel';
-import TextField from '@material-ui/core/TextField';
-import createShallow from '@material-ui/core/test-utils/createShallow';
+import UseStateForModelImplementation from './UseStateForModelImplementation';
+import { shallow } from 'enzyme';
 
 describe('useStateForModel', () => {
-    let shallow;
-    let model = { id: 1, name: 'Mario Di Vece' };
-    const handleChange = jest.fn();    
-
+    let wrapper;
     beforeEach(() => {
-        jest.resetModules();      
-        shallow = createShallow();
-    });
-   
-
-    test('Should the model change to {id: 1, name: Mario Di Vece}', () => {
-        handleChange.mockReturnValue({ id: 1, name: 'Geo Perez' })();
-        model = handleChange();
-        expect(model.name).toBe('Geo Perez');
-        expect(model.id).toBe(1);
+        jest.resetModules();
+        wrapper = shallow(<UseStateForModelImplementation />);
     });
 
-    test('Should respond to onChange event', () => {
-        const wrapper = shallow(<input name = 'name' value={model.name} onChange={handleChange}/>);
-        const input = wrapper.find({ name: 'name' });
-        input.simulate('change', { target: { value: 'Ana Lizardi' } });
-        // console.log(wrapper.debug());
-        console.log(input.debug());
-        expect(input.value).toBe('Ana Lizardi');
+    test('Should contain a <input />', () => {
+        console.log(wrapper);
+        console.log(wrapper.debug());
+        expect(wrapper.find('input')).toHaveLength(1);
     });
+
+    test('Should contain a <button />', () => {
+        expect(wrapper.find('button')).toHaveLength(1);
+    });
+
+    // test('onChange event', () => {
+    //     const input = wrapper.find('input').first();
+    //     console.log(input.Debug());
+    //     const inputx = wrapper.find('input');
+    //     console.log(inputx.Debug());
+    //     input.simulate('change',
+    //         {
+    //             target: {
+    //                 name: 'name',
+    //                 value: 'Ana Lizardi'
+    //             }
+    //         }
+    //     );
+    //     expect(input.value).toBe('Ana Lizardi');
+    // });
+
+    // test('onClick event', () => {
+    //     const button = wrapper.find('button').first();
+    //     button.simulate('click');
+    //     expect(input.value).toBe('Geo Perez');
+    // });
 });
