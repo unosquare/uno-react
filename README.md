@@ -26,7 +26,11 @@ const myComponent = () => {
         <div>
             <h1>{model.id} - {model.name}</h1>
 
-            <input onChange={handleChange} name="name" />
+            <input 
+                name="name"
+                onChange={handleChange} 
+                value={model.name}
+            />
             <button onClick={onClick}>Set Name</button>
         </div>
     );
@@ -61,7 +65,8 @@ const myInfo = {};
 
 const myComponent = ({ myId }) => {
     const myDefault = 'Some default information.';
-    const [ data, isLoading ] = useEffectWithLoading(someActionToCallMyData(myId), myDefault, argument || []);
+    const myArgument = myId ? myId : [];
+    const [ data, isLoading ] = useEffectWithLoading(someActionToCallMyData(myId), myDefault, myArgument);
     
     useEffect(() => {
        myInfo = data;
@@ -91,7 +96,8 @@ const myComponent = ({ myId }) => {
     };
     
     const myUrl = 'example/api/actions';
-    const [ data, isLoadingData, handleChange ] = useStateForModelWithLoading(someActionToCallMyData(myId), myModel, argument || []);
+    const myArgument = myId ? myId : [];
+    const [ data, isLoadingData, handleChange ] = useStateForModelWithLoading(someActionToCallMyData(myId), myModel, myArgument);
     
     const handleSubmit(e) => {
         actionSubmit(data, myUrl);
@@ -138,6 +144,50 @@ const myComponent = () => {
             </Button>
         </ValidatorForm>
     </div>
+};
+```
+
+### `usePersistedState`
+A good way to create and update your `hooks` through using `effects` but keeping the data into a `localStorage` item.
+
+```javascript
+const myComponent = () => {
+    const myDefault = '';
+    const myKeyName = 'localDataKeyName';
+    const [persistent, handleChange] = usePersistedState(myDefault, myKeyName);
+    
+    useEffect(() => {
+       callMyAsyncFunction();
+    }, []);
+    
+    const callMyAsyncFunction = async () => {
+        const data = await actionToGetData();
+        handleChange(data);
+    };
+    
+    return (
+        <div>
+            <Title value={`Hi - ${persistent || ''}`}/>
+            <ValidatorForm>
+                <TextField />
+            </ValidatorForm>
+        </div>
+    );
+};
+
+const newComponent = () => {
+    const myKeyName = 'localDataKeyName';
+    const localStorageData = localStorage.getItem(myKeyName);
+    
+    return (
+        <div>
+            {localStorageData ?
+                <Title value={`Hi - ${localStorageData || ''}`}/>
+                <ValidatorForm>
+                    <TextValidator />
+                </ValidatorForm>}
+        </div>
+    );
 };
 ```
 
