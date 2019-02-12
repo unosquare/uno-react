@@ -1,6 +1,6 @@
 {
   "name": "uno-react",
-  "version": "0.0.27",
+  "version": "0.0.31",
   "description": "Common functions and hooks for React",
   "main": "lib/index.js",
   "scripts": {
@@ -58,6 +58,7 @@
     "@material-ui/styles": "^3.0.0-alpha.10",
     "@types/enzyme": "^3.1.16",
     "@types/enzyme-adapter-react-16": "^1.0.3",
+    "jss": "^10.0.0-alpha.9",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-form-validator-core": "^0.5.1"
