@@ -1,5 +1,5 @@
 import * as React from 'react';
-import useStateForModel from '../../src/hooks/useStateForModel';
+import { useStateForModel } from '../../src/hooks/useStateForModel';
 
 const UseStateForModelImplementation = () => {
     const [model, handleChange] = useStateForModel({

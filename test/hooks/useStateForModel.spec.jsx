@@ -1,17 +1,15 @@
 import * as React from 'react';
 import UseStateForModelImplementation from './UseStateForModelImplementation';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 describe('useStateForModel', () => {
     let wrapper;
     beforeEach(() => {
         jest.resetModules();
-        wrapper = shallow(<UseStateForModelImplementation />);
+        wrapper = mount(<UseStateForModelImplementation />);
     });
 
     test('Should contain a <input />', () => {
-        console.log(wrapper);
-        console.log(wrapper.debug());
         expect(wrapper.find('input')).toHaveLength(1);
     });
 
@@ -20,24 +18,19 @@ describe('useStateForModel', () => {
     });
 
     // test('onChange event', () => {
-    //     const input = wrapper.find('input').first();
-    //     console.log(input.Debug());
-    //     const inputx = wrapper.find('input');
-    //     console.log(inputx.Debug());
-    //     input.simulate('change',
-    //         {
-    //             target: {
-    //                 name: 'name',
-    //                 value: 'Ana Lizardi'
-    //             }
-    //         }
-    //     );
+    //     const input = wrapper.find('input');
+    //     console.log(input.debug());
+    //     input.simulate('change', { target: { value: 'Ana Lizardi' } });
+    //     console.log(input.debug());
     //     expect(input.value).toBe('Ana Lizardi');
     // });
 
     // test('onClick event', () => {
+    //     const input = wrapper.find('input');
+    //     console.log(input.debug());
     //     const button = wrapper.find('button').first();
     //     button.simulate('click');
+    //     console.log(input.debug());
     //     expect(input.value).toBe('Geo Perez');
     // });
 });
