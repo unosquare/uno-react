@@ -65,7 +65,7 @@ const myComponent = ({ myId }) => {
    
     <div>
         {isLoading ?
-            <i class="fa fa-circle-o-notch fa-spin"></i>Loading
+            <div class='loader'></div>
             :
             <form>
                 <label>
@@ -94,7 +94,7 @@ const myComponent = () => {
             value={mySearchString}>
         </input>
         {isLoading ?
-            <i class="fa fa-circle-o-notch fa-spin"></i>Loading
+            <div class='loader'></div>
             :
             <form>
                 <input
@@ -201,7 +201,7 @@ const myComponent = () => {
             <button
                 onClick={handleDelete}
             >
-                <i class="fa fa-trash"></i> Delete
+                Delete
             </button>
             <form
                 onSubmit={handleSubmit}
