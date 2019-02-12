@@ -10,7 +10,7 @@ import Warning from '@material-ui/icons/Warning';
 import { makeStyles } from '@material-ui/styles';
 import React, { useEffect, useState } from 'react';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
     error: {
         backgroundColor: theme.palette.secondary.main,
     },
@@ -44,6 +44,7 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500 }) => {
             case 'warning': return <Warning className={classes.icon} />;
             case 'sucess': return <CheckCircle className={classes.icon} />;
             case 'error': return <Error className={classes.icon} />;
+            default: return;
         }
     };
     const getStyle = () => {
@@ -52,6 +53,7 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500 }) => {
             case 'warning': return classes.warning;
             case 'sucess': return classes.success;
             case 'error': return classes.error;
+            default: return;
         }
     };
 
