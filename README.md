@@ -25,7 +25,6 @@ const myComponent = () => {
     return (
         <div>
             <h1>{model.id} - {model.name}</h1>
-
             <input 
                 name="name"
                 onChange={handleChange} 
@@ -56,13 +55,13 @@ const myComponent = () => {
 ```
 
 ### `useEffectWithLoading`
-Combine the power of create a hook `variable` and control its loading state by calling a method using `effects`, just passing the `function`, the `default` value and the `argument (optional)` to check for re-call method.
+Combine the power of create a hook `variable` and control its loading state by calling a method using `effects`, just passing the `function`, the `default` value and the `argument (optional)` for re-call method.
 
 ```javascript
 const myComponent = ({ myId }) => {
-    const myDefault = {};
+    const myDefault = '';
     const myArgument = [];
-    const [ myData, isLoading ] = useEffectWithLoading(someActionToCallMyData(myId), myDefault, myArgument);
+    const [ myData, isLoading ] = useEffectWithLoading(getMyData(myId), myDefault, myArgument);
    
     <div>
         {isLoading ?
@@ -78,7 +77,8 @@ const myComponent = ({ myId }) => {
 ```
 
 ### `useStateForModelWithLoading`
-Similar to `useEffectWithLoading` but allows you to create and populate data into an `object variable` with a defined `model`.
+Similar to `useEffectWithLoading` but allows you to create and populate data into an `object variable` with a defined `model`. The
+third `argument` to send for creating the hook is optional.
 
 ```javascript
 const myComponent = () => {
@@ -86,14 +86,13 @@ const myComponent = () => {
         name: 'my test name',
         city: 'my test city'
     };
-    const [myText, handleChangeMyText] = useStateForField('');
-    const getMydata = (searchText) => actionToRetrieveMyData(searchText);
-    const [ data, isLoading, handleChange ] = useStateForModelWithLoading(getMydata(myText), myModel, [myText]);
+    const [mySearchString, handleChangeSearchString] = useStateForField('');
+    const [ data, isLoading, handleChange ] = useStateForModelWithLoading(getMyData(mySearchString), myModel, [mySearchString]);
     
     <div>
         <input 
-            onChange={handleChangeMyText} 
-            value={myText}>
+            onChange={handleChangeSearchString} 
+            value={mySearchString}>
         </input>
         {isLoading ?
             <i class="fa fa-circle-o-notch fa-spin"></i>Loading
@@ -117,13 +116,13 @@ Keep it simple to switch `values` in your boolean `variables` using hooks. Just 
 
 ```javascript
 const myComponent = () => {
-    const myUrl = 'example/api/actions';
     const defaultValue = false;
     const [ myValue, handleChange ] = useToggleStateForField(defaultValue);
     
     function async handleSubmit(e) => {
         handleChange();
-        await callMyActionMethod(someDataToSend, myUrl);
+        await callMyActionMethod();
+        handleChange();
     };
     
     <div>
@@ -172,13 +171,13 @@ const myComponent = () => {
 
 const newComponent = () => {
     const myKeyName = 'localDataKeyName';
-    const localStorageData = localStorage.getItem(myKeyName);
+    const persistent = localStorage.getItem(myKeyName);
     
     return (
         <div>
             {localStorageData ?
                 <label>
-                    Hi: {localStorageData || ''}
+                    Hi: {persistent || ''}
                 </label>
                 <form>
                     <input />
@@ -194,15 +193,9 @@ Keep the current date just in one `variable`, without calling `date` method when
 ```javascript
 const myComponent = () => {
     const date = useNow();
-    const myUrl = 'example/api/actions';
     
-    const handleSubmit(e) => {
-        actionSubmit(date, myUrl);
-    };
-    
-    const handleDelete(e) => {
-        actionDelete(date, myUrl);
-    };
+    const handleSubmit = () => actionSubmit(date);
+    const handleDelete = () => actionDelete(date);
     
     return (
         <div>
@@ -214,8 +207,8 @@ const myComponent = () => {
             <form
                 onSubmit={handleSubmit}
             >
-                <input
-                    value={myValue}
+                <button
+                    type='submit'
                 />
             </form>
         </div>
