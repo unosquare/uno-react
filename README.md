@@ -42,16 +42,14 @@ The easiest way to create a new state variable using hooks, it automatically tak
 
 ```javascript
 const myComponent = () => {
-    const [ variable, setMethod ] = useStateForField('');
+    const [ myValue, handleChange ] = useStateForField('');
     
     return (
         <div>
-            <ValidatorForm>
-                <TextField
-                    value={variable}
-                    onChange={setMethod}
-                />
-            </ValidatorForm>
+            <input
+                value={myValue}
+                onChange={handleChange}
+            />
         </div>
     );
 };
@@ -66,16 +64,16 @@ const myComponent = ({ myId }) => {
     const myArgument = [];
     const [ myData, isLoading ] = useEffectWithLoading(someActionToCallMyData(myId), myDefault, myArgument);
    
-    <Card>
-        <CardContent>
-            {isLoading ?
-            <LoadingIcon />
+    <div>
+        {isLoading ?
+            <i class="fa fa-circle-o-notch fa-spin"></i>Loading
             :
-            <Line
-                data={myData}
-            />
-        </CardContent>
-    </Card>
+            <form>
+                <label>
+                    {myData}
+                </label>
+            <form>}
+    </div>
 };
 ```
 
@@ -98,18 +96,18 @@ const myComponent = () => {
             value={myText}>
         </input>
         {isLoading ?
-            <LoadingIcon />
+            <i class="fa fa-circle-o-notch fa-spin"></i>Loading
             :
-            <ValidatorForm>
-                <TextField
+            <form>
+                <input
                     value={data.name}
                     onChange={handleChange}
                 />
-                <TextField
+                <input
                     value={data.city}
                     onChange={handleChange}
                 />
-            </ValidatorForm>}
+            </form>}
     </div>
 };
 ```
@@ -129,15 +127,15 @@ const myComponent = () => {
     };
     
     <div>
-        <ValidatorForm
+        <form
             onSubmit={handleSubmit}
         >
-            <Button
+            <button
                 disabled={myValue}
             >
                 Save
-            </Button>
-        </ValidatorForm>
+            </button>
+        </form>
     </div>
 };
 ```
@@ -162,10 +160,12 @@ const myComponent = () => {
     
     return (
         <div>
-            <Title value={`Hi - ${persistent || ''}`}/>
-            <ValidatorForm>
-                <TextField />
-            </ValidatorForm>
+            <label>
+               Hi: {persistent || ''}
+            </label>
+            <form>
+                <input />
+            </form>
         </div>
     );
 };
@@ -177,10 +177,12 @@ const newComponent = () => {
     return (
         <div>
             {localStorageData ?
-                <Title value={`Hi - ${localStorageData || ''}`}/>
-                <ValidatorForm>
-                    <TextValidator />
-                </ValidatorForm>}
+                <label>
+                    Hi: {localStorageData || ''}
+                </label>
+                <form>
+                    <input />
+                </form>}
         </div>
     );
 };
@@ -204,18 +206,18 @@ const myComponent = () => {
     
     return (
         <div>
-            <Button
+            <button
                 onClick={handleDelete}
             >
-                <DeleteIcon />
-            </Button>
-            <ValidatorForm
+                <i class="fa fa-trash"></i> Delete
+            </button>
+            <form
                 onSubmit={handleSubmit}
             >
-                <TextField
+                <input
                     value={myValue}
                 />
-            </ValidatorForm>
+            </form>
         </div>
     );
 };
