@@ -83,32 +83,35 @@ const myComponent = ({ myId }) => {
 Similar to `useEffectWithLoading` but allows you to create and populate data into an `object variable` with a defined `model`.
 
 ```javascript
-const myComponent = ({ myId }) => {
+const myComponent = () => {
     const myModel = {
-        id: 1,
-        name: 'My Test Name'
+        name: 'my test name',
+        city: 'my test city'
     };
-    
-    const myUrl = 'example/api/actions';
-    const myArgument = [];
-    const [ data, isLoadingData, handleChange ] = useStateForModelWithLoading(someActionToCallMyData(myId), myModel, myArgument);
-    
-    const handleSubmit(e) => {
-        actionSubmit(data, myUrl);
-    };
+    const [myText, handleChangeMyText] = useStateForField('');
+    const getMydata = (searchText) => actionToRetrieveMyData(searchText);
+    const [ data, isLoading, handleChange ] = useStateForModelWithLoading(getMydata(myText), myModel, [myText]);
     
     <div>
-        {isLoadingData ?
-            <LoadingIcon />
-        :
-        <ValidatorForm
-                onSubmit={handleSubmit}
-        >
-            <TextValidator
-               value={data.name}
-                onChange={handleChange}
-            />
-        </ValidatorForm>}
+        <input 
+            onChange={handleChangeMyText} 
+            value={myText}>
+        </input>
+        <FormGroup>
+            {isLoading ?
+                <LoadingIcon />
+                :
+                <ValidatorForm>
+                    <TextField
+                        value={data.name}
+                        onChange={handleChange}
+                    />
+                    <TextField
+                        value={data.city}
+                        onChange={handleChange}
+                    />
+                </ValidatorForm>}
+        </FormGroup>
     </div>
 };
 ```
