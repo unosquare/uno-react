@@ -97,21 +97,19 @@ const myComponent = () => {
             onChange={handleChangeMyText} 
             value={myText}>
         </input>
-        <FormGroup>
-            {isLoading ?
-                <LoadingIcon />
-                :
-                <ValidatorForm>
-                    <TextField
-                        value={data.name}
-                        onChange={handleChange}
-                    />
-                    <TextField
-                        value={data.city}
-                        onChange={handleChange}
-                    />
-                </ValidatorForm>}
-        </FormGroup>
+        {isLoading ?
+            <LoadingIcon />
+            :
+            <ValidatorForm>
+                <TextField
+                    value={data.name}
+                    onChange={handleChange}
+                />
+                <TextField
+                    value={data.city}
+                    onChange={handleChange}
+                />
+            </ValidatorForm>}
     </div>
 };
 ```
