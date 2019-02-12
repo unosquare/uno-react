@@ -77,8 +77,7 @@ const myComponent = ({ myId }) => {
 ```
 
 ### `useStateForModelWithLoading`
-Similar to `useEffectWithLoading` but allows you to create and populate data into an `object variable` with a defined `model`. The
-third `argument` to send for creating the hook is optional.
+Similar to `useEffectWithLoading` but allows you to create and populate data into an `object variable` with a defined `model`. The third `argument` to send for creating the hook is optional, skip it will call your function just the first time when creating the component.
 
 ```javascript
 const myComponent = () => {
