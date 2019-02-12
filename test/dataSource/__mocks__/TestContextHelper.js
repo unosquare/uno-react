@@ -2,6 +2,7 @@
     actions: {
       onAgreeAction: jest.fn(),
       onDesagreeAction: jest.fn(),
+      onClose: jest.fn(),
     },
     state: {
     },
