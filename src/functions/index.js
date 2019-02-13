@@ -4,3 +4,4 @@ export * from './fetchController';
 export * from './LoadingIcon';
 export * from './validations';
 export * from './debounce';
+export * from './humanize';
