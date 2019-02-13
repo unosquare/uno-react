@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export function enhanceWithClickOutside(Component: React.ComponentType<*>) {
-    return class EnhancedComponent extends React.Component<*> {
-        public __domNode: *;
-        public __wrappedInstance: ?React.Component<*>;
-        public handleClickOutside: (e: Event) => void;
+export function enhanceWithClickOutside(Component) {
+    return class EnhancedComponent extends React.Component {
+        __domNode;
 
-        constructor(props: any) {
+        constructor(props) {
             super(props);
             this.handleClickOutside = this.handleClickOutside.bind(this);
         }
@@ -20,8 +18,9 @@ export function enhanceWithClickOutside(Component: React.ComponentType<*>) {
             document.removeEventListener('click', this.handleClickOutside, true);
         }
 
-        public handleClickOutside(e: any) {
+        handleClickOutside(e) {
             const domNode = this.__domNode;
+            
             if (
                 (!domNode || !domNode.contains(e.target)) &&
                 this.__wrappedInstance &&
@@ -37,8 +36,9 @@ export function enhanceWithClickOutside(Component: React.ComponentType<*>) {
             return (
                 <Component
                     {...rest}
-                    ref={(c: any) => {
+                    ref={c => {
                         this.__wrappedInstance = c;
+                        // eslint-disable-next-line react/no-find-dom-node
                         this.__domNode = ReactDOM.findDOMNode(c);
                     }}
                 />
