@@ -42,7 +42,7 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500 }) => {
         switch (messageType) {
             case 'info': return <Info className={classes.icon} />;
             case 'warning': return <Warning className={classes.icon} />;
-            case 'sucess': return <CheckCircle className={classes.icon} />;
+            case 'success': return <CheckCircle className={classes.icon} />;
             case 'error': return <Error className={classes.icon} />;
             default: return;
         }
@@ -51,7 +51,7 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500 }) => {
         switch (messageType) {
             case 'info': return classes.info;
             case 'warning': return classes.warning;
-            case 'sucess': return classes.success;
+            case 'success': return classes.success;
             case 'error': return classes.error;
             default: return;
         }
