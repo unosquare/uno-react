@@ -1,15 +1,10 @@
 import * as React from 'react';
-import Button from '@babel/core/Button';
-import Dialog from '@babel/core/Dialog';
-import DialogActions from '@babel/core/DialogActions';
-import DialogContent from '@babel/core/DialogContent';
-import DialogContentText from '@babel/core/DialogContentText';
-import DialogTitle from '@babel/core/DialogTitle';
-
-import {
-    Button, Dialog, DialogActions, DialogContent,
-    DialogContentText, DialogTitle,
-} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree' }) => {
     const handleAgree = e => onAgreeAction(e);
