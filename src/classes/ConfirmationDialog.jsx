@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree' }) => {
+const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree', textColor= 'secondary' | 'textSecondary' }) => {
     const handleAgree = e => onAgreeAction(e);
 
     return (
@@ -18,7 +18,7 @@ const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, 
         >
             <DialogTitle id='alert-dialog-title'>{title}</DialogTitle>
             <DialogContent>
-                <DialogContentText id='alert-dialog-description'>
+                <DialogContentText id='alert-dialog-description' color={textColor}>
                     {contentText}
                 </DialogContentText>
             </DialogContent>
