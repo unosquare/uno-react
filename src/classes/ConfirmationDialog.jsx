@@ -1,4 +1,10 @@
 import * as React from 'react';
+import Button from '@babel/core/Button';
+import Dialog from '@babel/core/Dialog';
+import DialogActions from '@babel/core/DialogActions';
+import DialogContent from '@babel/core/DialogContent';
+import DialogContentText from '@babel/core/DialogContentText';
+import DialogTitle from '@babel/core/DialogTitle';
 
 import {
     Button, Dialog, DialogActions, DialogContent,
