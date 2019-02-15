@@ -5,3 +5,4 @@ export * from './LoadingIcon';
 export * from './validations';
 export * from './debounce';
 export * from './humanize';
+export * from './withEnter';
