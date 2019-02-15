@@ -3,7 +3,7 @@ import context from '../dataSource/__mocks__/TestContextHelper';
 import createShallow from '@material-ui/core/test-utils/createShallow';
 import GlobalSnackbar from '../../src/classes/GlobalSnackbar'
 
-describe('ConfirmationDialog', () => {
+describe('CustomSnackBarContent', () => {
     let wrapper;
     let shallow;
     beforeEach(() => {
