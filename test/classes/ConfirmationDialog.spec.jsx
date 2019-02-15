@@ -10,7 +10,7 @@ import {
 describe('ConfirmationDialog', () => {
     let wrapper;
     let shallow;
-    beforeEach(() => {
+    beforeAll(() => {
         jest.resetModules();
         shallow = createShallow();
         wrapper = shallow(<ConfirmationDialog

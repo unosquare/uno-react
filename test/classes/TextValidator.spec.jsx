@@ -1,12 +1,33 @@
 import * as React from 'react';
-import context from '../dataSource/__mocks__/TestContextHelper';
 import createShallow from '@material-ui/core/test-utils/createShallow';
-import TextValidatorImplementation from './TextValidatorImplementation';
+import TextValidator from '../../src/classes/TextValidator';
+import TextField from '@material-ui/core/TextField';
+import { ValidatorComponent } from 'react-form-validator-core';
 
-describe('TextValidator', () => {
-   let wrapper:
+xdescribe('TextValidator', () => {
+    let wrapper;
+    let shallow;
 
-   beforeEach(() => {
+    beforeAll(() => {
+        jest.resetModules();
+        shallow = createShallow();
+        wrapper = shallow(
+                <TextValidator
+                    name='nameProperty'
+                >
+                    <ValidatorComponent />
+                </TextValidator>
+            );
+        //wrapper.find(TextValidator).setState({ isValid: true });
+        wrapper.update();
+    });
 
-   });
+    afterAll(() => {
+        wrapper.detach();
+    });
+
+    test('Should contain a <TextField />', () => {
+        //console.log(wrapper.find(TextValidator).debug({ignoreProps: true}));
+        //expect(wrapper.find(TextField)).toHaveLength(1);
+    });
 });
