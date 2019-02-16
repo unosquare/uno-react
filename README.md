@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/unosquare/uno-react.svg?branch=master)](https://travis-ci.org/unosquare/uno-react)
 
 # uno-react
-Common functions and hooks for React.
+Common functions, classes, HOCs and hooks for React and Material UI.
 
 ```bash
 > npm i uno-react
