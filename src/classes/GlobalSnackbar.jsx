@@ -14,35 +14,39 @@ import React, { useEffect, useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
     error: {
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: `${theme.palette.error.main} !important`,
+        display: 'flex !important'
     },
     icon: {
-        fontSize: '20px',
-        marginRight: '15px',
+        fontSize: '20px  !important',
+        marginRight: '15px  !important',
     },
     iconMobile: {
-        fontSize: '34px',
-        marginRight: '15px',
+        fontSize: '34px  !important',
+        marginRight: '15px  !important',
     },
     info: {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: `${theme.palette.primary.main} !important`,
+        display: 'flex !important'
     },
     success: {
-        backgroundColor: green[600],
+        backgroundColor: `${green[600]} !important`,
+        display: 'flex !important'
     },
     text: {
         alignItems: 'center',
-        color: theme.palette.text.secondary,
-        display: 'inline-flex',
-        fontSize: '18px',
+        color: `${theme.palette.text.secondary} !important`,
+        display: 'inline-flex !important',
+        fontSize: '18px !important',
     },
     textMobile: {
-        color: theme.palette.text.secondary,
-        display: 'inline-flex',
-        fontSize: '28px',
+        color: `${theme.palette.text.secondary} !important`,
+        display: 'inline-flex !important',
+        fontSize: '28px !important',
     },
     warning: {
-        backgroundColor: amber[700],
+        backgroundColor: `${amber[700]} !important`,
+        display: 'flex !important'
     },
 }));
 
@@ -67,6 +71,7 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500, mobile = false }
             default: return classes.success;
         }
     };
+
 
     const getTextStyle = () => (mobile ? classes.textMobile : classes.text);
     const getIconStyle = () => (mobile ? classes.iconMobile : classes.icon);
