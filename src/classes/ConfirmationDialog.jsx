@@ -18,8 +18,8 @@ const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, 
         >
             <DialogTitle id='alert-dialog-title'>{title}</DialogTitle>
             <DialogContent>
-                <DialogContentText id='alert-dialog-description' color={textColor}>
-                    {contentText}
+                <DialogContentText id='alert-dialog-description'>
+                    <Typography color={textColor}>{contentText}</Typography>
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
