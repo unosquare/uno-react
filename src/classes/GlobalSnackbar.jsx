@@ -54,27 +54,24 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500, mobile = false }
         switch (messageType) {
             case 'info': return <Info className={getIconStyle()} />;
             case 'warning': return <Warning className={getIconStyle()} />;
-            case 'success': return <CheckCircle className={getIconStyle()} />;
             case 'error': return <Error className={getIconStyle()} />;
-            default: return;
+            default: return <CheckCircle className={getIconStyle()} />;
         }
     };
+
     const getStyle = () => {
         switch (messageType) {
             case 'info': return classes.info;
             case 'warning': return classes.warning;
-            case 'success': return classes.success;
             case 'error': return classes.error;
-            default: return;
+            default: return classes.success;
         }
     };
 
     const getTextStyle = () => (mobile ? classes.textMobile : classes.text);
     const getIconStyle = () => (mobile ? classes.iconMobile : classes.icon);
 
-    const onClose = () => {
-        setOpen(false);
-    };
+    const onClose = () => setOpen(false);
 
     useEffect(() => {
         if (message !== '') {
@@ -85,23 +82,21 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500, mobile = false }
         }
     }, [message]);
 
+    const anchorOrigin = {
+        horizontal: mobile ? 'center' : 'right',
+        vertical: 'bottom',
+    };
+
     return (
         <Snackbar
-            anchorOrigin={
-                    {
-                        horizontal: mobile ? 'center' : 'right',
-                        vertical: 'bottom',
-                    }
-            }
+            anchorOrigin={anchorOrigin}
             className={getStyle()}
             open={open}
         >
             <SnackbarContent
                 className={getStyle()}
                 message={
-                    <React.Fragment>
-                        <Typography className={getTextStyle()}> {getIcon()} {message} </Typography>
-                    </React.Fragment>
+                    <Typography className={getTextStyle()}> {getIcon()} {message} </Typography>
                 }
                 action={
                     <IconButton
