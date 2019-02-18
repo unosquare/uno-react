@@ -7,7 +7,7 @@ import CheckCircle from '@material-ui/icons/CheckCircle';
 import Error from '@material-ui/icons/Error';
 import Info from '@material-ui/icons/Info';
 import Warning from '@material-ui/icons/Warning';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import React, { useEffect, useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
