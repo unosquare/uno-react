@@ -28,7 +28,7 @@ const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, 
                     </Button>
                 }
                 {onAgreeAction &&
-                    <Button onClick={handleAgree} color='primary' variant='contained'>
+                    <Button autoFocus={true} onClick={handleAgree} color='primary' variant='contained'>
                         {agree}
                     </Button>
                 }
