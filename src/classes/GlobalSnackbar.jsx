@@ -3,89 +3,116 @@ import green from '@material-ui/core/colors/green';
 import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-import withStyles from '@material-ui/core/styles/withStyles';
+import Typography from '@material-ui/core/Typography';
 import CheckCircle from '@material-ui/icons/CheckCircle';
 import Close from '@material-ui/icons/Close';
 import Error from '@material-ui/icons/Error';
 import Info from '@material-ui/icons/Info';
 import Warning from '@material-ui/icons/Warning';
-import classNames from 'classnames';
-import * as React from 'react';
+import makeStyles from '@material-ui/styles/makeStyles';
+import React, { useEffect, useState } from 'react';
 
-const styles = theme => ({
-    icon: {
-        fontSize: 20,
+const useStyles = makeStyles(theme => ({
+    error: {
+        backgroundColor: `${theme.palette.error.main} !important`,
+        display: 'flex !important'
     },
-    iconVariant: {
-        marginRight: theme.spacing.unit,
-        opacity: 0.9,
+    icon: {
+        fontSize: '20px  !important',
+        marginRight: '15px  !important',
+    },
+    iconMobile: {
+        fontSize: '34px  !important',
+        marginRight: '15px  !important',
     },
     info: {
-        backgroundColor: theme.palette.primary.dark,
-    },
-    error: {
-        backgroundColor: theme.palette.error.dark,
+        backgroundColor: `${theme.palette.primary.main} !important`,
+        display: 'flex !important'
     },
     success: {
-        backgroundColor: green[600],
+        backgroundColor: `${green[600]} !important`,
+        display: 'flex !important'
+    },
+    text: {
+        alignItems: 'center',
+        color: `${theme.palette.text.secondary} !important`,
+        display: 'inline-flex !important',
+        fontSize: '18px !important',
+    },
+    textMobile: {
+        color: `${theme.palette.text.secondary} !important`,
+        display: 'inline-flex !important',
+        fontSize: '28px !important',
     },
     warning: {
-        backgroundColor: amber[700],
+        backgroundColor: `${amber[700]} !important`,
+        display: 'flex !important'
     },
-});
+}));
 
-const variantIcon = {
-    error: Error,
-    info: Info,
-    success: CheckCircle,
-    warning: Warning,
-};
+const GlobalSnackbar = ({ message, messageType, seconds = 2500, mobile = false }) => {
+    const classes = useStyles();
+    const [open, setOpen] = useState(false);
 
-const CustomSnackbarContent = ({ classes, className, message, variant, onClose }) => {
-    const Icon = variantIcon[variant];
+    const getIcon = () => {
+        switch (messageType) {
+            case 'info': return <Info className={getIconStyle()} />;
+            case 'warning': return <Warning className={getIconStyle()} />;
+            case 'error': return <Error className={getIconStyle()} />;
+            default: return <CheckCircle className={getIconStyle()} />;
+        }
+    };
+
+    const getStyle = () => {
+        switch (messageType) {
+            case 'info': return classes.info;
+            case 'warning': return classes.warning;
+            case 'error': return classes.error;
+            default: return classes.success;
+        }
+    };
+
+
+    const getTextStyle = () => (mobile ? classes.textMobile : classes.text);
+    const getIconStyle = () => (mobile ? classes.iconMobile : classes.icon);
+
+    const onClose = () => setOpen(false);
+
+    useEffect(() => {
+        if (message !== '') {
+            setOpen(true);
+            setTimeout(() => {
+                setOpen(false);
+            }, seconds);
+        }
+    }, [message]);
+
+    const anchorOrigin = {
+        horizontal: mobile ? 'center' : 'right',
+        vertical: 'bottom',
+    };
 
     return (
-        <SnackbarContent
-            aria-describedby='client-snackbar'
-            className={classNames(classes[variant], className)}
-            message={
-                <span id='client-snackbar' className={classes.message}>
-                    <Icon className={classNames(classes.icon, classes.iconVariant)} />
-                    {message}
-                </span>}
-            action={
-                <IconButton
-                    key='close'
-                    aria-label='Close'
-                    color='inherit'
-                    className={classes.close}
-                    onClick={onClose}
-                >
-                    <Close className={classes.icon} />
-                </IconButton>
-            }
-        />
+        <Snackbar
+            anchorOrigin={anchorOrigin}
+            className={getStyle()}
+            open={open}
+        >
+            <SnackbarContent
+                className={getStyle()}
+                message={
+                    <Typography className={getTextStyle()}> {getIcon()} {message} </Typography>
+                }
+                action={ !mobile &&
+                    <IconButton
+                        onClick={onClose}
+                    >
+                        <Close className={getIconStyle()} />
+                    </IconButton>
+                }
+            />
+        </Snackbar>
     );
 };
-
-const SnackbarContentWrapper = withStyles(styles)(CustomSnackbarContent);
-
-const GlobalSnackbar = ({ message, type, open, onClose, autoHideTimeout }) => (
-    <Snackbar
-        anchorOrigin={{
-            horizontal: 'right',
-            vertical: 'bottom',
-        }}
-        autoHideDuration={autoHideTimeout || 5000}
-        open={open}
-        onClose={onClose}
-    >
-        <SnackbarContentWrapper
-            message={message}
-            onClose={onClose}
-            variant={type || 'info'}
-        />
-    </Snackbar>
-);
 
 export default GlobalSnackbar;
