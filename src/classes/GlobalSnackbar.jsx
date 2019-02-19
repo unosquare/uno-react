@@ -103,7 +103,7 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500, mobile = false }
                 message={
                     <Typography className={getTextStyle()}> {getIcon()} {message} </Typography>
                 }
-                action={
+                action={ !mobile &&
                     <IconButton
                         onClick={onClose}
                     >
