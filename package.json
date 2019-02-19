@@ -61,7 +61,7 @@
     "jss": "^10.0.0-alpha.9",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-form-validator-core": "^0.5.1"
+    "react-form-validator-core": "^0.6.1"
   },
   "files": [
     "lib"
