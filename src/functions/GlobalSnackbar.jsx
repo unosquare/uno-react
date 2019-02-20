@@ -53,8 +53,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const GlobalSnackbar = ({ message, seconds = 2500, mobile = false }) => {
-    const classes = useStyles();
+const GlobalSnackbar = ({ message, seconds = 2500, mobile = false, classes = useStyles() }) => {
     const [open, setOpen] = useState(false);
 
     const getIcon = () => {
