@@ -3,11 +3,14 @@
 
 # uno-react
 
-Common functions, classes, HOCs and hooks for React and Material UI.
+Common functions, components, HOCs and hooks for React and Material UI.
 
 ```bash
 > npm i uno-react
 ```
+
+Some components use internally hooks, so you need to work with React ^16.8.0.
+
 
 ## Hooks
 
@@ -217,16 +220,14 @@ const myComponent = () => {
 };
 ```
 
-## Classes
+## Components
 
 ### `ErrorBoundary`
 
 Sample Error Boundary class from [React Documentation](https://reactjs.org/docs/error-boundaries.html)
 
 ### `GlobalSnackbar`
-A global snackbar instance to display messages and errors. You just need to add it to your `Context ` and pass it which message you want to display. 
-You will need a Material-UI Theme in order to change the colors.
-It is available in mobile version too.
+A global snackbar instance to display messages and errors. You just need to add it to your `Context ` and pass it which message you want to display.  You will need a Material-UI Theme in order to change the colors. It is available in mobile version too.
 
 ```javascript
     let message = {
