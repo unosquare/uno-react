@@ -13,9 +13,12 @@ import makeStyles from '@material-ui/styles/makeStyles';
 import React, { useEffect, useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
+    closeIcon: {
+        fontSize: '20px  !important',
+    },
     error: {
         backgroundColor: `${theme.palette.error.main} !important`,
-        display: 'flex !important'
+        display: 'flex !important',
     },
     icon: {
         fontSize: '20px  !important',
@@ -27,11 +30,11 @@ const useStyles = makeStyles(theme => ({
     },
     info: {
         backgroundColor: `${theme.palette.primary.main} !important`,
-        display: 'flex !important'
+        display: 'flex !important',
     },
     success: {
         backgroundColor: `${green[600]} !important`,
-        display: 'flex !important'
+        display: 'flex !important',
     },
     text: {
         alignItems: 'center',
@@ -50,12 +53,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const GlobalSnackbar = ({ message, messageType, seconds = 2500, mobile = false }) => {
+const GlobalSnackbar = ({ message, seconds = 2500, mobile = false }) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
 
     const getIcon = () => {
-        switch (messageType) {
+        switch (message.messageType) {
             case 'info': return <Info className={getIconStyle()} />;
             case 'warning': return <Warning className={getIconStyle()} />;
             case 'error': return <Error className={getIconStyle()} />;
@@ -64,7 +67,7 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500, mobile = false }
     };
 
     const getStyle = () => {
-        switch (messageType) {
+        switch (message.messageType) {
             case 'info': return classes.info;
             case 'warning': return classes.warning;
             case 'error': return classes.error;
@@ -72,14 +75,13 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500, mobile = false }
         }
     };
 
-
     const getTextStyle = () => (mobile ? classes.textMobile : classes.text);
     const getIconStyle = () => (mobile ? classes.iconMobile : classes.icon);
 
     const onClose = () => setOpen(false);
 
     useEffect(() => {
-        if (message !== '') {
+        if (message && message.messageText !== '') {
             setOpen(true);
             setTimeout(() => {
                 setOpen(false);
@@ -101,13 +103,13 @@ const GlobalSnackbar = ({ message, messageType, seconds = 2500, mobile = false }
             <SnackbarContent
                 className={getStyle()}
                 message={
-                    <Typography className={getTextStyle()}> {getIcon()} {message} </Typography>
+                    <Typography className={getTextStyle()}> {getIcon()} {message.messageText} </Typography>
                 }
                 action={ !mobile &&
                     <IconButton
                         onClick={onClose}
                     >
-                        <Close className={getIconStyle()} />
+                        <Close className={classes.closeIcon} />
                     </IconButton>
                 }
             />
