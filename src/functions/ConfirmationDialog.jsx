@@ -7,6 +7,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
 
+const buttonStyle = {
+    marginRight: '5px !important'
+};
+
 const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree', textColor = 'textSecondary' }) => {
     const handleAgree = e => onAgreeAction(e);
 
@@ -23,7 +27,7 @@ const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, 
             </DialogContent>
             <DialogActions>
                 {onClose &&
-                    <Button onClick={onClose} color='secondary' variant='contained'>
+                    <Button onClick={onClose} style={buttonStyle} color='secondary' variant='contained'>
                         {disagree}
                     </Button>
                 }
