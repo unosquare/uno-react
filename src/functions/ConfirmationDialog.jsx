@@ -9,6 +9,9 @@ import Typography from '@material-ui/core/Typography';
 
 const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree', textColor = 'textSecondary' }) => {
     const handleAgree = e => onAgreeAction(e);
+    const buttonStyle = {
+        marginRight: '5px !important'
+    };
 
     return (
         <Dialog
@@ -23,7 +26,7 @@ const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, 
             </DialogContent>
             <DialogActions>
                 {onClose &&
-                    <Button onClick={onClose} style={{marginRight: '5px !important'}} color='secondary' variant='contained'>
+                    <Button onClick={onClose} style={buttonStyle} color='secondary' variant='contained'>
                         {disagree}
                     </Button>
                 }

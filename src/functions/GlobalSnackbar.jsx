@@ -1,5 +1,7 @@
 import amber from '@material-ui/core/colors/amber';
+import blue from '@material-ui/core/colors/blue';
 import green from '@material-ui/core/colors/green';
+import red from '@material-ui/core/colors/red';
 import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
@@ -14,11 +16,11 @@ import React, { useEffect, useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
     closeIcon: {
-        color:  '#fff !important',
+        color: '#fff !important',
         fontSize: '20px  !important',
     },
     error: {
-        backgroundColor: `${theme.palette.error.main} !important`,
+        backgroundColor: theme.palette ? `${theme.palette.error.main} !important` : `${red[600]} !important`,
         display: 'flex !important',
     },
     icon: {
@@ -30,7 +32,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: '15px  !important',
     },
     info: {
-        backgroundColor: `${theme.palette.primary.main} !important`,
+        backgroundColor: theme.palette ? `${theme.palette.primary.main} !important` : `${blue[600]} !important`,
         display: 'flex !important',
     },
     success: {
@@ -106,7 +108,7 @@ const GlobalSnackbar = ({ message, seconds = 2500, mobile = false }) => {
                 message={
                     <Typography className={getTextStyle()}> {getIcon()} {message.messageText} </Typography>
                 }
-                action={ !mobile &&
+                action={!mobile &&
                     <IconButton
                         onClick={onClose}
                     >
