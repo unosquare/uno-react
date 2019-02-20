@@ -9,3 +9,4 @@ export * from './debounce';
 export * from './humanize';
 export * from './withEnter';
 export * from './Title';
+export * from './UnoTheme';
