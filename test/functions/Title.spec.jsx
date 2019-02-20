@@ -1,8 +1,7 @@
 import * as React from 'react';
 import createShallow from '@material-ui/core/test-utils/createShallow';
 import Typography from '@material-ui/core/Typography';
-import { AppTitle } from '../../src/classes/Title';
-import { Title } from '../../src/classes/Title';
+import { Title } from '../../src/functions/Title';
 
 describe('TextValidator', () => {
     let wrapper;
