@@ -23,7 +23,7 @@ const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, 
             </DialogContent>
             <DialogActions>
                 {onClose &&
-                    <Button onClick={onClose} color='secondary' variant='contained'>
+                    <Button onClick={onClose} style={{marginRight: '5px !important'}} color='secondary' variant='contained'>
                         {disagree}
                     </Button>
                 }

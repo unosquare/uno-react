@@ -14,7 +14,7 @@ import React, { useEffect, useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
     closeIcon: {
-        color: `${theme.palette.text.secondary} !important`,
+        color:  '#fff !important',
         fontSize: '20px  !important',
     },
     error: {
@@ -39,12 +39,12 @@ const useStyles = makeStyles(theme => ({
     },
     text: {
         alignItems: 'center',
-        color: `${theme.palette.text.secondary} !important`,
+        color: '#fff !important',
         display: 'inline-flex !important',
         fontSize: '18px !important',
     },
     textMobile: {
-        color: `${theme.palette.text.secondary} !important`,
+        color: '#fff !important',
         display: 'inline-flex !important',
         fontSize: '28px !important',
     },
