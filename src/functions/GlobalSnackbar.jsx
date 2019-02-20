@@ -14,6 +14,7 @@ import React, { useEffect, useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
     closeIcon: {
+        color: `${theme.palette.text.secondary} !important`,
         fontSize: '20px  !important',
     },
     error: {

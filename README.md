@@ -239,4 +239,8 @@ It is available in mobile version too.
                 seconds={3000} // By default it's 2500 miliseconds, the Snackbar will hide after it.
                 mobile={false} // By default it's false.
     />
+
+    // 'info' type uses Theme's primary main color
+    // 'error' type uses Theme's error main color
+    // Text uses Theme's text secondary color.
 ```
