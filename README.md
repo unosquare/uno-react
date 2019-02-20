@@ -222,3 +222,25 @@ const myComponent = () => {
 ### `ErrorBoundary`
 
 Sample Error Boundary class from [React Documentation](https://reactjs.org/docs/error-boundaries.html)
+
+### `GlobalSnackbar`
+A global snackbar instance to display messages and errors. You just need to add it to your `Context ` and pass it which message you want to display. 
+You will need a Material-UI Theme in order to change the colors.
+It is available in mobile version too.
+
+```javascript
+    let message = {
+        messageText: 'Hey!', // Message to display
+        messageType: 'info' // success, warning, error or info.
+        }
+
+    <GlobalSnackbar
+                message={message}
+                seconds={3000} // By default it's 2500 miliseconds, the Snackbar will hide after it.
+                mobile={false} // By default it's false.
+    />
+
+    // 'info' type uses Theme's primary main color
+    // 'error' type uses Theme's error main color
+    // Text uses Theme's text secondary color.
+```
