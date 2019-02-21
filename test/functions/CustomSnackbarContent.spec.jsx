@@ -12,7 +12,6 @@ describe('CustomSnackBarContent', () => {
         shallow = createShallow();
         wrapper = shallow(<GlobalSnackbar
             message='test message'
-            classes={{}}
         />);
     });
 
