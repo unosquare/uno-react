@@ -1,0 +1,55 @@
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { createStyles } from '@material-ui/core/styles';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+
+const useStyles = ({ mixins }) => createStyles({
+    drawer: {
+        flexShrink: 0,
+        width: 230,
+    },
+    drawerPaper: {
+        position: 'relative',
+        width: 230,
+    },
+    link: {
+        textDecoration: 'none',
+    },
+    toolbar: mixins.toolbar,
+});
+
+const MenuList = () => {
+    const classes = useStyles();
+
+    return (
+        <Drawer
+            variant='permanent'
+            className={classes.drawer}
+            classes={{ paper: classes.drawerPaper }}
+        >
+            <div className={classes.toolbar} />
+            <List>
+                <Link to='/' className={classes.link}>
+                    <ListItem button={true}>
+                        <ListItemText primary='Home' />
+                    </ListItem>
+                </Link>
+                <Link to='/' className={classes.link}>
+                    <ListItem button={true}>
+                        <ListItemText primary='Option one' />
+                    </ListItem>
+                </Link>
+                <Link to='/' className={classes.link}>
+                    <ListItem button={true}>
+                        <ListItemText primary='Option two' />
+                    </ListItem>
+                </Link>
+            </List>
+        </Drawer>
+    );
+};
+
+export default MenuList;
