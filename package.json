@@ -7,6 +7,7 @@
     "test": "jest",
     "test-export": "node ./test",
     "build": "babel ./src -d ./lib",
+    "start:uiux": "parcel ./UnosquareUI-UX/index.html -d --open --port 8080",
     "prepublish": "npm run build",
     "lint": "eslint src/**/*.jsx src/**/*.js"
   },
@@ -51,7 +52,8 @@
     "enzyme-adapter-react-16": "^1.9.1",
     "eslint": "^5.14.1",
     "eslint-plugin-react": "^7.12.4",
-    "jest": "^24.1.0"
+    "jest": "^24.1.0",
+    "parcel-bundler": "^1.11.0"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -62,7 +64,9 @@
     "jss": "^10.0.0-alpha.9",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-form-validator-core": "^0.6.1"
+    "react-form-validator-core": "^0.6.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   },
   "files": [
     "lib"

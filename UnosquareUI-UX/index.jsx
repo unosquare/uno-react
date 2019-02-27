@@ -1,4 +1,4 @@
-import './bootstrap';
+import './bootstrap.js';
 import './vendor.js';
 
 import * as React from 'react';

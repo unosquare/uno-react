@@ -2,11 +2,11 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { createStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-const useStyles = ({ mixins }) => createStyles({
+const useStyles = makeStyles(theme => ({
     drawer: {
         flexShrink: 0,
         width: 230,
@@ -18,8 +18,8 @@ const useStyles = ({ mixins }) => createStyles({
     link: {
         textDecoration: 'none',
     },
-    toolbar: mixins.toolbar,
-});
+    toolbar: theme.mixins.toolbar,
+}));
 
 const MenuList = () => {
     const classes = useStyles();

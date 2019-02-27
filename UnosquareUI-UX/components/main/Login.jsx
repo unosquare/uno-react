@@ -1,34 +1,40 @@
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import makeStyles from '@material-ui/styles/makeStyles';
 import * as React from 'react';
 import { ValidatorForm } from 'react-form-validator-core';
 import TextValidator from '../../../src/classes/TextValidator';
 import { useStateForModel } from '../../../src/hooks/useStateForModel';
-import accesscoreLogo from '../../assets/accesscoreLogo.png';
+import labsLogo from '../assets/labsLogo.png';
+import { withRouter } from 'react-router-dom';
+import ButtonWithLoading from '../../../src/functions/ButtonWithLoading';
 
 const useStyles = makeStyles(() => ({
         cardMedia: {
             display: 'block',
             height: '75px',
             margin: 'auto',
+            marginTop: '20px',
             maxWidth: '280px',
+
         },
         grid: {
             alignContent: 'center',
-            justifyContent: 'center',
+            justifyContent: 'center',            
             padding: 20,
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
         },
         submitBtn: {
             marginTop: '40px',
         },
     }));
 
-const Login = () => {
+const Login = ({ history }) => {
     const classes = useStyles();
     const [isFetching, setIsFetching] = React.useState(false);
     const [model, handleChange] = useStateForModel({
@@ -39,19 +45,20 @@ const Login = () => {
     function handleSubmit(e) {
         e.preventDefault();
         setIsFetching(true);
-        history.push('/');
-        setIsFetching(false);
+        setTimeout( () => {
+            history.push('/main');
+            setIsFetching(false);
+        }, 5000);             
     }
 
     return (
         <Grid container={true} className={classes.grid}>
             <Card>
                 <CardMedia
-                    image={accesscoreLogo}
+                    image={labsLogo}
                     className={classes.cardMedia}
                 />
                 <CardContent>
-                    {isFetching && <LinearProgress />}
                     <ValidatorForm
                         noValidate={true}
                         autoComplete='on'
@@ -84,20 +91,14 @@ const Login = () => {
                             validators={['required']}
                             errorMessages={['This field is required']}
                         />
-                        <Button
-                            variant='contained'
-                            color='primary'
-                            className={classes.submitBtn}
-                            type='submit'
-                            fullWidth={true}
-                            disabled={isFetching}
-                        >
-                            Log in
-                        </Button>
+                        <ButtonWithLoading 
+                            isFetching={isFetching}
+                            text='Login'
+                        />
                     </ValidatorForm>
                 </CardContent>
             </Card>
         </Grid>);
 };
 
-export default Login;
+export default withRouter(Login);
