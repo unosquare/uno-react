@@ -48,7 +48,7 @@ const Login = ({ history }) => {
         setTimeout( () => {
             history.push('/main');
             setIsFetching(false);
-        }, 5000);             
+        }, 3000);             
     }
 
     return (

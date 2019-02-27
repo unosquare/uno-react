@@ -3,6 +3,7 @@ import {
 } from '@material-ui/core';
 import makeStyles from '@material-ui/styles/makeStyles';
 import * as React from 'react';
+import AccountMenu from './AccountMenu';
 
 const useStyles = makeStyles({
     appcore: {
@@ -26,6 +27,7 @@ const NavBar = () => {
                 <Typography color='textSecondary' variant='h5' className={classes.appcore}>
                     AppCore
                 </Typography>
+                <AccountMenu/>
             </Toolbar>
         </AppBar>
     );

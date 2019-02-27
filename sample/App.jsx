@@ -9,7 +9,7 @@ const App = () => (
   <Router>
     <ThemeProvider theme={UnoTheme}>
           <Switch>
-            <Route path='/' component={Login} />
+            <Route exact={true} path='/' component={Login} />
             <Route exact={true} path='/main' component={Home} />
           </Switch>
     </ThemeProvider>

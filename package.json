@@ -7,7 +7,7 @@
     "test": "jest",
     "test-export": "node ./test",
     "build": "babel ./src -d ./lib",
-    "start:uiux": "parcel ./UnosquareUI-UX/index.html -d --open --port 8080",
+    "start:uiux": "parcel ./sample/index.html -d ./dist --open --port 8080",
     "prepublish": "npm run build",
     "lint": "eslint src/**/*.jsx src/**/*.js"
   },
