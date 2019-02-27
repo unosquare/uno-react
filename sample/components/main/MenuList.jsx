@@ -32,17 +32,17 @@ const MenuList = () => {
         >
             <div className={classes.toolbar} />
             <List>
-                <Link to='/' className={classes.link}>
+                <Link to='/main' className={classes.link}>
                     <ListItem button={true}>
                         <ListItemText primary='Home' />
                     </ListItem>
                 </Link>
-                <Link to='/' className={classes.link}>
+                <Link to='/main' className={classes.link}>
                     <ListItem button={true}>
                         <ListItemText primary='Option one' />
                     </ListItem>
                 </Link>
-                <Link to='/' className={classes.link}>
+                <Link to='/main' className={classes.link}>
                     <ListItem button={true}>
                         <ListItemText primary='Option two' />
                     </ListItem>
