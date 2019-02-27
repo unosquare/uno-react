@@ -13,10 +13,13 @@ export const UnoTheme = createMuiTheme({
       },
       text: {
         primary: '#191919',
-        secondary: '#000',
+        secondary: '#FFF',
       },
     },
     typography: {
       useNextVariants: true,
+    },
+    zIndex: {
+      appBar: '1201 !important'
     },
 });
