@@ -1,7 +1,7 @@
 import makeStyles from '@material-ui/styles/makeStyles';
 import * as React from 'react';
-import { NavBar } from '../../../src/functions/NavBar';
-import MenuList from './MenuList';
+import NavBar from '../../../src/functions/NavBar';
+import MenuList from '../../../src/functions/MenuList';
 import AccountMenu from './AccountMenu';
 
 const useStyles = makeStyles(theme => ({
@@ -23,15 +23,22 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
+const catalog = [
+  { url: '/main', name: 'Home' }, 
+  { url: '/main', name: 'Option One' },
+  { url: '/main', name: 'Option Two' },
+];
 const Home = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <NavBar title='uno-react | UX/UI Toolkit'>
-        <AccountMenu />
+      <NavBar title={'uno-react | UX/UI Toolkit'}>
+        {<AccountMenu />}
       </NavBar>
-      <MenuList />
+      <MenuList
+        menuOptions={catalog} 
+      />
       <main className={classes.content}>
         <div className={classes.toolbar} />
       </main>

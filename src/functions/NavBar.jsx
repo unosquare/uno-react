@@ -7,13 +7,23 @@ import * as React from 'react';
 const NavBar = props => (
     <AppBar position='absolute' color='primary'>
         <Toolbar>
-            <Grid container={true} direction='row'>
-                <Grid item={true}>
+            <Grid container={true} direction='row' xs={12}>
+                <Grid item={true} xs={6}
+                    container
+                    direction={'row'}
+                    justify={'flex-start'}
+                    alignItems={'center'}
+                >
                     <Typography color='textSecondary' variant='h5'>
                         {props.title || 'uno-react'}
-                </Typography>
+                    </Typography>
                 </Grid>
-                <Grid item={true}>
+                <Grid xs={6} item={true} 
+                    container={true}
+                    direction={'row'}
+                    justify={'flex-end'}
+                    alignItems={'center'}
+                >
                     {props.children}
                 </Grid>
             </Grid>

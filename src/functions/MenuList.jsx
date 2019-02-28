@@ -9,11 +9,9 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles(theme => ({
     drawer: {
         flexShrink: 0,
-        width: 230,
     },
     drawerPaper: {
         position: 'relative',
-        width: 230,
     },
     link: {
         textDecoration: 'none',
@@ -21,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
 }));
 
-const MenuList = () => {
+const MenuList = props => {
     const classes = useStyles();
 
     return (
@@ -32,21 +30,21 @@ const MenuList = () => {
         >
             <div className={classes.toolbar} />
             <List>
-                <Link to='/main' className={classes.link}>
-                    <ListItem button={true}>
-                        <ListItemText primary='Home' />
-                    </ListItem>
-                </Link>
-                <Link to='/main' className={classes.link}>
-                    <ListItem button={true}>
-                        <ListItemText primary='Option one' />
-                    </ListItem>
-                </Link>
-                <Link to='/main' className={classes.link}>
-                    <ListItem button={true}>
-                        <ListItemText primary='Option two' />
-                    </ListItem>
-                </Link>
+                {props.menuOptions ? 
+                props.menuOptions.map( menu => (
+                    <Link to={menu.url} className={classes.link} key={menu.name}>
+                        <ListItem button={true}>
+                            <ListItemText primary={menu.name} />
+                        </ListItem>
+                    </Link>
+                ))
+                : 
+                    <Link to={'/'} className={classes.link}>
+                        <ListItem button={true}>
+                            <ListItemText primary={'Home'} />
+                        </ListItem>
+                    </Link>
+                }
             </List>
         </Drawer>
     );
