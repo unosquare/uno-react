@@ -5,14 +5,6 @@ import * as React from 'react';
 
 
 const useStyles = makeStyles(() => ({
-        cardMedia: {
-            display: 'block',
-            height: '75px',
-            margin: 'auto',
-            marginTop: '20px',
-            maxWidth: '280px',
-
-        },
         grid: {
             alignContent: 'center',
             justifyContent: 'center',            
