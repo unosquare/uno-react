@@ -3,6 +3,9 @@ import * as React from 'react';
 import NavBar from '../../../src/components/NavBar';
 import MenuList from '../../../src/components/MenuList';
 import AccountMenu from './AccountMenu';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -11,6 +14,9 @@ const useStyles = makeStyles(theme => ({
     minWidth: 0,
     overflowY: 'auto',
     padding: theme.spacing.unit * 2,
+  },
+  link: {
+      textDecoration: 'none',
   },
   root: {
     display: 'flex',
@@ -23,8 +29,8 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-const catalog = [
-  { url: '/main', name: 'Home' }, 
+const menuOptions = [
+  { url: '/main', name: 'Home' },
   { url: '/main', name: 'Option One' },
   { url: '/main', name: 'Option Two' },
 ];
@@ -36,9 +42,16 @@ const Home = () => {
       <NavBar title={'uno-react | UX/UI Toolkit'}>
         {<AccountMenu />}
       </NavBar>
-      <MenuList
-        menuOptions={catalog} 
-      />
+      <MenuList>
+        {menuOptions.map(menu => (
+          <Link to={menu.url} className={classes.link} key={menu.name}>
+            <ListItem button={true}>
+              <ListItemText primary={menu.name} />
+            </ListItem>
+          </Link>
+        ))
+        }
+      </MenuList>
       <main className={classes.content}>
         <div className={classes.toolbar} />
       </main>
