@@ -1,7 +1,7 @@
 import * as React from 'react';
 import context from '../dataSource/__mocks__/TestContextHelper';
 import createShallow from '@material-ui/core/test-utils/createShallow';
-import ConfirmationDialog from '../../src/functions/ConfirmationDialog';
+import ConfirmationDialog from '../../src/components/ConfirmationDialog';
 import {
     Button, Dialog, DialogActions, DialogContent,
     DialogContentText, DialogTitle,

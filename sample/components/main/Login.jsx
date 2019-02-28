@@ -3,12 +3,12 @@ import TextValidator from '../../../src/classes/TextValidator';
 import { useStateForModel } from '../../../src/hooks/useStateForModel';
 import labsLogo from '../../assets/labsLogo.png';
 import { withRouter } from 'react-router-dom';
-import CentralCard from '../../../src/functions/CentralCard';
+import CentralCard from '../../../src/components/CentralCard';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { ValidatorForm } from 'react-form-validator-core';
 import makeStyles from '@material-ui/styles/makeStyles';
-import ButtonWithLoading from '../../../src/functions/ButtonWithLoading';
+import ButtonWithLoading from '../../../src/components/ButtonWithLoading';
 
 const useStyles = makeStyles(() => ({
     cardMedia: {
@@ -80,11 +80,11 @@ const Login = ({ history }) => {
                                 validators={['required']}
                                 errorMessages={['This field is required']}
                             />
-                        </ValidatorForm>
-                        <ButtonWithLoading
+                            <ButtonWithLoading
                             isFetching={isFetching}
                             text='Login'
                         />
+                        </ValidatorForm>                        
                     </CardContent>
                 </>
             }

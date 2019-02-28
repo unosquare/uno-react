@@ -2,7 +2,7 @@ import * as React from 'react';
 import createShallow from '@material-ui/core/test-utils/createShallow';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import ButtonWithLoading from '../../src/functions/ButtonWithLoading';
+import ButtonWithLoading from '../../src/components/ButtonWithLoading';
 
 describe('ButtonWithLoading', () => {
     let wrapper;

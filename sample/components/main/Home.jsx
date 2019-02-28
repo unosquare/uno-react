@@ -1,7 +1,7 @@
 import makeStyles from '@material-ui/styles/makeStyles';
 import * as React from 'react';
-import NavBar from '../../../src/functions/NavBar';
-import MenuList from '../../../src/functions/MenuList';
+import NavBar from '../../../src/components/NavBar';
+import MenuList from '../../../src/components/MenuList';
 import AccountMenu from './AccountMenu';
 
 const useStyles = makeStyles(theme => ({
