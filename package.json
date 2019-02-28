@@ -7,7 +7,6 @@
     "test": "jest",
     "test-export": "node ./test",
     "build": "babel ./src -d ./lib",
-    "start": "parcel ./sample/index.html -d ./dist --open --port 8080",
     "prepublish": "npm run build",
     "lint": "eslint src/**/*.jsx src/**/*.js"
   },
@@ -59,14 +58,10 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
-    "@types/enzyme": "^3.1.18",
-    "@types/enzyme-adapter-react-16": "^1.0.4",
     "jss": "^10.0.0-alpha.9",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-form-validator-core": "^0.6.1",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-form-validator-core": "^0.6.1"
   },
   "files": [
     "lib"
