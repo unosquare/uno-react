@@ -7,7 +7,7 @@ import * as React from 'react';
 const NavBar = props => (
     <AppBar position='absolute' color='primary'>
         <Toolbar>
-            <Grid container={true} direction='row' xs={12}>
+            <Grid container={true} direction='row' item={true} xs={12}>
                 <Grid item={true} xs={6}
                     container
                     direction={'row'}

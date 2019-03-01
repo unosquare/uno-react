@@ -65,5 +65,8 @@
   },
   "files": [
     "lib"
-  ]
+  ],
+  "dependencies": {
+    "react-form-validator-core": "^0.6.2"
+  }
 }
