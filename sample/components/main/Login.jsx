@@ -1,14 +1,11 @@
 import * as React from 'react';
-import TextValidator from '../../../src/classes/TextValidator';
-import { useStateForModel } from '../../../src/hooks/useStateForModel';
+import { TextValidator, useStateForModel, CentralCard, ButtonWithLoading } from 'uno-react';
 import labsLogo from '../../assets/labsLogo.png';
 import { withRouter } from 'react-router-dom';
-import CentralCard from '../../../src/components/CentralCard';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { ValidatorForm } from 'react-form-validator-core';
 import makeStyles from '@material-ui/styles/makeStyles';
-import ButtonWithLoading from '../../../src/components/ButtonWithLoading';
 
 const useStyles = makeStyles(() => ({
     cardMedia: {

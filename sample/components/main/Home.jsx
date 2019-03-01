@@ -1,7 +1,6 @@
 import makeStyles from '@material-ui/styles/makeStyles';
 import * as React from 'react';
-import NavBar from '../../../src/components/NavBar';
-import MenuList from '../../../src/components/MenuList';
+import { NavBar, MenuList } from 'uno-react';
 import AccountMenu from './AccountMenu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
