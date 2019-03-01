@@ -33,7 +33,7 @@ const AccountMenu = ({ history }) => {
             <Tooltip title='Account'>
                 <IconButton
                     aria-label='More'
-                    aria-owns={Boolean(anchorEl) ? 'long-menu' : null}
+                    aria-owns={anchorEl ? 'long-menu' : null}
                     aria-haspopup='true'
                     onClick={handleClick}
                 >

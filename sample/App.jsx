@@ -3,7 +3,7 @@ import * as React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/main/Home';
 import Login from './components/main/Login';
-import { UnoTheme } from '../src/components/UnoTheme';
+import { UnoTheme } from 'uno-react';
 
 const App = () => (
   <Router>

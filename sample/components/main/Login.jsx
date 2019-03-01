@@ -19,8 +19,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Login = ({ history }) => {
-    const classes = useStyles();
     const [isFetching, setIsFetching] = React.useState(false);
+    const classes = useStyles();
 
     const [model, handleChange] = useStateForModel({
         password: '',
