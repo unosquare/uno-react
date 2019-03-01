@@ -1,6 +1,6 @@
 import * as React from 'react';
 import createShallow from '@material-ui/core/test-utils/createShallow';
-import GlobalSnackbar from '../../src/functions/GlobalSnackbar'
+import GlobalSnackbar from '../../src/components/GlobalSnackbar';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 

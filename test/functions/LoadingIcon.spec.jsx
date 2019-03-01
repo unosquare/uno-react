@@ -1,4 +1,4 @@
-import { LoadingIcon } from '../../src/functions/LoadingIcon';
+import { LoadingIcon } from '../../src/components/LoadingIcon';
 
 describe('LoadingIcon', () => {
     let circularTxt;
