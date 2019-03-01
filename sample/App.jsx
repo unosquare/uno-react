@@ -3,15 +3,17 @@ import * as React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/main/Home';
 import Login from './components/main/Login';
-import { UnoTheme } from 'uno-react';
+import { ErrorBoundary, UnoTheme } from 'uno-react';
 
 const App = () => (
   <Router>
     <ThemeProvider theme={UnoTheme}>
-          <Switch>
-            <Route exact={true} path='/' component={Login} />
-            <Route exact={true} path='/main' component={Home} />
-          </Switch>
+      <ErrorBoundary >
+        <Switch>
+          <Route exact={true} path='/' component={Login} />
+          <Route exact={true} path='/main' component={Home} />
+        </Switch>
+      </ErrorBoundary>
     </ThemeProvider>
   </Router>
 );
