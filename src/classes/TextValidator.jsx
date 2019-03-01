@@ -22,7 +22,7 @@ export default class TextValidator extends ValidatorComponent {
         return (
             <TextField
                 {...rest}
-                label={(!label && humanize(id)) || label}
+                label={label || humanize(id)}
                 error={!isValid || error}
                 helperText={(!isValid && this.getErrorMessage()) || helperText}
             />
