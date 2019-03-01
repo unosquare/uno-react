@@ -11,7 +11,7 @@ const buttonStyle = {
     marginRight: '5px !important'
 };
 
-const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree', textColor = 'textSecondary' }) => {
+export const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, agree = 'Agree', disagree = 'Disagree', textColor = 'textSecondary' }) => {
     const handleAgree = e => onAgreeAction(e);
 
     return (
@@ -40,5 +40,3 @@ const ConfirmationDialog = ({ contentText, title, onAgreeAction, onClose, open, 
         </Dialog>
     );
 };
-
-export default ConfirmationDialog;

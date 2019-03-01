@@ -1,12 +1,6 @@
-export { default as ConfirmationDialog } from './ConfirmationDialog';
-export { default as GlobalSnackbar }from './GlobalSnackbar';
-export { default as ButtonWithLoading } from './ButtonWithLoading';
 export * from './colorGenerator';
-export * from './fetchController';
-export * from './LoadingIcon';
-export * from './validations';
 export * from './debounce';
+export * from './fetchController';
 export * from './humanize';
+export * from './validations';
 export * from './withEnter';
-export * from './Title';
-export * from './UnoTheme';
