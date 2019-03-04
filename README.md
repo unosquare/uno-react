@@ -18,12 +18,12 @@ Some components use internally hooks, so you need to work with React ^16.8.0.
 
 This hook allow us to keep updated the values of a model that are related to an input, handling the input's `onChange` calls. During the first render the model will have the initialValue.
 
-@param {object} initialValue dafault or initial model
+@param {object} initialValue dafault or initial model.
 
 @returns [model, handleChange]
 
-* model: {object} the current model, that keeps the information updated
-* handleChange: {function} this function should be called on the onChange event
+* model: {object} the current model, that keeps the information updated.
+* handleChange: {function} this function should be called on the onChange event.
 
 ***Note***: the `handleChange` method will update the model by the target.name event property if it is found, otherwise it will be added to the model.
 
@@ -62,12 +62,12 @@ const myComponent = () => {
 
 Similar to `useStateForModel` this hook helps us to keep the value of a variable that is related to an input, but in this case `useStateForField` works just with one value.
 
-@param {object} initialValue dafault or initial value
+@param {object} initialValue dafault or initial value.
 
 @returns [getField, handleChange, setField]
 
-* getField: {object} the current value, that keeps the information updated
-* handleChange: {function} this function should be called on the onChange event
+* getField: {object} the current value, that keeps the information updated.
+* handleChange: {function} this function should be called on the onChange event.
 * setField: {function} this function helps us to update the value manually.
 
 ***Note***: In contrast with `useStateForModel` in this hook the function `handleChange` can not be called with an object as a param, to handle a change manually we have the setField function.
@@ -92,20 +92,33 @@ const myComponent = () => {
 ```
 
 ### `useEffectWithLoading`
-Combine the power of create a hook `variable` and control its loading state by calling a method using `effects`, just passing the `function`, the `default` value and the `argument (optional)` for re-call method.
+
+This hook handle the process of getting a external resource like a fetch or reading a file, and prevent updating the react state if the component is unmounted before the resource is loaded.
+
+@param effect  {function} the function that will get the data
+@param initialValue {object} default or initial value
+@param inputs {[]} an array of variables that the effect depends on.
+
+@returns [getter, isLoading]
+
+* getter: {object} the value that was returned by the `effect` function when the data has been loaded, otherwise the initialValue.
+* isLoading: {boolean} a flag that indicates if the data has been fetched or not.
+
+***note***: The `effect` function that is given as a parameter will be run when the component has been mounted or when any `inputs` change.
 
 ```javascript
 const myComponent = ({ myId }) => {
     const myDefault = '';
-    const myArgument = [];
-    const [ myData, isLoading ] = useEffectWithLoading(getMyData(myId), myDefault, myArgument);
+    const inputs = [];
+    const [ myData, isLoading ] = useEffectWithLoading(getMyData(myId), myDefault, inputs);
    
     <div>
         {isLoading ?
-            <div class='loader'></div>
+            <div class='loader'>Loading ...</div>
             :
             <form>
                 <label>
+                    <h1>Data loaded</h1>
                     {myData}
                 </label>
             <form>}
