@@ -23,7 +23,7 @@ This hook allow us to keep updated the values of a model that are related to an 
 @returns [model, handleChange]
 
 * model: {object} the current model, that keeps the information updated
-* handleChange: {function} this function should be call on the onChange event
+* handleChange: {function} this function should be called on the onChange event
 
 ***Note***: the `handleChange` method will update the model by the target.name event property if it is found, otherwise it will be added to the model.
 
@@ -33,18 +33,24 @@ This hook allow us to keep updated the values of a model that are related to an 
 const myComponent = () => {
     const [ model, handleChange ] = useStateForModel({
         id: 1,
-        name: 'Mario Di Vece'
+        name: 'Mario',
+        lastName: 'Di Vece',
     });
 
-    const changeName = () => handleChange({name: 'Mario Di Vece'});
+    const changeName = () => handleChange({name: 'Mario'});
 
     return (
         <div>
-            <h1>{model.id} - {model.name}</h1>
+            <h1>{model.id} - {model.name} - {model.lastName}</h1>
             <input 
                 name="name"
                 onChange={handleChange} 
                 value={model.name}
+            />
+            <input 
+                name="lastName"
+                onChange={handleChange}
+                value={model.lastName}
             />
             <button onClick={changeName}>Reset Name</button>
         </div>
@@ -53,18 +59,33 @@ const myComponent = () => {
 ```
 
 ### `useStateForField`
-The easiest way to create a new state variable using hooks, it automatically takes the `target` property and populate the `variable` with the `value` when `set method` is called.
+
+Similar to `useStateForModel` this hook helps us to keep the value of a variable that is related to an input, but in this case `useStateForField` works just with one value.
+
+@param {object} initialValue dafault or initial value
+
+@returns [getField, handleChange, setField]
+
+* getField: {object} the current value, that keeps the information updated
+* handleChange: {function} this function should be called on the onChange event
+* setField: {function} this function helps us to update the value manually.
+
+***Note***: In contrast with `useStateForModel` in this hook the function `handleChange` can not be called with an object as a param, to handle a change manually we have the setField function.
 
 ```javascript
 const myComponent = () => {
-    const [ myValue, handleChange ] = useStateForField('');
+    const [ myValue, handleChange, setMyValue ] = useStateForField('Unosquare');
+    
+    const reset = () => setMyValue('Unosquare');
     
     return (
         <div>
+            <h1>{myValue}</h1>
             <input
                 value={myValue}
                 onChange={handleChange}
             />
+            <button onClick={reset}>Reset value</button>
         </div>
     );
 };
