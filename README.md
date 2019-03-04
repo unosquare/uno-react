@@ -235,13 +235,23 @@ const myComponent = () => {
 ```
 
 ### `usePersistedState`
-A good way to create and update your `hooks` through using `effects` but keeping the data into a `localStorage` item.
+
+This hook allows us to `set` and `get` values from the `localStorage`.
+
+@param defaultValue {string} the default values, this value will be returned if the key is not found on the `localStorage`.
+@param keyName {string} the key-id to save the value on the `localStorage`.
+
+@returns [getter, setter]
+
+* getter: {string} the current value
+* setter: {function} the function to set the value. ***note***: this function expects an string as a parameter.
+
 
 ```javascript
 const myComponent = () => {
     const myDefault = '';
     const myKeyName = 'localDataKeyName';
-    const [persistent, handleChange] = usePersistedState(myDefault, myKeyName);
+    const [persistentValue, setValue] = usePersistedState(myDefault, myKeyName);
     
     useEffect(() => {
        callMyAsyncFunction();
@@ -249,17 +259,14 @@ const myComponent = () => {
     
     const callMyAsyncFunction = async () => {
         const data = await actionToGetData();
-        handleChange(data);
+        setValue(data);
     };
     
     return (
         <div>
             <label>
-               Hi: {persistent || ''}
+               Hi: {persistentValue || ''}
             </label>
-            <form>
-                <input />
-            </form>
         </div>
     );
 };
