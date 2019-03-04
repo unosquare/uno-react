@@ -93,7 +93,7 @@ const myComponent = () => {
 
 ### `useEffectWithLoading`
 
-This hook handle the process of getting a external resource like a fetch or reading a file, and prevent updating the react state if the component is unmounted before the resource is loaded.
+This hook handles the process of getting a external resource like a fetch or reading a file, and prevent updating the react state if the component is unmounted before the resource is loaded.
 
 @param effect  {function} the function that will get the data.
 @param initialValue {object} default or initial value.
@@ -112,17 +112,19 @@ const myComponent = ({ myId }) => {
     const inputs = [];
     const [ myData, isLoading ] = useEffectWithLoading(getMyData(myId), myDefault, inputs);
    
-    <div>
-        {isLoading ?
-            <div class='loader'>Loading ...</div>
-            :
-            <form>
-                <label>
-                    <h1>Data loaded</h1>
-                    {myData}
-                </label>
-            <form>}
-    </div>
+   return (
+        <div>
+            {isLoading ?
+                <div class='loader'>Loading ...</div>
+                :
+                <form>
+                    <label>
+                        <h1>Data loaded</h1>
+                        {myData}
+                    </label>
+                <form>}
+        </div>
+    );
 };
 ```
 
@@ -153,25 +155,54 @@ const myComponent = () => {
     const [mySearchString, handleChangeSearchString] = useStateForField('');
     const [ data, isLoading, handleChange ] = useStateForModelWithLoading(getMyData(mySearchString), myModel, [mySearchString]);
     
-    <div>
-        <input 
-            onChange={handleChangeSearchString} 
-            value={mySearchString}>
-        </input>
-        {isLoading ?
-            <div class='loader'>Loading ...</div>
-            :
-            <form>
-                <input
-                    value={data.name}
-                    onChange={handleChange}
-                />
-                <input
-                    value={data.city}
-                    onChange={handleChange}
-                />
-            </form>}
-    </div>
+    return (
+        <div>
+            <input 
+                onChange={handleChangeSearchString} 
+                value={mySearchString}>
+            </input>
+            {isLoading ?
+                <div class='loader'>Loading ...</div>
+                :
+                <form>
+                    <input
+                        value={data.name}
+                        onChange={handleChange}
+                    />
+                    <input
+                        value={data.city}
+                        onChange={handleChange}
+                    />
+                </form>}
+        </div>
+    );
+};
+```
+
+### `useToggle`
+This hook handles the switch on boolean `values`. The value will be toggled each time the function toggle is called.
+
+@params defaultValue {boolean} default or initial value.
+@returns [getField, toggleField]
+
+* getField: {boolean} current value.
+* toggleField: {function} this function that toggle the value.
+
+```javascript
+const myComponent = () => {
+    const defaultValue = false;
+    const [ myValue, toggle ] = useToggleStateForField(defaultValue);
+    
+    return (
+        <div>
+            <h1> {myValue ? 'true' : 'false'}</h1 >
+            <button
+                onClick={toggle}
+            >
+                Toggle
+            </button>
+        </div >
+    );
 };
 ```
 
