@@ -16,7 +16,7 @@ Some components use internally hooks, so you need to work with React ^16.8.0.
 
 ### `useStateForModel`
 
-This hook allow us to keep updated the values of a model that are related to an input, handling the input's `onChange` calls. During the first render the model will have the initialValue.
+This hook allows us to keep updated the values of a model that are related to an input, handling the input's `onChange` calls. During the first render the model will have the initialValue.
 
 @param {object} initialValue dafault or initial model.
 
@@ -95,8 +95,8 @@ const myComponent = () => {
 
 This hook handle the process of getting a external resource like a fetch or reading a file, and prevent updating the react state if the component is unmounted before the resource is loaded.
 
-@param effect  {function} the function that will get the data
-@param initialValue {object} default or initial value
+@param effect  {function} the function that will get the data.
+@param initialValue {object} default or initial value.
 @param inputs {[]} an array of variables that the effect depends on.
 
 @returns [getter, isLoading]
@@ -104,7 +104,7 @@ This hook handle the process of getting a external resource like a fetch or read
 * getter: {object} the value that was returned by the `effect` function when the data has been loaded, otherwise the initialValue.
 * isLoading: {boolean} a flag that indicates if the data has been fetched or not.
 
-***note***: The `effect` function that is given as a parameter will be run when the component has been mounted or when any `inputs` change.
+***note***: The `effect` function that is given as a parameter will be run when the component has been mounted and when any `inputs` item change.
 
 ```javascript
 const myComponent = ({ myId }) => {
@@ -127,7 +127,22 @@ const myComponent = ({ myId }) => {
 ```
 
 ### `useStateForModelWithLoading`
-Similar to `useEffectWithLoading` but allows you to create and populate data into an `object variable` with a defined `model`. The third `argument` to send for creating the hook is optional, skip it will call your function just the first time when creating the component.
+
+This hook allows us to keep updated the values of a model that are related to an input, handling the input's `onChange` calls like `useStateForModel` does, but in additino this hook allows us to load the data from an external resource.
+
+This hook is a mix between `useStateForModel` and `useEffectWithLoading`, you can use it just as `useStateForModel` and handle the loading with the extra variable returned `isLoading`.
+
+@param effect  {function} the function that will get the data.
+@param {object} initialValue dafault or initial model.
+@param inputs {[]} an array of variables that the effect depends on.
+
+@return [getter, isLoading, handleChange]
+
+* getter: {object} the value that was returned by the `effect` function when the data has been loaded, otherwise the initialValue.
+* isLoading: {boolean} a flag that indicates if the data has been fetched or not.
+* handleChange: {function} this function should be called on the onChange event.
+
+***note***: The `effect` function that is given as a parameter will be run when the component has been mounted and when any `inputs` item change.
 
 ```javascript
 const myComponent = () => {
@@ -144,7 +159,7 @@ const myComponent = () => {
             value={mySearchString}>
         </input>
         {isLoading ?
-            <div class='loader'></div>
+            <div class='loader'>Loading ...</div>
             :
             <form>
                 <input
