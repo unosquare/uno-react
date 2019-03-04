@@ -16,7 +16,18 @@ Some components use internally hooks, so you need to work with React ^16.8.0.
 
 ### `useStateForModel`
 
-Similar to `useState` but with a twist. When the input `onChange` event is called, `useStateForModel` allows you to read the `target` property in the `event` and populate a specific model's property taking the `name` and the `value`.
+This hook allow us to keep updated the values of a model that are related to an input, handling the input's `onChange` calls. During the first render the model will have the initialValue.
+
+@param {object} initialValue dafault or initial model
+
+@returns [model, handleChange]
+
+* model: {object} the current model, that keeps the information updated
+* handleChange: {function} this function should be call on the onChange event
+
+***Note***: the `handleChange` method will update the model by the target.name event property if it is found, otherwise it will be added to the model.
+
+***Note***: calling the `handleChange` method with an object as a param instead of an event, the object will be merged with the current model.
 
 ```javascript
 const myComponent = () => {
@@ -25,7 +36,7 @@ const myComponent = () => {
         name: 'Mario Di Vece'
     });
 
-    const changeName = () => handleChange({name: 'Geo Perez'});
+    const changeName = () => handleChange({name: 'Mario Di Vece'});
 
     return (
         <div>
@@ -35,7 +46,7 @@ const myComponent = () => {
                 onChange={handleChange} 
                 value={model.name}
             />
-            <button onClick={changeName}>Set Name</button>
+            <button onClick={changeName}>Reset Name</button>
         </div>
     );
 };
