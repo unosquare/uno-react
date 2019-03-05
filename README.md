@@ -242,56 +242,33 @@ const myComponent = () => {
 
 This hook allows us to `set` and `get` values from the `localStorage`.
 
-@param defaultValue {string} the default values, this value will be returned if the key is not found on the `localStorage`.
+@param defaultValue {string} the default values, this value will be added to the `localStorage` and returned if the key is not found.
 
 @param keyName {string} the key-id to save the value on the `localStorage`.
 
 @returns [getter, setter]
 
 * getter: {string} the current value
-* setter: {function} the function to set the value. ***note***: this function expects an string as a parameter.
+* setter: {function} the function to set the value. ***note***: this function expects an {Object} as a parameter.
 
+***note***: the defaultValue just will be setted and returned if the keyName is not on the `localStorage`, otherwise the value found will be returned.
 
 ```javascript
 const myComponent = () => {
-    const myDefault = '';
-    const myKeyName = 'localDataKeyName';
-    const [persistentValue, setValue] = usePersistedState(myDefault, myKeyName);
-    
-    useEffect(() => {
-       callMyAsyncFunction();
-    }, []);
-    
-    const callMyAsyncFunction = async () => {
-        const data = await actionToGetData();
-        setValue(data);
-    };
-    
-    return (
+    const key = 'exampleToken';
+    const defaultValue = 'unosquareToken';
+    const [token, setToken] = usePersistedState(defaultValue, key);
+
+    const changeValue = () => setToken('1928238475');
+
+    return(
         <div>
-            <label>
-               Hi: {persistentValue || ''}
-            </label>
+            <h1>{token}</h1>
+            <button onClick={changeValue}>Change value</button>
         </div>
     );
 };
 
-const newComponent = () => {
-    const myKeyName = 'localDataKeyName';
-    const persistent = localStorage.getItem(myKeyName);
-    
-    return (
-        <div>
-            {localStorageData ?
-                <label>
-                    Hi: {persistent || ''}
-                </label>
-                <form>
-                    <input />
-                </form>}
-        </div>
-    );
-};
 ```
 
 ### `useNow`
