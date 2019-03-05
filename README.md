@@ -96,7 +96,9 @@ const myComponent = () => {
 This hook handles the process of getting a external resource like a fetch or reading a file, and prevent updating the react state if the component is unmounted before the resource is loaded.
 
 @param effect  {function} the function that will get the data.
+
 @param initialValue {object} default or initial value.
+
 @param inputs {[]} an array of variables that the effect depends on.
 
 @returns [getter, isLoading]
@@ -135,10 +137,12 @@ This hook allows us to keep updated the values of a model that are related to an
 This hook is a mix between `useStateForModel` and `useEffectWithLoading`, you can use it just as `useStateForModel` and handle the loading with the extra variable returned `isLoading`.
 
 @param effect  {function} the function that will get the data.
+
 @param {object} initialValue dafault or initial model.
+
 @param inputs {[]} an array of variables that the effect depends on.
 
-@return [getter, isLoading, handleChange]
+@returns [getter, isLoading, handleChange]
 
 * getter: {object} the value that was returned by the `effect` function when the data has been loaded, otherwise the initialValue.
 * isLoading: {boolean} a flag that indicates if the data has been fetched or not.
@@ -239,6 +243,7 @@ const myComponent = () => {
 This hook allows us to `set` and `get` values from the `localStorage`.
 
 @param defaultValue {string} the default values, this value will be returned if the key is not found on the `localStorage`.
+
 @param keyName {string} the key-id to save the value on the `localStorage`.
 
 @returns [getter, setter]
@@ -292,27 +297,20 @@ const newComponent = () => {
 ### `useNow`
 Keep the current date just in one `variable`, without calling `date` method whenever it's needed.
 
+This hoook helps us to keep the current `Date` updated. The `value` will be updated each second.
+
+@returns [time]
+* time {Date} the current date.
+
+***note***: the time value is a javascript Date instance, you can manipulate it as any other javascript Date object.
+
 ```javascript
 const myComponent = () => {
-    const date = useNow();
-    
-    const handleSubmit = () => actionSubmit(date);
-    const handleDelete = () => actionDelete(date);
+    const [now] = useNow();
     
     return (
         <div>
-            <button
-                onClick={handleDelete}
-            >
-                Delete
-            </button>
-            <form
-                onSubmit={handleSubmit}
-            >
-                <button
-                    type='submit'
-                />
-            </form>
+            Seconds: {now.getSeconds()}
         </div>
     );
 };
