@@ -210,34 +210,6 @@ const myComponent = () => {
 };
 ```
 
-### `useToggleStateForField`
-Keep it simple to switch `values` in your boolean `variables` using hooks. Just sending a `default` value and change it each time you call your `hook` method.
-
-```javascript
-const myComponent = () => {
-    const defaultValue = false;
-    const [ myValue, handleChange ] = useToggleStateForField(defaultValue);
-    
-    function async handleSubmit(e) => {
-        handleChange();
-        await callMyActionMethod();
-        handleChange();
-    };
-    
-    <div>
-        <form
-            onSubmit={handleSubmit}
-        >
-            <button
-                disabled={myValue}
-            >
-                Save
-            </button>
-        </form>
-    </div>
-};
-```
-
 ### `usePersistedState`
 
 This hook allows us to `set` and `get` values from the `localStorage`.
@@ -272,7 +244,6 @@ const myComponent = () => {
 ```
 
 ### `useNow`
-Keep the current date just in one `variable`, without calling `date` method whenever it's needed.
 
 This hoook helps us to keep the current `Date` updated. The `value` will be updated each second.
 
@@ -291,6 +262,28 @@ const myComponent = () => {
         </div>
     );
 };
+```
+
+### `useResolutionSwitch`
+
+This hook listen to the resize window event and keep the `isResolution` flag updated.
+
+@param outerWidth {number} size limit (px). ***defaultValue***: 1000
+
+@param timeout {numbre} debounder timeout, the variable will change after this debounder time (ms). ***defaultValue***: 500
+
+@returns [isResolution]
+* isResolution: {boolean} true when window outerSize is smaller than the outerWith passed as a parameter.
+
+```javascript
+
+    const myComponent = () => {
+        const outerWidth = 500;
+        const timeout = 1000;
+        const [size] = useResolutionSwitch(outerWidth, timeout);
+        
+        return (<h1>{size ? 'mobile' : 'desktop'}</h1>);
+    };
 ```
 
 ## Components
