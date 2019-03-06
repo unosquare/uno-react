@@ -18,16 +18,15 @@ Some components use internally hooks, so you need to work with React ^16.8.0.
 
 This hook allows us to keep updated the values of a model that are related to an input, handling the input's `onChange` calls. During the first render the model will have the initialValue.
 
-@param {object} initialValue dafault or initial model.
+### Parameters
 
-@returns [model, handleChange]
-
-* model: {object} the current model, that keeps the information updated.
-* handleChange: {function} this function should be called on the onChange event.
+- `initialValue` **[Object][3]** initial value or initial model.
 
 ***Note***: the `handleChange` method will update the model by the target.name event property if it is found, otherwise it will be added to the model.
 
 ***Note***: calling the `handleChange` method with an object as a param instead of an event, the object will be merged with the current model.
+
+### Example
 
 ```javascript
 const myComponent = () => {
@@ -58,19 +57,22 @@ const myComponent = () => {
 };
 ```
 
+Returns [model, handleChange]
+
+- model: **[Object][3]** the current model, that keeps the information updated.
+- handleChange: **[Function][8]** this function should be called on the onChange event.
+
 ### `useStateForField`
 
 Similar to `useStateForModel` this hook helps us to keep the value of a variable that is related to an input, but in this case `useStateForField` works just with one value.
 
-@param {object} initialValue dafault or initial value.
+### Parameters
 
-@returns [getField, handleChange, setField]
-
-* getField: {object} the current value, that keeps the information updated.
-* handleChange: {function} this function should be called on the onChange event.
-* setField: {function} this function helps us to update the value manually.
+- `initialValue` **[Object][3]** initial value or initial model.
 
 ***Note***: In contrast with `useStateForModel` in this hook the function `handleChange` can not be called with an object as a param, to handle a change manually we have the setField function.
+
+### Example
 
 ```javascript
 const myComponent = () => {
@@ -91,22 +93,27 @@ const myComponent = () => {
 };
 ```
 
+Returns [getField, handleChange, setField]
+
+- getField: **[Object][3]** the current value, that keeps the information updated.
+- handleChange: **[Function][8]** this function should be called on the onChange event.
+- setField: **[Function][8]** this function helps us to update the value manually.
+
 ### `useEffectWithLoading`
 
 This hook handles the process of getting a external resource like a fetch or reading a file, and prevent updating the react state if the component is unmounted before the resource is loaded.
 
-@param effect  {function} the function that will get the data.
+### Parameters
 
-@param initialValue {object} default or initial value.
+- `effect` **[Function][8]** the function that will get the data.
 
-@param inputs {[]} an array of variables that the effect depends on.
+- `initialValue` **[Object][3]** initial value or initial model.
 
-@returns [getter, isLoading]
-
-* getter: {object} the value that was returned by the `effect` function when the data has been loaded, otherwise the initialValue.
-* isLoading: {boolean} a flag that indicates if the data has been fetched or not.
+- `inputs` **[Array][1]&lt;[string][2] | [Object][3] | [number][5] | [boolean][4]>** an array of variables that the effect depends on.
 
 ***note***: The `effect` function that is given as a parameter will be run when the component has been mounted and when any `inputs` item change.
+
+### Example
 
 ```javascript
 const myComponent = ({ myId }) => {
@@ -130,25 +137,28 @@ const myComponent = ({ myId }) => {
 };
 ```
 
+Returns [getter, isLoading]
+
+- getter: **[Object][3]** the value that is returned by the `effect` function when the data has been loaded, otherwise the initialValue.
+- isLoading: **[boolean][4]** a flag that indicates if the data has been fetched or not.
+
 ### `useStateForModelWithLoading`
 
 This hook allows us to keep updated the values of a model that are related to an input, handling the input's `onChange` calls like `useStateForModel` does, but in additino this hook allows us to load the data from an external resource.
 
 This hook is a mix between `useStateForModel` and `useEffectWithLoading`, you can use it just as `useStateForModel` and handle the loading with the extra variable returned `isLoading`.
 
-@param effect  {function} the function that will get the data.
+### Parameters
 
-@param {object} initialValue dafault or initial model.
+- `effect` **[Function][8]** the function that will get the data.
 
-@param inputs {[]} an array of variables that the effect depends on.
+- `initialValue` **[Object][3]** initial value or initial model.
 
-@returns [getter, isLoading, handleChange]
-
-* getter: {object} the value that was returned by the `effect` function when the data has been loaded, otherwise the initialValue.
-* isLoading: {boolean} a flag that indicates if the data has been fetched or not.
-* handleChange: {function} this function should be called on the onChange event.
+- `inputs` **[Array][1]&lt;[string][2] | [Object][3] | [number][5] | [boolean][4]>** an array of variables that the effect depends on.
 
 ***note***: The `effect` function that is given as a parameter will be run when the component has been mounted and when any `inputs` item change.
+
+### Example
 
 ```javascript
 const myComponent = () => {
@@ -182,15 +192,20 @@ const myComponent = () => {
     );
 };
 ```
+Returns [getter, isLoading, handleChange]
+
+- getter: **[Object][3]** the value that is returned by the `effect` function when the data has been loaded, otherwise the initialValue.
+- isLoading: **[boolean][4]** a flag that indicates if the data has been fetched or not.
+- handleChange: **[Function][8]** this function should be called on the onChange event.
 
 ### `useToggle`
 This hook handles the switch on boolean `values`. The value will be toggled each time the function toggle is called.
 
-@params defaultValue {boolean} default or initial value.
-@returns [getField, toggleField]
+### Parameters
 
-* getField: {boolean} current value.
-* toggleField: {function} this function that toggle the value.
+- `defaultValue` **[boolean][4]** default or initial value.
+
+### Example
 
 ```javascript
 const myComponent = () => {
@@ -210,20 +225,24 @@ const myComponent = () => {
 };
 ```
 
+Returns [getField, toggleField]
+
+- getField: **[boolean][4]** the current value.
+- toggleField: **[Function][8]** the function that toggles the value.
+
 ### `usePersistedState`
 
 This hook allows us to `set` and `get` values from the `localStorage`.
 
-@param defaultValue {string} the default values, this value will be added to the `localStorage` and returned if the key is not found.
+### Parameters
 
-@param keyName {string} the key-id to save the value on the `localStorage`.
+- `defaultValue` **[string][2]** the default values, this value will be added to the `localStorage` and returned if the key is not found.
 
-@returns [getter, setter]
-
-* getter: {string} the current value
-* setter: {function} the function to set the value. ***note***: this function expects an {Object} as a parameter.
+- `keyName` **[string][2]** the key-id to save the value on the `localStorage`.
 
 ***note***: the defaultValue just will be setted and returned if the keyName is not on the `localStorage`, otherwise the value found will be returned.
+
+### Example
 
 ```javascript
 const myComponent = () => {
@@ -243,14 +262,18 @@ const myComponent = () => {
 
 ```
 
+Returns [getter, setter]
+
+- getter: **[string][2]** the current value
+- setter: **[Function][8]** the function to set the value. ***note***: This **[Function][8]** expects an **[Object][3]** as a parameter.
+
 ### `useNow`
 
-This hoook helps us to keep the current `Date` updated. The `value` will be updated each second.
+This hook keep the current **[Date][7]** object updated. The `value` will be updated each second.
 
-@returns [time]
-* time {Date} the current date.
+***note***: the time value is a javascript **[Date][7]** instance, you can manipulate it as any other javascript **[Date][7]** object.
 
-***note***: the time value is a javascript Date instance, you can manipulate it as any other javascript Date object.
+### Example
 
 ```javascript
 const myComponent = () => {
@@ -264,16 +287,19 @@ const myComponent = () => {
 };
 ```
 
+Returns **[Date][7]** the current date.
+
 ### `useResolutionSwitch`
 
 This hook listen to the resize window event and keep the `isResolution` flag updated.
 
-@param outerWidth {number} size limit (px). ***defaultValue***: 1000
+### Parameters
 
-@param timeout {numbre} debounder timeout, the variable will change after this debounder time (ms). ***defaultValue***: 500
+- `outerWidth` **[number][5]** Size limit (px). ***defaultValue***: 1000
 
-@returns [isResolution]
-* isResolution: {boolean} true when window outerSize is smaller than the outerWith passed as a parameter.
+- `timeout` **[number][5]** Debounder timeout, the variable will change after this debounder time (ms). ***defaultValue***: 500
+
+### Example
 
 ```javascript
 
@@ -286,6 +312,8 @@ This hook listen to the resize window event and keep the `isResolution` flag upd
     };
 ```
 
+Returns **[boolean][4]** true when window outerSize is smaller than the outerWith passed as a parameter.
+
 ## Components
 
 ### `ErrorBoundary`
@@ -293,7 +321,17 @@ This hook listen to the resize window event and keep the `isResolution` flag upd
 Sample Error Boundary class from [React Documentation](https://reactjs.org/docs/error-boundaries.html)
 
 ### `GlobalSnackbar`
-A global snackbar instance to display messages and errors. You just need to add it to your `Context ` and pass it which message you want to display.  You will need a Material-UI Theme in order to change the colors. It is available in mobile version too.
+A global snackbar instance to display messages and errors. You just need to add it to your `Context` and pass it which message you want to display. You will need a Material-UI Theme in order to change the colors. It is available in mobile version too.
+
+### Parameters
+
+- `message` **[Object][3]** with messageText **[string][2]** and messageType **[string][2]**
+
+- `timeout` **[number][5]** miliseconds after the snackbar will automatically hide ***defaultValue***: 2500.
+
+- `mobile` **[boolean][4]** if true, it displays a smaller and center-aligned snackbar. ***defaultValue***: false.
+
+### Example
 
 ```javascript
 const myContext = () => {
@@ -305,11 +343,27 @@ const myContext = () => {
     return (
     <GlobalSnackbar
         message={message}
-        seconds={3000} // By default it's 2500 miliseconds, the Snackbar will hide after it.
-        mobile={false} // By default it's false.
+        seconds={3000}
+        mobile={false}
     />
     )
 };
     // 'info' type uses Theme's primary main color
     // 'error' type uses Theme's error main color
 ```
+
+[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+[8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function
