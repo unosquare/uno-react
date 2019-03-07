@@ -1,13 +1,6 @@
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
 export const UnoTheme = createMuiTheme({
-  overrides: {
-    MuiFormLabel: {
-      root: {
-        color: '#191919',
-      },
-    },
-  },
   palette: {
     error: {
       main: '#f44336',
@@ -20,7 +13,7 @@ export const UnoTheme = createMuiTheme({
     },
     text: {
       primary: '#191919',
-      secondary: '#FFF',
+      secondary: '#000',
     },
   },
   typography: {
