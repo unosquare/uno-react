@@ -8,6 +8,7 @@ export const ButtonWithLoading: any;
 export const ConfirmationDialog: any;
 export const ErrorBoundary: any;
 export const GlobalSnackbar: any;
+export const UnoSuspense: any;
 export const LoadingIcon: any;
 export const TextValidator: any;
 export const Title: React.FunctionComponent;

@@ -1,6 +1,6 @@
 {
   "name": "uno-react",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Common functions, classes, HOCs and hooks for React and Material UI.",
   "main": "lib/index.js",
   "scripts": {
