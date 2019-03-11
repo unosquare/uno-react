@@ -1,6 +1,6 @@
 {
   "name": "uno-react",
-  "version": "0.1.13",
+  "version": "0.2.0",
   "description": "Common functions, classes, HOCs and hooks for React and Material UI.",
   "main": "lib/index.js",
   "scripts": {
@@ -51,7 +51,7 @@
     "enzyme-adapter-react-16": "^1.10.0",
     "eslint": "^5.15.1",
     "eslint-plugin-react": "^7.12.4",
-    "jest": "^24.3.0"
+    "jest": "^24.4.0"
   },
   "peerDependencies": {
     "@material-ui/core": "^3.9.2",
@@ -62,7 +62,7 @@
     "react-dom": "^16.8.4"
   },
   "dependencies": {
-    "react-form-validator-core": "^0.6.1"
+    "react-form-validator-core": "^0.6.2"
   },
   "files": [
     "lib"

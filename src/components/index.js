@@ -7,3 +7,4 @@ export { default as MenuList } from './MenuList';
 export { default as NavBar } from './NavBar';
 export * from './Title';
 export * from './UnoTheme';
+export * from './UnoSuspense';
