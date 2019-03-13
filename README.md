@@ -10,15 +10,17 @@ Table of contents
 
   * [💾Installation](#installation)
   * [What's in the library](#whats-in-the-library)
-    * [useStateForModel](#usestateformodel)
-    * [useEffectWithLoading](#useeffectwithloading)
-    * [useStateForModelWithLoading](#usestateformodelwithloading)
-    * [useToggle](#usetoggle)
-    * [usePersistedState](#usepersistedstate)
-    * [useNow](#usenow)
-    * [useResolutionSwitch](#useresolutionswitch)
-    * [ErrorBoundary](#errorboundary)
-    * [GlobalSnackbar](#globalsnackbar)
+    * [Hooks](#hooks)
+      * [useStateForModel](#usestateformodel)
+      * [useEffectWithLoading](#useeffectwithloading)
+      * [useStateForModelWithLoading](#usestateformodelwithloading)
+      * [useToggle](#usetoggle)
+      * [usePersistedState](#usepersistedstate)
+      * [useNow](#usenow)
+      * [useResolutionSwitch](#useresolutionswitch)
+    * [Components](#components)
+      * [ErrorBoundary](#errorboundary)
+      * [GlobalSnackbar](#globalsnackbar)
     
 ### Installation
 
