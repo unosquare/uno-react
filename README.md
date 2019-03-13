@@ -5,12 +5,34 @@
 
 Common functions, components, HOCs and hooks for React and Material UI.
 
+Table of contents
+=================
+
+  * [💾Installation](#installation)
+  * [What's in the library](#whats-in-the-library)
+    * [Hooks](#hooks)
+      * [useStateForModel](#usestateformodel)
+      * [useEffectWithLoading](#useeffectwithloading)
+      * [useStateForModelWithLoading](#usestateformodelwithloading)
+      * [useToggle](#usetoggle)
+      * [usePersistedState](#usepersistedstate)
+      * [useNow](#usenow)
+      * [useResolutionSwitch](#useresolutionswitch)
+    * [Components](#components)
+      * [ErrorBoundary](#errorboundary)
+      * [GlobalSnackbar](#globalsnackbar)
+    
+### Installation
+
 ```bash
 > npm i uno-react
 ```
 
 Some components use internally hooks, so you need to work with React ^16.8.0.
 
+## What's in the library
+
+In this section, we present the different components that are available in the uno-react library. Please keep in mind that everything in the library is opt-in. Swan is completely opt-in. It won't force you to use any of its components, classes or methods.
 
 ## Hooks
 
