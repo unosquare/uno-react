@@ -7,10 +7,13 @@ export const AppTitle: (prefix: string, suffix: string) => React.FunctionCompone
 export const ButtonWithLoading: any;
 export const ConfirmationDialog: any;
 export const ErrorBoundary: any;
+export const CentralCard: any;
 export const GlobalSnackbar: any;
 export const UnoSuspense: any;
 export const LoadingIcon: any;
 export const TextValidator: any;
+export const NavBar: any;
+export const MenuList: any;
 export const Title: React.FunctionComponent;
 export const asyncOnEnterKey: any;
 export const colorGenerator: any;
