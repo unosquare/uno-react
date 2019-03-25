@@ -53,15 +53,13 @@
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.5.0"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
     "jss": "^10.0.0-alpha.9",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5"
-  },
-  "dependencies": {
+    "react-dom": "^16.8.5",
     "react-form-validator-core": "^0.6.2"
   },
   "files": [
