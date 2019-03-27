@@ -7,7 +7,7 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
-import React from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom';
 export function enhanceWithClickOutside(Component) {
     return class EnhancedComponent extends React.Component {
