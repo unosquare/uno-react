@@ -19,7 +19,7 @@ export function enhanceWithClickOutside(Component: any) {
             document.removeEventListener('click', this.handleClickOutside, true);
         }
 
-        public handleClickOutside(e) {
+        public handleClickOutside(e: { target: any; }) {
             const domNode = this.__domNode;
 
             if (
