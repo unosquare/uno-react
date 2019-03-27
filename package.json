@@ -1,13 +1,13 @@
 {
   "name": "uno-react",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Common functions, HOCs and hooks for React.",
   "main": "lib/index.js",
   "scripts": {
     "test": "node ./test",
-    "build": "babel ./src -d ./lib",
+    "build": "tsc",
     "prepublish": "npm run build",
-    "lint": "eslint src/**/*.jsx src/**/*.js"
+    "lint": "tslint src/**/*.ts src/**/*.tsx"
   },
   "repository": {
     "type": "git",
@@ -26,18 +26,13 @@
   },
   "homepage": "https://github.com/unosquare/uno-react#readme",
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.4.0",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/plugin-transform-runtime": "^7.4.0",
-    "@babel/preset-env": "^7.4.2",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/runtime-corejs2": "^7.4.2",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.15.3",
-    "eslint-plugin-react": "^7.12.4"
+    "@types/react": "16.8.10",
+    "@types/react-dom": "16.8.3",
+    "tslint": "^5.14.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.3.4000"
   },
-  "peerDependencies": {
+  "dependencies": {
     "react": "^16.8.5",
     "react-dom": "^16.8.5"
   },
