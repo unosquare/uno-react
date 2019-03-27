@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function usePersistedState(defaultValue, keyName) {
+export function usePersistedState(defaultValue: any, keyName: string) {
     const [getter, setter] = React.useState(defaultValue);
 
     React.useEffect(() => {
@@ -11,7 +11,7 @@ export function usePersistedState(defaultValue, keyName) {
         }
     }, []);
 
-    const setterWithUpdateLocalStorage = value => {
+    const setterWithUpdateLocalStorage = (value: any) => {
         setter(value);
         localStorage.setItem(keyName, JSON.stringify(value));
     };

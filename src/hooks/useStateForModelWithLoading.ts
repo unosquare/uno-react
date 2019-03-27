@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useStateForModel } from './useStateForModel';
 
-export function useStateForModelWithLoading(effect, initialValue, inputs) {
+export function useStateForModelWithLoading(effect: any, initialValue: any, inputs: React.DependencyList) {
     const [getter, handleChange] = useStateForModel(initialValue);
     const [isLoading, setIsLoading] = React.useState(true);
     let _isMounted = false;
@@ -9,12 +9,13 @@ export function useStateForModelWithLoading(effect, initialValue, inputs) {
     React.useEffect(() => {
         _isMounted = true;
 
-        effect().then(resp => {
-            if (_isMounted) {
-                handleChange(resp);
-                setIsLoading(false);
-            }
-        });
+        effect()
+            .then((resp: any) => {
+                if (_isMounted) {
+                    handleChange(resp);
+                    setIsLoading(false);
+                }
+            });
 
         return (() => _isMounted = false);
     }, inputs || []);

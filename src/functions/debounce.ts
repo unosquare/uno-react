@@ -21,4 +21,4 @@ export function debounce<F extends Procedure>(
 
     timeoutId = setTimeout(doLater, waitMilliseconds);
   } as any;
-};
+}

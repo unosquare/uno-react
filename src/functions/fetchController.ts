@@ -1,4 +1,4 @@
-function defaultHeadersResolver(url, accessToken) {
+function defaultHeadersResolver(url: string, accessToken: string) {
     const headers = new Headers();
 
     if (url === '/api/token') {
@@ -12,7 +12,7 @@ function defaultHeadersResolver(url, accessToken) {
     return headers;
 }
 
-async function defaultResponseResolver(response) {
+async function defaultResponseResolver(response: Response) {
     const responseBody = await response.text();
     const responseJson = responseBody ? JSON.parse(responseBody) : {};
 
@@ -27,20 +27,20 @@ async function defaultResponseResolver(response) {
         case 400:
         case 500:
             return {
-                error: responseJson.Message
+                error: responseJson.Message,
             };
         case 404:
             return {
-                error: responseJson
+                error: responseJson,
             };
         default:
             return {
-                error: 'Something went wrong, please try again'
+                error: 'Something went wrong, please try again',
             };
     }
 }
 
-function getRequest(url, accessToken, requestMethod, requestBody, headersResolver) {
+function getRequest(url: string, accessToken: string, requestMethod: string, requestBody: any, headersResolver: any) {
     const init = {
         body: requestBody ? requestBody : null,
         headers: headersResolver(url, accessToken),
@@ -51,24 +51,25 @@ function getRequest(url, accessToken, requestMethod, requestBody, headersResolve
 }
 
 export async function requestController(
-    url,
-    accessToken,
-    requestMethod,
-    requestBody,
-    options) {
+    url: string,
+    accessToken: string,
+    requestMethod: string,
+    requestBody: any,
+    options: any) {
     const request = getRequest(url, accessToken, requestMethod, requestBody, options.headersResolver);
     const response = await fetch(request);
 
     return await options.responseResolver(response);
 }
 
-const defaultOptions = { 
+const defaultOptions = {
     headersResolver: defaultHeadersResolver,
-    responseResolver: defaultResponseResolver
+    responseResolver: defaultResponseResolver,
 };
 
-export function createFetchController(options) {
+export function createFetchController(options: any) {
     options = Object.assign({}, defaultOptions, options);
 
-    return async (url, accessToken, requestMethod, requestBody) => requestController(url, accessToken, requestMethod, requestBody, options);
+    return async (url: string, accessToken: string, requestMethod: string, requestBody: any) =>
+        requestController(url, accessToken, requestMethod, requestBody, options);
 }

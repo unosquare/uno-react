@@ -10,6 +10,5 @@ export const useNow = () => {
         return (() => clearInterval(_timer));
     }, []);
 
-    return [ time ];
+    return [time];
 };
-

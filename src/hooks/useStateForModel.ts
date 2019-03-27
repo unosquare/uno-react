@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-export function useStateForModel(initialValue) {
+export function useStateForModel(initialValue: any) {
   const [getter, setter] = React.useState(initialValue);
 
-  const handleChange = event => {
+  const handleChange = (event: any) => {
     if (event.target) {
       const {
         name,
-        value
+        value,
       } = event.target;
 
       setter({

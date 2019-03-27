@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useEffectWithLoading(effect, initialValue, inputs) {
+export function useEffectWithLoading(effect: any, initialValue: any, inputs: React.DependencyList) {
     const [getter, setter] = React.useState(initialValue);
     const [isLoading, setIsLoading] = React.useState(true);
     let _isMounted = false;
@@ -8,7 +8,7 @@ export function useEffectWithLoading(effect, initialValue, inputs) {
     React.useEffect(() => {
         _isMounted = true;
 
-        effect().then(resp => {
+        effect().then((resp: any) => {
             if (_isMounted) {
                 setter(resp);
                 setIsLoading(false);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useToggle(defaultValue) {
+export function useToggle(defaultValue: any) {
     const [getField, setField] = React.useState(defaultValue);
 
     const toggleField = () => setField(!getField);
