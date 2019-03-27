@@ -18,21 +18,18 @@ Table of contents
       * [usePersistedState](#usepersistedstate)
       * [useNow](#usenow)
       * [useResolutionSwitch](#useresolutionswitch)
-    * [Components](#components)
-      * [ErrorBoundary](#errorboundary)
-      * [GlobalSnackbar](#globalsnackbar)
-    
-### Installation
+
+## Installation
 
 ```bash
 > npm i uno-react
 ```
 
-Some components use internally hooks, so you need to work with React ^16.8.0.
+We are using hooks, so you need to work with React ^16.8.0.
 
 ## What's in the library
 
-In this section, we present the different components that are available in the uno-react library. Please keep in mind that everything in the library is opt-in. Swan is completely opt-in. It won't force you to use any of its components, classes or methods.
+In this section, we present the different components that are available in the uno-react library. Please keep in mind that everything in the library is opt-in. uno-react is completely opt-in. It won't force you to use any of its components, classes or methods.
 
 ## Hooks
 
@@ -336,43 +333,6 @@ This hook listen to the resize window event and keep the `isResolution` flag upd
 
 Returns **[boolean][4]** true when window outerSize is smaller than the outerWith passed as a parameter.
 
-## Components
-
-### `ErrorBoundary`
-
-Sample Error Boundary class from [React Documentation](https://reactjs.org/docs/error-boundaries.html)
-
-### `GlobalSnackbar`
-A global snackbar instance to display messages and errors. You just need to add it to your `Context` and pass it which message you want to display. You will need a Material-UI Theme in order to change the colors. It is available in mobile version too.
-
-### Parameters
-
-- `message` **[Object][3]** with messageText **[string][2]** and messageType **[string][2]**
-
-- `timeout` **[number][5]** miliseconds after the snackbar will automatically hide ***defaultValue***: 2500.
-
-- `mobile` **[boolean][4]** if true, it displays a smaller and center-aligned snackbar. ***defaultValue***: false.
-
-### Example
-
-```javascript
-const myContext = () => {
-    const [message, handleChange] = useStateForModel({
-        messageText: 'Hey!', // Message to display
-        messageType: 'info' // success, warning, error or info.
-    });
-
-    return (
-    <GlobalSnackbar
-        message={message}
-        seconds={3000}
-        mobile={false}
-    />
-    )
-};
-    // 'info' type uses Theme's primary main color
-    // 'error' type uses Theme's error main color
-```
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 

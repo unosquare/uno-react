@@ -1,20 +1,7 @@
-import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import React from 'react';
 
 export type Procedure = (...args: any[]) => void;
 
-export const AppTitle: (prefix: string, suffix: string) => React.FunctionComponent;
-export const ButtonWithLoading: any;
-export const ConfirmationDialog: any;
-export const ErrorBoundary: any;
-export const CentralCard: any;
-export const GlobalSnackbar: any;
-export const UnoSuspense: any;
-export const LoadingIcon: any;
-export const TextValidator: any;
-export const NavBar: any;
-export const MenuList: any;
-export const Title: React.FunctionComponent;
 export const asyncOnEnterKey: any;
 export const colorGenerator: any;
 export const createFetchController: any;
@@ -33,4 +20,3 @@ export const useStateForModel: any;
 export const useStateForModelWithLoading: any;
 export const useToggle: (defaultValue: any) => any;
 export const useToggleStateForField: (defaultValue: any) => any;
-export const UnoTheme: Theme;

@@ -1,27 +1,13 @@
 {
   "name": "uno-react",
-  "version": "0.2.2",
-  "description": "Common functions, classes, HOCs and hooks for React and Material UI.",
+  "version": "0.3.0",
+  "description": "Common functions, HOCs and hooks for React.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest",
-    "test-export": "node ./test",
+    "test": "node ./test",
     "build": "babel ./src -d ./lib",
     "prepublish": "npm run build",
     "lint": "eslint src/**/*.jsx src/**/*.js"
-  },
-  "jest": {
-    "automock": false,
-    "setupFiles": [
-      "<rootDir>/test/setupTest.js"
-    ],
-    "moduleFileExtensions": [
-      "jsx",
-      "js"
-    ],
-    "testMatch": [
-      "<rootDir>/test/**/*.spec.(js|jsx)"
-    ]
   },
   "repository": {
     "type": "git",
@@ -46,21 +32,14 @@
     "@babel/plugin-transform-runtime": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime-corejs2": "^7.4.2",
     "babel-eslint": "^10.0.1",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.15.3",
-    "eslint-plugin-react": "^7.12.4",
-    "jest": "^24.5.0"
+    "eslint-plugin-react": "^7.12.4"
   },
-  "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "@material-ui/icons": "^3.0.2",
-    "@material-ui/styles": "^3.0.0-alpha.10",
-    "jss": "^10.0.0-alpha.9",
+  "peerDependencies": {
     "react": "^16.8.5",
-    "react-dom": "^16.8.5",
-    "react-form-validator-core": "^0.6.2"
+    "react-dom": "^16.8.5"
   },
   "files": [
     "lib"
