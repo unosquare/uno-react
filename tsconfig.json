@@ -2,7 +2,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": { "*": ["types/*"] },
-        "target": "es6",
+        "target": "es5",
         "lib": [
             "dom",
             "dom.iterable",
@@ -14,7 +14,7 @@
         "allowSyntheticDefaultImports": true,
         "strict": false,
         "forceConsistentCasingInFileNames": true,
-        "module": "esnext",
+        "module": "commonjs",
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "isolatedModules": true,
