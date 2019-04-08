@@ -8,6 +8,7 @@ export function useStateForModelWithLoading(effect: any, initialValue: any, inpu
 
     React.useEffect(() => {
         _isMounted = true;
+        setIsLoading(true);
 
         effect()
             .then((resp: any) => {
