@@ -6,3 +6,4 @@ export * from './usePersistedState';
 export * from './useToggle';
 export * from './useNow';
 export * from './useResolutionSwitch';
+export * from './useEffectWithDebounce';
