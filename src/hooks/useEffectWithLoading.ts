@@ -8,7 +8,7 @@ export function useEffectWithLoading(effect: any, initialValue: any, inputs: Rea
     React.useEffect(() => {
         _isMounted = true;
         setIsLoading(true);
-        
+
         effect().then((resp: any) => {
             if (_isMounted) {
                 setter(resp);
