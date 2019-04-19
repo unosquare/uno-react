@@ -3,7 +3,7 @@
 
 # uno-react
 
-Common functions, components, HOCs and hooks for React and Material UI.
+Common functions, HOCs and hooks for React.
 
 Table of contents
 =================
