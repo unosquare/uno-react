@@ -355,7 +355,7 @@ whitout changes, the effect will be run. (This function does not return anything
     const MyComponent = () => {
      const [searchText, handleChange, setSearchText] = useStateForField('');
      const debounceTime = 2000; // 2 Seconds
-     const searchUsers = () => console.log('searching ..');
+     const searchUsers = () => console.log(`searching: ${searchText}`);
 
      useEffectWithDebounce(searchUsers, debounceTime, [searchText]);
 
