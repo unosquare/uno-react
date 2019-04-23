@@ -45,6 +45,12 @@ This hook allows us to keep updated the values of a model that are related to an
 
 ***Note***: calling the `handleChange` method with an object as a param instead of an event, the object will be merged with the current model.
 
+### Returns [model, handleChange]
+
+- model: **[Object][3]** the current model, that keeps the information updated.
+- handleChange: **[Function][8]** this function should be called on the onChange event.
+
+
 ### Example
 
 ```javascript
@@ -76,11 +82,6 @@ const myComponent = () => {
 };
 ```
 
-Returns [model, handleChange]
-
-- model: **[Object][3]** the current model, that keeps the information updated.
-- handleChange: **[Function][8]** this function should be called on the onChange event.
-
 ### `useStateForField`
 
 Similar to `useStateForModel` this hook helps us to keep the value of a variable that is related to an input, but in this case `useStateForField` works just with one value.
@@ -90,6 +91,12 @@ Similar to `useStateForModel` this hook helps us to keep the value of a variable
 - `initialValue` **[Object][3]** initial value or initial model.
 
 ***Note***: In contrast with `useStateForModel` in this hook the function `handleChange` can not be called with an object as a param, to handle a change manually we have the setField function.
+
+### Returns [getField, handleChange, setField]
+
+- getField: **[Object][3]** the current value, that keeps the information updated.
+- handleChange: **[Function][8]** this function should be called on the onChange event.
+- setField: **[Function][8]** this function helps us to update the value manually.
 
 ### Example
 
@@ -112,12 +119,6 @@ const myComponent = () => {
 };
 ```
 
-Returns [getField, handleChange, setField]
-
-- getField: **[Object][3]** the current value, that keeps the information updated.
-- handleChange: **[Function][8]** this function should be called on the onChange event.
-- setField: **[Function][8]** this function helps us to update the value manually.
-
 ### `useEffectWithLoading`
 
 This hook handles the process of getting a external resource like a fetch or reading a file, and prevent updating the react state if the component is unmounted before the resource is loaded.
@@ -131,6 +132,11 @@ This hook handles the process of getting a external resource like a fetch or rea
 - `inputs` **[Array][1]&lt;[string][2] | [Object][3] | [number][5] | [boolean][4]>** an array of variables that the effect depends on.
 
 ***note***: The `effect` function that is given as a parameter will be run when the component has been mounted and when any `inputs` item change.
+
+### Returns [getter, isLoading]
+
+- getter: **[Object][3]** the value that is returned by the `effect` function when the data has been loaded, otherwise the initialValue.
+- isLoading: **[boolean][4]** a flag that indicates if the data has been fetched or not.
 
 ### Example
 
@@ -156,11 +162,6 @@ const myComponent = ({ myId }) => {
 };
 ```
 
-Returns [getter, isLoading]
-
-- getter: **[Object][3]** the value that is returned by the `effect` function when the data has been loaded, otherwise the initialValue.
-- isLoading: **[boolean][4]** a flag that indicates if the data has been fetched or not.
-
 ### `useStateForModelWithLoading`
 
 This hook allows us to keep updated the values of a model that are related to an input, handling the input's `onChange` calls like `useStateForModel` does, but in additino this hook allows us to load the data from an external resource.
@@ -176,6 +177,12 @@ This hook is a mix between `useStateForModel` and `useEffectWithLoading`, you ca
 - `inputs` **[Array][1]&lt;[string][2] | [Object][3] | [number][5] | [boolean][4]>** an array of variables that the effect depends on.
 
 ***note***: The `effect` function that is given as a parameter will be run when the component has been mounted and when any `inputs` item change.
+
+### Returns [getter, isLoading, handleChange]
+
+- getter: **[Object][3]** the value that is returned by the `effect` function when the data has been loaded, otherwise the initialValue.
+- isLoading: **[boolean][4]** a flag that indicates if the data has been fetched or not.
+- handleChange: **[Function][8]** this function should be called on the onChange event.
 
 ### Example
 
@@ -211,11 +218,6 @@ const myComponent = () => {
     );
 };
 ```
-Returns [getter, isLoading, handleChange]
-
-- getter: **[Object][3]** the value that is returned by the `effect` function when the data has been loaded, otherwise the initialValue.
-- isLoading: **[boolean][4]** a flag that indicates if the data has been fetched or not.
-- handleChange: **[Function][8]** this function should be called on the onChange event.
 
 ### `useToggle`
 This hook handles the switch on boolean `values`. The value will be toggled each time the function toggle is called.
@@ -223,6 +225,11 @@ This hook handles the switch on boolean `values`. The value will be toggled each
 ### Parameters
 
 - `defaultValue` **[boolean][4]** default or initial value.
+
+### Returns [getField, toggleField]
+
+- getField: **[boolean][4]** the current value.
+- toggleField: **[Function][8]** the function that toggles the value.
 
 ### Example
 
@@ -244,11 +251,6 @@ const myComponent = () => {
 };
 ```
 
-Returns [getField, toggleField]
-
-- getField: **[boolean][4]** the current value.
-- toggleField: **[Function][8]** the function that toggles the value.
-
 ### `usePersistedState`
 
 This hook allows us to `set` and `get` values from the `localStorage`.
@@ -260,6 +262,11 @@ This hook allows us to `set` and `get` values from the `localStorage`.
 - `keyName` **[string][2]** the key-id to save the value on the `localStorage`.
 
 ***note***: the defaultValue just will be setted and returned if the keyName is not on the `localStorage`, otherwise the value found will be returned.
+
+### Returns [getter, setter]
+
+- getter: **[string][2]** the current value
+- setter: **[Function][8]** the function to set the value. ***note***: This **[Function][8]** expects an **[Object][3]** as a parameter.
 
 ### Example
 
@@ -281,16 +288,14 @@ const myComponent = () => {
 
 ```
 
-Returns [getter, setter]
-
-- getter: **[string][2]** the current value
-- setter: **[Function][8]** the function to set the value. ***note***: This **[Function][8]** expects an **[Object][3]** as a parameter.
-
 ### `useNow`
 
 This hook keep the current **[Date][7]** object updated. The `value` will be updated each second.
 
 ***note***: the time value is a javascript **[Date][7]** instance, you can manipulate it as any other javascript **[Date][7]** object.
+
+### Returns [now]
+- now: **[Date][7]** the current date.
 
 ### Example
 
@@ -306,8 +311,6 @@ const myComponent = () => {
 };
 ```
 
-Returns **[Date][7]** the current date.
-
 ### `useResolutionSwitch`
 
 This hook listen to the resize window event and keep the `isResolution` flag updated.
@@ -317,6 +320,9 @@ This hook listen to the resize window event and keep the `isResolution` flag upd
 - `outerWidth` **[number][5]** Size limit (px). ***defaultValue***: 1000
 
 - `timeout` **[number][5]** Debounder timeout, the variable will change after this debounder time (ms). ***defaultValue***: 500
+
+### Returns [size]
+- size: **[boolean][4]** true when window outerSize is smaller than the outerWith passed as a parameter.
 
 ### Example
 
@@ -331,8 +337,40 @@ This hook listen to the resize window event and keep the `isResolution` flag upd
     };
 ```
 
-Returns **[boolean][4]** true when window outerSize is smaller than the outerWith passed as a parameter.
+### `useEffectWithDebounce`
 
+This hooks run an effect with a *debounce*. Each time any input change, it will be registered; when happens the *debounce* time
+whitout changes, the effect will be run. (This function does not return anything).
+
+### Parameters
+
+- `effect` **[function][8]** The function that will be run.
+- `debounce` **[number][5]** Time that have to happend to run the effect.
+- `inputs` **[Array][1]&lt;[string][2] | [Object][3] | [number][5] | [boolean][4]>** an array of variables that the effect depends on.
+
+### Example
+
+```javascript
+
+    const MyComponent = () => {
+     const [searchText, handleChange, setSearchText] = useStateForField('');
+     const debounceTime = 2000; // 2 Seconds
+     const searchUsers = () => console.log(`searching: ${searchText}`);
+
+     useEffectWithDebounce(searchUsers, debounceTime, [searchText]);
+
+     return (
+         <>
+             <h1>Input: </h1>
+             <input
+                 value={searchText}
+                 onChange={handleChange}
+             />
+             <p> Open the console </p>
+         </>
+     );
+    };
+```
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
