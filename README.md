@@ -333,6 +333,40 @@ This hook listen to the resize window event and keep the `isResolution` flag upd
 
 Returns **[boolean][4]** true when window outerSize is smaller than the outerWith passed as a parameter.
 
+### `useEffectWithDebounce`
+
+This hooks run an effect with a *debounce*. Each time any input change, it will be registered; when happens the *debounce* time
+whitout changes, the effect will be run. (This function does not return anything).
+
+### Parameters
+
+- `effect` **[function][8]** The function that will be run.
+- `debounce` **[number][5]** Time that have to happend to run the effect.
+- `inputs` **[Array][1]&lt;[string][2] | [Object][3] | [number][5] | [boolean][4]>** an array of variables that the effect depends on.
+
+### Example
+
+```javascript
+
+    const MyComponent = () => {
+     const [searchText, handleChange, setSearchText] = useStateForField('');
+     const debounceTime = 2000; // 2 Seconds
+     const searchUsers = () => console.log('searching ..');
+
+     useEffectWithDebounce(searchUsers, debounceTime, [searchText]);
+
+     return (
+         <>
+             <h1>Input: </h1>
+             <input
+                 value={searchText}
+                 onChange={handleChange}
+             />
+             <p> Open the console </p>
+         </>
+     );
+    };
+```
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
