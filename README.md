@@ -20,6 +20,7 @@ Table of contents
       * [usePersistedState](#usepersistedstate)
       * [useNow](#usenow)
       * [useResolutionSwitch](#useresolutionswitch)
+      * [useEffectWithDebounce](#useeffectwithdebounce)
 
 ## Installation
 
