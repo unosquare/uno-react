@@ -14,6 +14,7 @@ Table of contents
   * [What's in the library](#whats-in-the-library)
     * [Hooks](#hooks)
       * [useStateForModel](#usestateformodel)
+      * [useStateForField](#usestateforfield)
       * [useEffectWithLoading](#useeffectwithloading)
       * [useStateForModelWithLoading](#usestateformodelwithloading)
       * [useToggle](#usetoggle)
@@ -21,7 +22,18 @@ Table of contents
       * [useNow](#usenow)
       * [useResolutionSwitch](#useresolutionswitch)
       * [useEffectWithDebounce](#useeffectwithdebounce)
-
+    * [Hocs](#hocs)
+      * [ClickOutside](#clickoutside)
+    * [Functions](#functions)
+      * [colorGenerator](#colorgenerator)   
+      * [debounce](#debounce)
+      * [fetchController](#fetchcontroller)
+      * [humanize](#humanize)
+      * [toTitleCase](#totitlecase)
+      * [validations](#validations)
+      * [withEnter](#withenter)
+      
+      
 ## Installation
 
 ```bash
@@ -374,6 +386,81 @@ whitout changes, the effect will be run. (This function does not return anything
      );
     };
 ```
+
+## Hocs
+ 
+### `ClickOutside`
+
+### Example
+
+```javascript
+
+```
+
+
+## Functions
+ 
+### `colorGenerator`
+
+### Parameters
+
+### Example
+
+```javascript
+
+```
+### `debounce`
+ This function allow to apply a function after certain amount of time.
+### Parameters
+- `F` **[function][2]** A function to be executed.
+- `waitMilliseconds ` **[number][2]** The number of miliseconds to wait before execute the function.
+
+### Example
+
+```javascript
+
+```
+### `fetchController`
+### Parameters
+
+### Example
+
+```javascript
+
+```
+### `humanize`
+### Parameters
+
+### Example
+
+```javascript
+
+```
+### `toTitleCase`
+### Parameters
+
+### Example
+
+```javascript
+
+```
+### `validations`
+### Parameters
+
+### Example
+
+```javascript
+
+```
+### `withEnter`
+### Parameters
+
+### Example
+
+```javascript
+
+```
+
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
