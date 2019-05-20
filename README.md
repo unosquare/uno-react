@@ -441,16 +441,34 @@ const myFormComponent = () => {
  - `accessToken`**[String][2]** Access token to send as a header fo the request.
  - `requestMethod`**[String][2]** Http verb that will be use for the request.
  - `requestBody`**[Object][3]** Body fo the request.
- - `options`**[Object][3]** <[headersResolver](#headersresolver) | [headersResolver](#headersresolver)>.
+ - `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
  
 
 ### Example
 
 ```javascript
+const headerResolver = () => {
+  const headers = new Headers();
+    if (url === '/api/token') {
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    } else {
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', `Bearer ${accessToken}`);
+    }
+    return headers;
+ };
+ const responseResolver = async (response: Response) => {
+    const responseBody = await response.text();
+    return responseBody ? JSON.parse(responseBody) : {};
+ };
 
+const option = {
+ headersResolver,
+ responseResolver,
+};
 
-requestController
-
+const response = await requestController('http://testUrl', null, 'Get', null, options);
 
 ```
 
