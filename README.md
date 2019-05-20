@@ -429,19 +429,25 @@ whitout changes, the effect will be run. (This function does not return anything
 
 ```
 ### `humanize`
+This function takes a string and converts in to a more "readable" string.
 ### Parameters
+-   `name` **[String][2]** A string that will be humanized.
 
 ### Example
 
 ```javascript
-
+const humanized = humanize("StringThatWillBeHumanized"); //"String That Will Be Humanized" 
 ```
+
 ### `toTitleCase`
+This function takes a string and converts it to "Title Case", that means, it uses each word (separated by a space) and capitalizes the first letter of each word.
 ### Parameters
+- `title` **[String][2]** A string that will be transform to title case.
 
 ### Example
 
 ```javascript
+const newTitle = toTitleCase("title test"); // "Title Test"
 
 ```
 ### `validations`
