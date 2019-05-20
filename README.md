@@ -31,7 +31,8 @@ Table of contents
       * [humanize](#humanize)
       * [toTitleCase](#totitlecase)
       * [validations](#validations)
-      * [withEnter](#withenter)
+      * [onEnterKey](#onenterkey)
+      * [asyncOnEnterKey](#asynconenterkey)
       
       
 ## Installation
@@ -432,6 +433,8 @@ whitout changes, the effect will be run. (This function does not return anything
 This function takes a string and converts in to a more "readable" string.
 ### Parameters
 -   `name` **[String][2]** A string that will be humanized.
+### Returns
+-`humanized` **[String][2]** The new string.
 
 ### Example
 
@@ -443,6 +446,8 @@ const humanized = humanize("StringThatWillBeHumanized"); //"String That Will Be 
 This function takes a string and converts it to "Title Case", that means, it uses each word (separated by a space) and capitalizes the first letter of each word.
 ### Parameters
 - `title` **[String][2]** A string that will be transform to title case.
+### Returns
+-`title` **[String][2]** The new string.
 
 ### Example
 
@@ -458,7 +463,16 @@ const newTitle = toTitleCase("title test"); // "Title Test"
 ```javascript
 
 ```
-### `withEnter`
+### `onEnterKey`
+### Parameters
+
+### Example
+
+```javascript
+
+```
+
+### `asyncOnEnterKey`
 ### Parameters
 
 ### Example
