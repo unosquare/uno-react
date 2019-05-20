@@ -432,7 +432,7 @@ const myFormComponent = () => {
     <button onClick={debounceOnClick}> Reset </button> 
   <div>
  );
-}
+};
 ```
 ### `fetchController`
 ### Parameters
@@ -477,20 +477,41 @@ const newTitle = toTitleCase("title test"); // "Title Test"
 
 ```
 ### `onEnterKey`
+This function is a HOF that takes a function as parameter which will be call when the "enter" key is pressed, this HOF should be used as a component's prop that will be involved in keyboard events.
 ### Parameters
-
+- `callback` **[function][8]** The function that will be called when the "enter" key is pressed.
 ### Example
 
 ```javascript
+
+const myComponent = () => {
+ 
+ const onEnter = () => console.log("enter key was pressed");
+ 
+ return(
+  <div onKeyDown=(onEnterKey(onEnter))>   
+  <div/>
+ );
+};
 
 ```
 
 ### `asyncOnEnterKey`
+This function is similar to [onEnterKey](#onenterkey), the only difference is that the callback should be an async function.
 ### Parameters
-
+- `callback` **[function][8]** The function that will be called when the "enter" key is pressed.
 ### Example
-
 ```javascript
+
+const myComponent = () => {
+ 
+ const onEnter = async() => await asynFunction();
+ 
+ return(
+  <div onKeyDown=(asyncOnEnterKey(onEnter))>   
+  <div/>
+ );
+};
 
 ```
 
