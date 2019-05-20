@@ -444,15 +444,7 @@ const myFormComponent = () => {
  - `options`**[Object][3]** Object that should two properties, headersResolver & responseResolver.
   - `headersResolver` [headersResolver](#headersresolver)
   - `responseResolver` [responseResolver](#responseresolver)
- 
-   ### `headersResolver` 
-   ### Parameters
-   - `url` **[String][2]** this will be injected by requestController using it's url parameter.
-   - `accessToken` **[String][2]** this will be injected by requestController using it's accesToken parameter.
- 
-   ### Returns
-   - `Headers` **[Headers][9]** a Headers object.
- 
+  
 
 ### Example
 
@@ -463,6 +455,28 @@ requestController
 
 
 ```
+
+### `headersResolver` 
+### Parameters
+- `url` **[String][2]** this will be injected by [requestController](#requestcontroller) using it's url parameter.
+- `accessToken` **[String][2]** this will be injected by [requestController](#requestcontroller) using it's accesToken parameter.
+ 
+### Returns
+- `Headers` **[Headers][9]** a Headers object.
+
+
+
+### `responseResolver` 
+### Parameters
+- `response` **[Response][10]** this will be injected by [requestController](#requestcontroller).
+ 
+### Returns
+- `response` **[Object][3]** the server response body.
+
+
+
+
+
 ### `humanize`
 This function takes a string and converts in to a more "readable" string.
 ### Parameters
@@ -554,3 +568,5 @@ const myComponent = () => {
 [8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function
 
 [9]: https://developer.mozilla.org/docs/Web/API/Headers
+
+[10]: https://developer.mozilla.org/docs/Web/API/Response
