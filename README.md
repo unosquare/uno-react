@@ -442,10 +442,17 @@ const myFormComponent = () => {
  - `requestMethod`**[String][2]** Http verb that will be use for the request.
  - `requestBody`**[Object][3]** Body fo the request.
  - `options`**[Object][3]** Object that should two properties, headersResolver & responseResolver.
-  - `headersResolver`[headersResolver](#headersresolver)
+  - `headersResolver` [headersResolver](#headersresolver)
   - `responseResolver` [responseResolver](#responseresolver)
  
-###`headersResolver` 
+ ###`headersResolver` 
+ ### Parameters
+ - `url` **[String][2]** this will be injected by requestController using it's url parameter.
+ - `accessToken` **[String][2]** this will be injected by requestController using it's accesToken parameter.
+ 
+ ### Returns
+ - `Headers` **[Headers][9]** a Headers object.
+ 
 
 ### Example
 
@@ -545,3 +552,5 @@ const myComponent = () => {
 [7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 
 [8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function
+
+[9]: https://developer.mozilla.org/docs/Web/API/Headers
