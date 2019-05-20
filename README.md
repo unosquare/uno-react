@@ -437,15 +437,14 @@ const myFormComponent = () => {
 ```
 ### `requestController`
 ### Parameters
- -`url`**[String][2]** Url that will be used to make the request.
- -`accessToken`**[String][2]** Access token to send as a header fo the request.
- -`requestMethod`**[String][2]** Http verb that will be use for the request.
- -`requestBody`**[Object][2]** Body fo the request.
- -`options`**[Object][2]** Object that should two properties, headersResolver & responseResolver.
-  -`headersResolver` **[function][2]**
-  -`responseResolver` **[function][2]**
+ - `url`**[String][2]** Url that will be used to make the request.
+ - `accessToken`**[String][2]** Access token to send as a header fo the request.
+ - `requestMethod`**[String][2]** Http verb that will be use for the request.
+ - `requestBody`**[Object][2]** Body fo the request.
+ - `options`**[Object][2]** Object that should two properties, headersResolver & responseResolver.
+  - `headersResolver` **[function][2]**
+  - `responseResolver` **[function][2]**
  
-
 ### Example
 
 ```javascript
