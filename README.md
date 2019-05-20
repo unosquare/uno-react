@@ -23,7 +23,7 @@ Table of contents
       * [useResolutionSwitch](#useresolutionswitch)
       * [useEffectWithDebounce](#useeffectwithdebounce)
     * [Hocs](#hocs)
-      * [ClickOutside](#clickoutside)
+      * [enhanceWithClickOutside](#enhancewithclickoutside)
     * [Functions](#functions)
       * [colorGenerator](#colorgenerator)   
       * [debounce](#debounce)
@@ -390,7 +390,7 @@ whitout changes, the effect will be run. (This function does not return anything
 
 ## Hocs
  
-### `ClickOutside`
+### `enhanceWithClickOutside`
 
 ### Example
 
@@ -419,7 +419,20 @@ whitout changes, the effect will be run. (This function does not return anything
 ### Example
 
 ```javascript
+const myFormComponent = () => {
 
+ const [text, setText] = React.useState("");
+ 
+ const debounceOnClick = () =>
+  debounce(()=>setText("onClick"), 200);
+ 
+ return(
+  <div>
+    <h1>{text}</h1>
+    <button onClick={debounceOnClick}> Reset </button> 
+  <div>
+ );
+}
 ```
 ### `fetchController`
 ### Parameters
