@@ -441,10 +441,8 @@ const myFormComponent = () => {
  - `accessToken`**[String][2]** Access token to send as a header fo the request.
  - `requestMethod`**[String][2]** Http verb that will be use for the request.
  - `requestBody`**[Object][3]** Body fo the request.
- - `options`**[Object][3]** Object that should two properties, headersResolver & responseResolver.
-  - `headersResolver` [headersResolver](#headersresolver)
-  - `responseResolver` [responseResolver](#responseresolver)
-  
+ - `options`**[Object][3]** <[headersResolver](#headersresolver) | [headersResolver](#headersresolver)>.
+ 
 
 ### Example
 
