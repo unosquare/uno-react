@@ -458,6 +458,7 @@ const headerResolver = () => {
     }
     return headers;
  };
+ 
  const responseResolver = async (response: Response) => {
     const responseBody = await response.text();
     return responseBody ? JSON.parse(responseBody) : {};
@@ -481,7 +482,6 @@ const response = await requestController('http://testUrl', null, 'Get', null, op
 - `Headers` **[Headers][9]** a Headers object.
 
 
-
 ### `responseResolver` 
 ### Parameters
 - `response` **[Response][10]** this will be injected by [requestController](#requestcontroller).
@@ -490,7 +490,12 @@ const response = await requestController('http://testUrl', null, 'Get', null, op
 - `response` **[Object][3]** the server response body.
 
 
+### `createFetchController`
+### Paramters 
+- `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
 
+### Returns
+- 
 
 
 ### `humanize`
