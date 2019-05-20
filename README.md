@@ -445,13 +445,13 @@ const myFormComponent = () => {
   - `headersResolver` [headersResolver](#headersresolver)
   - `responseResolver` [responseResolver](#responseresolver)
  
- ###`headersResolver` 
- ### Parameters
- - `url` **[String][2]** this will be injected by requestController using it's url parameter.
- - `accessToken` **[String][2]** this will be injected by requestController using it's accesToken parameter.
+   ### `headersResolver` 
+   ### Parameters
+   - `url` **[String][2]** this will be injected by requestController using it's url parameter.
+   - `accessToken` **[String][2]** this will be injected by requestController using it's accesToken parameter.
  
- ### Returns
- - `Headers` **[Headers][9]** a Headers object.
+   ### Returns
+   - `Headers` **[Headers][9]** a Headers object.
  
 
 ### Example
