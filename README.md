@@ -443,6 +443,8 @@ const myFormComponent = () => {
  - `requestBody`**[Object][3]** Body fo the request.
  - `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
  
+ ### Returns
+ - `response` **[Object][3]** the server response body.
 
 ### Example
 
@@ -474,6 +476,7 @@ const response = await requestController('http://testUrl', null, 'Get', null, op
 ```
 
 ### `headersResolver` 
+
 ### Parameters
 - `url` **[String][2]** this will be injected by [requestController](#requestcontroller) using it's url parameter.
 - `accessToken` **[String][2]** this will be injected by [requestController](#requestcontroller) using it's accesToken parameter.
@@ -483,6 +486,7 @@ const response = await requestController('http://testUrl', null, 'Get', null, op
 
 
 ### `responseResolver` 
+
 ### Parameters
 - `response` **[Response][10]** this will be injected by [requestController](#requestcontroller).
  
@@ -491,18 +495,12 @@ const response = await requestController('http://testUrl', null, 'Get', null, op
 
 
 ### `createFetchController`
-Thi sfunction works as a "quick start" for [requestController](#requestcontroller), this function allows you to use a default headersResolver and a default responseSolver.
+This function works as a "quick start" for [requestController](#requestcontroller), this function allows you to use a default headersResolver and a default responseSolver.
 ### Parameters 
 - `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
 
 ### Returns
 - [requestControllerWithDefaultResolvers](#requestcontrollerwithdefaultresolvers)**[Function][8]**
-
- url: string, 
- accessToken: string, 
- requestMethod: string, 
- requestBody: any
-
 
 
 
@@ -511,8 +509,13 @@ Thi sfunction works as a "quick start" for [requestController](#requestcontrolle
   similar to [requestController](#requestcontroller).
 ### Parameters
 
-### Returns
+ -`url`**[String][2]** Url that will be used to make the request.
+ -`accessToken`**[String][2]** Access token to send as a header fo the request.
+ -`requestMethod`**[String][2]** Http verb that will be use for the request.
+ -`requestBody`**[Object][3]** Body fo the request.
 
+### Returns
+- `response` **[Object][3]** the server response body.
 
 
 
