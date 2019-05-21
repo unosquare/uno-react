@@ -491,11 +491,29 @@ const response = await requestController('http://testUrl', null, 'Get', null, op
 
 
 ### `createFetchController`
-### Paramters 
+Thi sfunction works as a "quick start" for [requestController](#requestcontroller), this function allows you to use a default headersResolver and a default responseSolver.
+### Parameters 
 - `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
 
 ### Returns
-- 
+- `[requestControllerWithDefaultResolvers](#requestcontrollerwithdefaultresolvers)`**[Function][8]**
+
+ url: string, 
+ accessToken: string, 
+ requestMethod: string, 
+ requestBody: any
+
+
+
+
+
+### `requestControllerWithDefaultResolvers`
+  similar to [requestController](#requestcontroller).
+### Parameters
+
+### Returns
+
+
 
 
 ### `humanize`
