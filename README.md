@@ -302,7 +302,6 @@ const myComponent = () => {
         </div>
     );
 };
-
 ```
 
 ### `useNow`
@@ -435,6 +434,7 @@ const myFormComponent = () => {
  );
 };
 ```
+
 ### `requestController`
 This function allows to create request to an specific url and handle the serve response.
 ### Parameters
@@ -500,10 +500,21 @@ This function should handle the server response.
 This function works as a "quick start" for [requestController](#requestcontroller), this function allows you to use a default headersResolver and a default responseSolver.
 ### Parameters 
 - `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
+***note***: this parameter is optional.
 
 ### Returns
 - [requestControllerWithDefaultResolvers](#requestcontrollerwithdefaultresolvers)**[Function][8]**
 
+
+### Example
+
+```javascript
+
+const options = {};
+const requestController = createFetchController(options);
+const response = await requestController('http://testUrl', null, 'Get', null);
+
+```
 
 ### `requestControllerWithDefaultResolvers`
   similar to [requestController](#requestcontroller).
