@@ -402,14 +402,20 @@ whitout changes, the effect will be run. (This function does not return anything
 ## Functions
  
 ### `colorGenerator`
+This function retrieves an **[Array][1]** of RGB colors that are a result of an interpolation between to given RGB colors.
 
 ### Parameters
+- `startColor` **[Array][1]**
+- `endColor` **[Array][1]**
+- `factor` **[Number][5]**
+
 
 ### Example
 
 ```javascript
 
 ```
+
 ### `debounce`
  This function allow to apply a function after certain amount of time.
 ### Parameters
