@@ -496,7 +496,7 @@ Thi sfunction works as a "quick start" for [requestController](#requestcontrolle
 - `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
 
 ### Returns
-- `[requestControllerWithDefaultResolvers](#requestcontrollerwithdefaultresolvers)`**[Function][8]**
+- [requestControllerWithDefaultResolvers](#requestcontrollerwithdefaultresolvers)**[Function][8]**
 
  url: string, 
  accessToken: string, 
