@@ -436,6 +436,7 @@ const myFormComponent = () => {
 };
 ```
 ### `requestController`
+This function allows to create request to an specific url and handle the serve response.
 ### Parameters
  - `url`**[String][2]** Url that will be used to make the request.
  - `accessToken`**[String][2]** Access token to send as a header fo the request.
@@ -476,23 +477,24 @@ const response = await requestController('http://testUrl', null, 'Get', null, op
 ```
 
 ### `headersResolver` 
+Should create the headers that will be used in the request.
 
 ### Parameters
 - `url` **[String][2]** this will be injected by [requestController](#requestcontroller) using it's url parameter.
 - `accessToken` **[String][2]** this will be injected by [requestController](#requestcontroller) using it's accesToken parameter.
  
 ### Returns
-- `Headers` **[Headers][9]** a Headers object.
+- `Headers` **[Headers][9]**.
 
 
-### `responseResolver` 
+### `responseResolver`
+This function should handle the server response.
 
 ### Parameters
 - `response` **[Response][10]** this will be injected by [requestController](#requestcontroller).
  
 ### Returns
 - `response` **[Object][3]** the server response body.
-
 
 ### `createFetchController`
 This function works as a "quick start" for [requestController](#requestcontroller), this function allows you to use a default headersResolver and a default responseSolver.
@@ -501,8 +503,6 @@ This function works as a "quick start" for [requestController](#requestcontrolle
 
 ### Returns
 - [requestControllerWithDefaultResolvers](#requestcontrollerwithdefaultresolvers)**[Function][8]**
-
-
 
 
 ### `requestControllerWithDefaultResolvers`
@@ -516,8 +516,6 @@ This function works as a "quick start" for [requestController](#requestcontrolle
 
 ### Returns
 - `response` **[Object][3]** the server response body.
-
-
 
 ### `humanize`
 This function takes a string and converts in to a more "readable" string.
