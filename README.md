@@ -405,14 +405,21 @@ whitout changes, the effect will be run. (This function does not return anything
 This function retrieves an **[Array][1]** of RGB colors that are a result of an interpolation between to given RGB colors.
 
 ### Parameters
-- `startColor` **[Array][1]**
-- `endColor` **[Array][1]**
-- `factor` **[Number][5]**
+- `startColor` **[Array][1]** RGB color (<Red|Green|Value>) that represents the start color for the interpolation.
+- `endColor` **[Array][1]** RGB color (<Red|Green|Value>) that represents the end color for the interpolation.
+- `factor` **[Number][5]** The ratio of the output rate to the input rate(startColor & endColor).
 
+### Returns
+- `Colors` **[Array][1]** RGB colors array.
 
 ### Example
 
 ```javascript
+
+const startColor = [255, 0, 0];
+const endColor = [0, 255, 0];
+
+const colors = ColorGenerator(startColor, endColor, 1);
 
 ```
 
