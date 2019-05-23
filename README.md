@@ -391,7 +391,7 @@ whitout changes, the effect will be run. (This function does not return anything
 ## Hocs
  
 ### `enhanceWithClickOutside`
-This **[HOC][11]** injects 
+This **[HOC][11]** allows to the wrapped component to call a function when a click event occurs outside the component. The function that will be call must be named handleClickOutside and should receive an event as parameter.
 
 ### Example
 
