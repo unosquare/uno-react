@@ -391,10 +391,41 @@ whitout changes, the effect will be run. (This function does not return anything
 ## Hocs
  
 ### `enhanceWithClickOutside`
+This **[HOC][11]** injects 
 
 ### Example
 
 ```javascript
+
+
+
+class Test extends React.Component<any> {
+
+    constructor(props) {
+        super(props);
+    }
+
+    public render() {
+
+        return (
+            <div
+                style={{
+                    backgroundColor: 'red',
+                    height: '100px',
+                    width: '100px',
+                }}
+            />
+        );
+    }
+
+    private handleClickOutside = (e) => {
+        console.log('clickOutside: ', e.target);
+    }
+}
+
+const Enhanced = enhanceWithClickOutside(Test);
+
+
 
 ```
 
@@ -634,3 +665,5 @@ const myComponent = () => {
 [9]: https://developer.mozilla.org/docs/Web/API/Headers
 
 [10]: https://developer.mozilla.org/docs/Web/API/Response
+
+[11]: https://reactjs.org/docs/higher-order-components.html
