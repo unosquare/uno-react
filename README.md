@@ -397,9 +397,7 @@ This **[HOC][11]** injects
 
 ```javascript
 
-
-
-class Test extends React.Component<any> {
+class ToBeEnhanced extends React.Component<any> {
 
     constructor(props) {
         super(props);
@@ -419,13 +417,18 @@ class Test extends React.Component<any> {
     }
 
     private handleClickOutside = (e) => {
-        console.log('clickOutside: ', e.target);
+        //Do what you want in here.
     }
 }
 
-const Enhanced = enhanceWithClickOutside(Test);
+const Enhanced = enhanceWithClickOutside(ToBeEnhanced);
 
+const Test = () => {
 
+ return (
+  <Enhanced />
+ );
+};
 
 ```
 
