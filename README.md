@@ -486,67 +486,6 @@ const myComponent = () => {
 };
 ```
 
-### `requestController`
-This function allows to create request to an specific url and handle the serve response.
-### Parameters
- - `url`**[String][2]** Url that will be used to make the request.
- - `accessToken`**[String][2]** Access token to send as a header fo the request.
- - `requestMethod`**[String][2]** Http verb that will be use for the request.
- - `requestBody`**[Object][3]** Body fo the request.
- - `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
- 
- ### Returns
- - `response` **[Object][3]** the server response body.
-
-### Example
-
-```javascript
-const headerResolver = () => {
-  const headers = new Headers();
-    if (url === '/api/token') {
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    } else {
-        headers.append('Accept', 'application/json');
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', `Bearer ${accessToken}`);
-    }
-    return headers;
- };
- 
- const responseResolver = async (response: Response) => {
-    const responseBody = await response.text();
-    return responseBody ? JSON.parse(responseBody) : {};
- };
-
-const option = {
- headersResolver,
- responseResolver,
-};
-
-const response = await requestController('http://testUrl', null, 'Get', null, options);
-
-```
-
-### `headersResolver` 
-Should create the headers that will be used in the request.
-
-### Parameters
-- `url` **[String][2]** this will be injected by [requestController](#requestcontroller) using it's url parameter.
-- `accessToken` **[String][2]** this will be injected by [requestController](#requestcontroller) using it's accesToken parameter.
- 
-### Returns
-- `Headers` **[Headers][9]**.
-
-
-### `responseResolver`
-This function should handle the server response.
-
-### Parameters
-- `response` **[Response][10]** this will be injected by [requestController](#requestcontroller).
- 
-### Returns
-- `response` **[Object][3]** the server response body.
-
 ### `createFetchController`
 This function works as a "quick start" for [requestController](#requestcontroller), this function allows you to use a default headersResolver and a default responseSolver.
 ### Parameters 
@@ -561,23 +500,10 @@ This function works as a "quick start" for [requestController](#requestcontrolle
 
 ```javascript
 
-const options = {};
-const requestController = createFetchController(options);
+const requestController = createFetchController({});
 const response = await requestController('http://testUrl', null, 'Get', null);
 
 ```
-
-### `requestControllerWithDefaultResolvers`
-  similar to [requestController](#requestcontroller).
-### Parameters
-
- -`url`**[String][2]** Url that will be used to make the request.
- -`accessToken`**[String][2]** Access token to send as a header fo the request.
- -`requestMethod`**[String][2]** Http verb that will be use for the request.
- -`requestBody`**[Object][3]** Body fo the request.
-
-### Returns
-- `response` **[Object][3]** the server response body.
 
 ### `humanize`
 This function takes a string and converts in to a more "readable" string.
@@ -621,14 +547,20 @@ This function is a HOF that takes a function as parameter which will be call whe
 
 ```javascript
 
-const myComponent = () => {
- 
- const onEnter = () => console.log("enter key was pressed");
- 
- return(
-  <div onKeyDown=(onEnterKey(onEnter))>   
-  <div/>
- );
+const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
+    const [search, changeSearch] = useStateForField('');
+    const classes = getClasses();
+
+    const action = () => retrieveInput(search);
+
+    return (
+        <TextField
+            className={classes.searchBox}
+            onKeyDown={onEnterKey(action)}
+            value={search}
+            onChange={changeSearch}
+        />
+    );
 };
 
 ```
@@ -648,6 +580,23 @@ const myComponent = () => {
   <div onKeyDown=(asyncOnEnterKey(onEnter))>   
   <div/>
  );
+};
+
+
+const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
+    const [search, changeSearch] = useStateForField('');
+    const classes = getClasses();
+
+    const action = async() => await retrieveInput(search);
+    
+    return (
+        <TextField
+            className={classes.searchBox}
+            onKeyDown={asyncOnEnterKey(action)}
+            value={search}
+            onChange={changeSearch}
+        />
+    );
 };
 
 ```
