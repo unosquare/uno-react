@@ -453,7 +453,7 @@ This function retrieves an **[Array][1]** of RGB colors that are a result of an 
 const startColor = [255, 0, 0];
 const endColor = [0, 255, 0];
 
-const colors = ColorGenerator(startColor, endColor, 1);
+const colors = ColorGenerator(startColor, endColor, 1); //Array of colors result of the interpolation.
 
 ```
 
@@ -466,18 +466,22 @@ const colors = ColorGenerator(startColor, endColor, 1);
 ### Example
 
 ```javascript
-const myFormComponent = () => {
+const myComponent = () => {
+  
+ const listener = () => {
+   //Do what you whant at window resize 
+ }
+  
+ const debouncedListener = debounce(listener, 1500);
 
- const [text, setText] = React.useState("");
- 
- const debounceOnClick = () =>
-  debounce(()=>setText("onClick"), 200);
+ React.useEffect(() => {
+  window.addEventListener('resize', debouncedListener);
+
+  return () => window.removeEventListener('resize', debouncedListener);
+ }, []);
  
  return(
-  <div>
-    <h1>{text}</h1>
-    <button onClick={debounceOnClick}> Reset </button> 
-  <div>
+  <div />
  );
 };
 ```
