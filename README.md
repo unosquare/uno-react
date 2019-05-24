@@ -628,10 +628,10 @@ Rules:
 5.-  isImage: Verify that the input correspond to a image name with image file extension.
 6.-  atLeastOneLowerAndUpperCase: Verify that the input has at least one letter in lower case and one in upper case. 
 7.-  atLeastOneNumber: Verify that the input has at least one number.
-8.-  atLeastOneSpecialCharacter: Verify that the input has at least one special character (* # $ &).
-9.-  isPasswordMatch: 
-10.- pincodeValidator: 
-11.- password: 
+8.-  atLeastOneSpecialCharacter: Verify that the input has at least one special character (e.g. * # $ &).
+9.-  isPasswordMatch: Verify that the input is equal to another value.(e.g. when validated password & password verfication fields).
+10.- pincodeValidator: Verify the input contains only numeric values and has a length of 6 characters.
+11.- password: Validated that the input has at least a length of 8 characteres and contains especial characters, lower case & upper case      characters.
 
 ### Example
 
