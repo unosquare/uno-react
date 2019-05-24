@@ -433,137 +433,7 @@ const Test = () => {
 
 ## Functions
  
-### `colorGenerator`
-This function retrieves an **[Array][1]** of RGB colors that are a result of an interpolation between to given RGB colors.
-
-### Parameters
-- `startColor` **[Array][1]** RGB color (<Red|Green|Value>) that represents the start color for the interpolation.
-- `endColor` **[Array][1]** RGB color (<Red|Green|Value>) that represents the end color for the interpolation.
-- `factor` **[Number][5]** The ratio of the output rate to the input rate(startColor -> endColor).
-
-### Returns
-- `Colors` **[Array][1]** RGB colors array.
-
-### Example
-
-```javascript
-
-const startColor = [255, 0, 0];
-const endColor = [0, 255, 0];
-
-const colors = ColorGenerator(startColor, endColor, 1); //Array of colors result of the interpolation.
-
-```
-
-### `debounce`
- This function allow to apply a function after certain amount of time.
-### Parameters
-- `F` **[function][2]** A function to be executed.
-- `waitMilliseconds ` **[number][2]** The number of miliseconds to wait before execute the function.
-
-### Example
-
-```javascript
-const myComponent = () => {
-  
- const listener = () => {
-   //Do what you whant at window resize 
- }
-  
- const debouncedListener = debounce(listener, 1500);
-
- React.useEffect(() => {
-  window.addEventListener('resize', debouncedListener);
-
-  return () => window.removeEventListener('resize', debouncedListener);
- }, []);
- 
- return(
-  <div />
- );
-};
-```
-
-### `createFetchController`
-This function works as a "quick start" for [requestController](#requestcontroller), this function allows you to use a default headersResolver and a default responseSolver.
-### Parameters 
-- `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
-***note***: this parameter is optional.
-
-### Returns
-- [requestControllerWithDefaultResolvers](#requestcontrollerwithdefaultresolvers)**[Function][8]**
-
-
-### Example
-
-```javascript
-
-const requestController = createFetchController({});
-const response = await requestController('http://testUrl', null, 'Get', null);
-
-```
-
-### `humanize`
-This function takes a string and converts in to a more "readable" string.
-### Parameters
--   `name` **[String][2]** A string that will be humanized.
-### Returns
--`humanized` **[String][2]** The new string.
-
-### Example
-
-```javascript
-const humanized = humanize("StringThatWillBeHumanized"); //"String That Will Be Humanized" 
-```
-
-### `toTitleCase`
-This function takes a string and converts it to "Title Case", that means, it uses each word (separated by a space) and capitalizes the first letter of each word.
-### Parameters
-- `title` **[String][2]** A string that will be transform to title case.
-### Returns
--`title` **[String][2]** The new string.
-
-### Example
-
-```javascript
-const newTitle = toTitleCase("title test"); // "Title Test"
-
-```
-### `validations`
-### Parameters
-
-### Example
-
-```javascript
-
-```
-### `onEnterKey`
-This function is a HOF that takes a function as parameter which will be call when the "enter" key is pressed, this HOF should be used as a component's prop that will be involved in keyboard events.
-### Parameters
-- `callback` **[function][8]** The function that will be called when the "enter" key is pressed.
-### Example
-
-```javascript
-
-const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
-    const [search, changeSearch] = useStateForField('');
-    const classes = getClasses();
-
-    const action = () => retrieveInput(search);
-
-    return (
-        <TextField
-            className={classes.searchBox}
-            onKeyDown={onEnterKey(action)}
-            value={search}
-            onChange={changeSearch}
-        />
-    );
-};
-
-```
-
-### `asyncOnEnterKey`
+ ### `asyncOnEnterKey`
 This function is similar to [onEnterKey](#onenterkey), the only difference is that the callback should be an async function.
 ### Parameters
 - `callback` **[function][8]** The function that will be called when the "enter" key is pressed.
@@ -596,6 +466,137 @@ const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
         />
     );
 };
+
+```
+ 
+### `colorGenerator`
+This function retrieves an **[Array][1]** of RGB colors that are a result of an interpolation between to given RGB colors.
+
+### Parameters
+- `startColor` **[Array][1]** RGB color (<Red|Green|Value>) that represents the start color for the interpolation.
+- `endColor` **[Array][1]** RGB color (<Red|Green|Value>) that represents the end color for the interpolation.
+- `factor` **[Number][5]** The ratio of the output rate to the input rate(startColor -> endColor).
+
+### Returns
+- `Colors` **[Array][1]** RGB colors array.
+
+### Example
+
+```javascript
+
+const startColor = [255, 0, 0];
+const endColor = [0, 255, 0];
+
+const colors = ColorGenerator(startColor, endColor, 1); //Array of colors result of the interpolation.
+
+```
+
+### `createFetchController`
+This function works as a "quick start" for [requestController](#requestcontroller), this function allows you to use a default headersResolver and a default responseSolver.
+### Parameters 
+- `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
+***note***: this parameter is optional.
+
+### Returns
+- [requestControllerWithDefaultResolvers](#requestcontrollerwithdefaultresolvers)**[Function][8]**
+
+
+### Example
+
+```javascript
+
+const requestController = createFetchController({});
+const response = await requestController('http://testUrl', null, 'Get', null);
+
+```
+
+### `debounce`
+ This function allow to apply a function after certain amount of time.
+### Parameters
+- `F` **[function][2]** A function to be executed.
+- `waitMilliseconds ` **[number][2]** The number of miliseconds to wait before execute the function.
+
+### Example
+
+```javascript
+const myComponent = () => {
+  
+ const listener = () => {
+   //Do what you whant at window resize 
+ }
+  
+ const debouncedListener = debounce(listener, 1500);
+
+ React.useEffect(() => {
+  window.addEventListener('resize', debouncedListener);
+
+  return () => window.removeEventListener('resize', debouncedListener);
+ }, []);
+ 
+ return(
+  <div />
+ );
+};
+```
+
+### `humanize`
+This function takes a string and converts in to a more "readable" string.
+### Parameters
+-   `name` **[String][2]** A string that will be humanized.
+### Returns
+-`humanized` **[String][2]** The new string.
+
+### Example
+
+```javascript
+const humanized = humanize("StringThatWillBeHumanized"); //"String That Will Be Humanized" 
+```
+
+### `onEnterKey`
+This function is a HOF that takes a function as parameter which will be call when the "enter" key is pressed, this HOF should be used as a component's prop that will be involved in keyboard events.
+### Parameters
+- `callback` **[function][8]** The function that will be called when the "enter" key is pressed.
+### Example
+
+```javascript
+
+const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
+    const [search, changeSearch] = useStateForField('');
+    const classes = getClasses();
+
+    const action = () => retrieveInput(search);
+
+    return (
+        <TextField
+            className={classes.searchBox}
+            onKeyDown={onEnterKey(action)}
+            value={search}
+            onChange={changeSearch}
+        />
+    );
+};
+
+```
+
+### `toTitleCase`
+This function takes a string and converts it to "Title Case", that means, it uses each word (separated by a space) and capitalizes the first letter of each word.
+### Parameters
+- `title` **[String][2]** A string that will be transform to title case.
+### Returns
+-`title` **[String][2]** The new string.
+
+### Example
+
+```javascript
+const newTitle = toTitleCase("title test"); // "Title Test"
+
+```
+### `validations`
+### Parameters
+
+### Example
+
+```javascript
 
 ```
 
