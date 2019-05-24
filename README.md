@@ -485,35 +485,36 @@ This function retrieves an **[Array][1]** of RGB colors that are a result of an 
 ```javascript
 
 const myComponent = () => {
+    const startColor = [255, 0, 0];
+    const endColor = [0, 255, 0];
 
- const startColor = [255, 0, 0];
- const endColor = [0, 255, 0];
+    const colors = ColorGenerator(startColor, endColor, 1); //Array of colors result of the interpolation.
 
- const colors = ColorGenerator(startColor, endColor, 1); //Array of colors result of the interpolation.
+    //Here we use the array of colors to create new divs using the color data to set the backgroundColor value.
+    //Every color represents a RGB array (color[0] = red channel value, color[1] = green channel value, color[2] = blue channel value)
+    return (
+        <div
+            style={{
+                height: 'auto',
+                width: '100px',
+            }}
+        >
+            {
+                colors.map((color, index) => (
+                    <div
+                        key={index}
+                        style={{
+                            backgroundColor: `rgb(${color[0]}, ${color[1]}, ${color[2]})`,
+                            height: '10px',
+                            width: '10px',
+                        }}
+                    />
+                ))
+            }
+        </div>
+    );
+};
 
-//Here we use the array of colors to create new divs using the color data to set the backgroundColor value.
-//Every color represents a RGB array (color[0] = red channel value, color[1] = green channel value, color[2] = blue channel value)
- return(
-  <div
-   style={{
-    width: '100px',
-    height: 'auto',
-   }}
-  > 
-  {
-   colors.map((color)=>(
-    <div
-     style={{
-     width: '10px',
-     height: '10px',
-     backgroundColor: `rgb(${color[0]}, ${color[1]}, ${color[2})`,
-     }}
-    />
-   ))
-  }
-  </div>
- );
-}
 ```
 
 ### `createFetchController`
