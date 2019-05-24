@@ -27,7 +27,6 @@ Table of contents
     * [Functions](#functions)
       * [colorGenerator](#colorgenerator)   
       * [debounce](#debounce)
-      * [requestController](#requestcontroller)
       * [createFetchController](#createfetchcontroller)
       * [humanize](#humanize)
       * [toTitleCase](#totitlecase)
