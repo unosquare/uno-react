@@ -32,7 +32,7 @@ Table of contents
       * [humanize](#humanize)
       * [onEnterKey](#onenterkey)
       * [toTitleCase](#totitlecase)
-      * [validations](#validations)
+      * [ValidatorForm](#Validatorform)
       
 ## Installation
 
@@ -617,14 +617,21 @@ This function takes a string and converts it to "Title Case", that means, it use
 const newTitle = toTitleCase("title test"); // "Title Test"
 
 ```
-### `validations`
-We create a set of validations to extend the existing for **[ValidatorForm][12]**.
+### `ValidatorForm`
+This component extends the original **[ValidatorForm][12]** rules. This component works for wrap TextValidator component(s) and for register any other custom rules, this rules can be used in the wrapped components.
 
-1.- isNotAllBlanks: Validates that the input is not empty, white spaces are ignored.
-2.- maxNaturalNumber: Validates that the input number si not greather than the given.
-3.- startDateGreaterThanEndDate: Validates that a date is bigger than other.
-4.- validateEndDate: Validates than endDate is later than startDate.
-5.- ValidatorForm: the same component of **[ValidatorForm][12]** but with the previous validations already added.
+Rules:
+1.-  isNotAllBlanks: Validates that the input is not empty, white spaces are ignored.
+2.-  maxNaturalNumber: Validates that the input number si not greather than the given.
+3.-  validateEndDate: Validates than endDate is later than startDate.
+4.-  startDateGreaterThanEndDate: Validates that a date is bigger than other.
+5.-  isImage: Verify that the input correspond to a image name with image file extension.
+6.-  atLeastOneLowerAndUpperCase: Verify that the input has at least one letter in lower case and one in upper case. 
+7.-  atLeastOneNumber: Verify that the input has at least one number.
+8.-  atLeastOneSpecialCharacter: Verify that the input has at least one special character (* # $ &).
+9.-  isPasswordMatch: 
+10.- pincodeValidator: 
+11.- password: 
 
 ### Example
 
