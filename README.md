@@ -618,11 +618,31 @@ const newTitle = toTitleCase("title test"); // "Title Test"
 
 ```
 ### `validations`
-### Parameters
+We create a set of validations to extend the existing for **[ValidatorForm][12]**.
+
+1.- isNotAllBlanks: Validates that the input is not empty, white spaces are ignored.
+2.- maxNaturalNumber: Validates that the input number si not greather than the given.
+3.- startDateGreaterThanEndDate: Validates that a date is bigger than other.
+4.- validateEndDate: Validates than endDate is later than startDate.
+5.- ValidatorForm: the same component of **[ValidatorForm][12]** but with the previous validations already added.
 
 ### Example
 
 ```javascript
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```
 
@@ -648,3 +668,5 @@ const newTitle = toTitleCase("title test"); // "Title Test"
 [10]: https://developer.mozilla.org/docs/Web/API/Response
 
 [11]: https://reactjs.org/docs/higher-order-components.html
+
+[12]: https://www.npmjs.com/package/react-form-validator-core
