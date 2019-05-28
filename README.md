@@ -545,23 +545,21 @@ const response = await requestController('http://testUrl', null, 'Get', null);
 ### Example
 
 ```javascript
-const myComponent = () => {
-  
- const listener = () => {
-   //Do what you whant at window resize 
- }
-  
- const debouncedListener = debounce(listener, 1500);
+const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
+    const [search, changeSearch] = useStateForField('');
+    const classes = getClasses();
 
- React.useEffect(() => {
-  window.addEventListener('resize', debouncedListener);
-
-  return () => window.removeEventListener('resize', debouncedListener);
- }, []);
+    const action = () => retrieveInput(search);
+    const onChange = (ev) => debounce(()=> changeSearch(ev.target.value), 500);
  
- return(
-  <div />
- );
+    return (
+        <TextField
+            className={classes.searchBox}
+            onKeyDown={onEnterKey(action)}
+            value={search}
+            onChange={onChange}
+        />
+    );
 };
 ```
 
