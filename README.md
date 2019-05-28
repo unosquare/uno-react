@@ -32,7 +32,7 @@ Table of contents
       * [humanize](#humanize)
       * [onEnterKey](#onenterkey)
       * [toTitleCase](#totitlecase)
-      * [ValidatorForm](#Validatorform)
+      * [ValidatorForm](#validatorform)
       
 ## Installation
 
@@ -568,9 +568,9 @@ const myComponent = () => {
 ### `humanize`
 This function takes a string and converts in to a more "readable" string.
 ### Parameters
--   `name` **[String][2]** A string that will be humanized.
+- `name` **[String][2]** A string that will be humanized.
 ### Returns
--`humanized` **[String][2]** The new string.
+- `humanized` **[String][2]** The new string.
 
 ### Example
 
@@ -609,7 +609,7 @@ This function takes a string and converts it to "Title Case", that means, it use
 ### Parameters
 - `title` **[String][2]** A string that will be transform to title case.
 ### Returns
--`title` **[String][2]** The new string.
+- `title` **[String][2]** The new string.
 
 ### Example
 
