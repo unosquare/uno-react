@@ -627,27 +627,148 @@ Rules:
  - atLeastOneLowerAndUpperCase: Verify that the input has at least one letter in lower case and one in upper case. 
  - atLeastOneNumber: Verify that the input has at least one number.
  - atLeastOneSpecialCharacter: Verify that the input has at least one special character (e.g. * # $ &).
- - isPasswordMatch: Verify that the input is equal to another value.(e.g. when validated password & password verfication fields).
- - pincodeValidator: Verify the input contains only numeric values and has a length of 6 characters.
+  - pincodeValidator: Verify the input contains only numeric values and has a length of 6 characters.
  - password: Validated that the input has at least a length of 8 characteres and contains especial characters, lower case & upper           case characters.
+ - isPasswordMatch: Verify that the input is equal to another value.(e.g. when validated password & password verfication fields).
+
 
 ### Example
 
 ```javascript
 
+const form = () => {
+    const [fields, handleChange] = useStateForModel({
+        atLeastOneLowerAndUpperCase: '',
+        atLeastOneNumber: '',
+        atLeastOneSpecialCharacter: '',
+        isImage: '',
+        isNotAllBlanks: '',
+        isPasswordMatch: '',
+        maxNaturalNumber: '',
+        password: '',
+        pincodeValidator: '',
+        startDateGreaterThanEndDate: '',
+        validateEndDate: '',
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
+    return (
+        <ValidatorForm
+            autoComplete='off'
+            instantValidate={true}
+        >
+            <TextValidator
+                id='isNotAllBlanks'
+                value={fields.isNotAllBlanks}
+                onChange={handleChange}
+                validators={['required', 'isNotAllBlanks:5']}
+                errorMessages={[
+                    'This field is required',
+                    'The minimum length is 5 characters, blank spaces are ignored',
+                ]}
+            />
+            <TextValidator
+                id='maxNaturalNumber'
+                value={fields.maxNaturalNumber}
+                onChange={handleChange}
+                validators={['required', 'maxNaturalNumber:100']}
+                errorMessages={[
+                    'This field is required',
+                    'The input should not be greater than 100',
+                ]}
+            />
+            <TextValidator
+                id='validateEndDate'
+                value={fields.validateEndDate}
+                onChange={handleChange}
+                validators={['required', 'validateEndDate: 2019:07:29']}
+                errorMessages={[
+                    'This field is required',
+                    'The date should be earlier than 2019:07:29',
+                ]}
+            />
+            <TextValidator
+                id='startDateGreaterThanEndDate'
+                value={fields.startDateGreaterThanEndDate}
+                onChange={handleChange}
+                validators={['required', 'startDateGreaterThanEndDate: 2019:07:29']}
+                errorMessages={[
+                    'This field is required',
+                    'The start date should be greater than 2019:07:29',
+                ]}
+            />
+            <TextValidator
+                id='isImage'
+                value={fields.isImage}
+                onChange={handleChange}
+                validators={['required', 'isImage: .jpg']}
+                errorMessages={[
+                    'This field is required',
+                    'The file extension should be .jpg',
+                ]}
+            />
+            <TextValidator
+                id='atLeastOneLowerAndUpperCase'
+                value={fields.atLeastOneLowerAndUpperCase}
+                onChange={handleChange}
+                validators={['required', 'atLeastOneLowerAndUpperCase']}
+                errorMessages={[
+                    'This field is required',
+                    'Should have at least one upper case and one lower case character',
+                ]}
+            />
+            <TextValidator
+                id='atLeastOneNumber'
+                value={fields.atLeastOneNumber}
+                onChange={handleChange}
+                validators={['required', 'atLeastOneNumber']}
+                errorMessages={[
+                    'This field is required',
+                    'Should contain at least one number',
+                ]}
+            />
+            <TextValidator
+                id='atLeastOneSpecialCharacter'
+                value={fields.atLeastOneSpecialCharacter}
+                onChange={handleChange}
+                validators={['required', 'atLeastOneSpecialCharacter']}
+                errorMessages={[
+                    'This field is required',
+                    'Should contain at least one special character',
+                ]}
+            />
+            <TextValidator
+                id='pincodeValidator'
+                value={fields.pincodeValidator}
+                onChange={handleChange}
+                validators={['required', 'pincodeValidator']}
+                errorMessages={[
+                    'This field is required',
+                    'should not contain white spaces and a length of 6 characters',
+                ]}
+            />
+            <TextValidator
+                id='password'
+                value={fields.password}
+                onChange={handleChange}
+                validators={['required', 'password']}
+                errorMessages={[
+                    'This field is required',
+                    'Should have at least 1 upper case, 1 lower case, 1 special character and a min length of 8 characters',
+                ]}
+            />
+            <TextValidator
+                id='isPasswordMatch'
+                value={fields.isPasswordMatch}
+                onChange={handleChange}
+                validators={['required', `isPasswordMatch:${fields.Password}`]}
+                errorMessages={[
+                    'This field is required',
+                    'Must be the same as the password field',
+                ]}
+            />
+        </ValidatorForm>
+    );
+};
 
 ```
 
