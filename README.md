@@ -621,17 +621,17 @@ const newTitle = toTitleCase("title test"); // "Title Test"
 This component extends the original **[ValidatorForm][12]** rules. This component works for wrap TextValidator component(s) and for register any other custom rules, this rules can be used in the wrapped components.
 
 Rules:
-1.-  isNotAllBlanks: Validates that the input is not empty, white spaces are ignored.
-2.-  maxNaturalNumber: Validates that the input number si not greather than the given.
-3.-  validateEndDate: Validates than endDate is later than startDate.
-4.-  startDateGreaterThanEndDate: Validates that a date is bigger than other.
-5.-  isImage: Verify that the input correspond to a image name with image file extension.
-6.-  atLeastOneLowerAndUpperCase: Verify that the input has at least one letter in lower case and one in upper case. 
-7.-  atLeastOneNumber: Verify that the input has at least one number.
-8.-  atLeastOneSpecialCharacter: Verify that the input has at least one special character (e.g. * # $ &).
-9.-  isPasswordMatch: Verify that the input is equal to another value.(e.g. when validated password & password verfication fields).
-10.- pincodeValidator: Verify the input contains only numeric values and has a length of 6 characters.
-11.- password: Validated that the input has at least a length of 8 characteres and contains especial characters, lower case & upper case      characters.
+ - isNotAllBlanks: Validates that the input is not empty, white spaces are ignored.
+ - maxNaturalNumber: Validates that the input number si not greather than the given.
+ - validateEndDate: Validates than endDate is later than startDate.
+ - startDateGreaterThanEndDate: Validates that a date is bigger than other.
+ - isImage: Verify that the input correspond to a image name with image file extension.
+ - atLeastOneLowerAndUpperCase: Verify that the input has at least one letter in lower case and one in upper case. 
+ - atLeastOneNumber: Verify that the input has at least one number.
+ - atLeastOneSpecialCharacter: Verify that the input has at least one special character (e.g. * # $ &).
+ - isPasswordMatch: Verify that the input is equal to another value.(e.g. when validated password & password verfication fields).
+ - pincodeValidator: Verify the input contains only numeric values and has a length of 6 characters.
+ - password: Validated that the input has at least a length of 8 characteres and contains especial characters, lower case & upper           case characters.
 
 ### Example
 
