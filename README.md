@@ -22,7 +22,7 @@ Table of contents
       * [useStateForModel](#usestateformodel)
       * [useStateForModelWithLoading](#usestateformodelwithloading)
       * [useToggle](#usetoggle)
-    * [Hocs](#hocs)
+    * [HOCs](#hocs)
       * [enhanceWithClickOutside](#enhancewithclickoutside)
     * [Functions](#functions)
       * [asyncOnEnterKey](#asynconenterkey)
@@ -386,7 +386,7 @@ const myComponent = () => {
 };
 ```
 
-## Hocs
+## HOCs
  
 ### `enhanceWithClickOutside`
 This **[HOC][11]** allows to the wrapped component to call a function when a click event occurs outside the component. The function that will be call must be named handleClickOutside and should receive an event as parameter.
