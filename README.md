@@ -24,6 +24,7 @@ Table of contents
       * [useToggle](#usetoggle)
     * [HOCs](#hocs)
       * [enhanceWithClickOutside](#enhancewithclickoutside)
+      * [enhanceFunctionComponentWithClickOutside](#enhancefunctioncomponentwithclickoutside)
     * [Functions](#functions)
       * [asyncOnEnterKey](#asynconenterkey)
       * [colorGenerator](#colorgenerator)   
@@ -389,7 +390,7 @@ const myComponent = () => {
 ## HOCs
  
 ### `enhanceWithClickOutside`
-This **[HOC][11]** allows to the wrapped component to call a function when a click event occurs outside the component. The function that will be call must be named handleClickOutside and should receive an event as parameter.
+This **[HOC][11]** allows to wrap component to call a function when a click event occurs outside the component. The function that will be call must be named handleClickOutside and should receive an event as parameter.
 
 ### Example
 
@@ -430,6 +431,52 @@ const Test = () => {
 
 ```
 
+### `enhanceFunctionComponentWithClickOutside`
+This **[HOC][11]** allows to call a given function when a click event occurs outside the component.
+
+
+### Parameters
+- `component` **[functionComponent][13]** The component to be wrapped.
+- `callback` **[function][8]** The function that will be called when the click event occurs outside the component.
+
+### Example
+
+```javascript
+
+class ToBeEnhanced extends React.Component<any> {
+
+    constructor(props) {
+        super(props);
+    }
+
+    public render() {
+
+        return (
+            <div
+                style={{
+                    backgroundColor: 'red',
+                    height: '100px',
+                    width: '100px',
+                }}
+            />
+        );
+    }
+
+    private handleClickOutside = (e) => {
+        //Do what you want in here.
+    }
+}
+
+const Enhanced = enhanceWithClickOutside(ToBeEnhanced);
+
+const Test = () => {
+
+ return (
+  <Enhanced />
+ );
+};
+
+```
 
 ## Functions
  
@@ -796,3 +843,5 @@ const form = () => {
 [11]: https://reactjs.org/docs/higher-order-components.html
 
 [12]: https://www.npmjs.com/package/react-form-validator-core
+
+[13]: https://reactjs.org/docs/components-and-props.html#function-and-class-components
