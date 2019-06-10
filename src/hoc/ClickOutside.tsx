@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 
-export function enhanceWithClickOutside(Component: any) {
+export function enhanceWithClickOutsides(Component: any) {
     return class EnhancedComponent extends React.Component {
         public __wrappedInstance: any;
         public __domNode: any;
@@ -45,5 +45,28 @@ export function enhanceWithClickOutside(Component: any) {
                 />
             );
         }
+    };
+}
+
+function enhanceWithClickOutside(Component: any, onClickOutside: any) {
+    return (props: any) => {
+        const node: any = React.useRef();
+
+        const handleClick = (ev: any) => {
+            if (!node.current.contains(ev.target)) { onClickOutside(); }
+        };
+
+        React.useEffect(() => {
+            document.addEventListener('mousedown', handleClick);
+            return () => document.removeEventListener('mousedown', handleClick);
+        }, []);
+
+        return (
+            <div
+                ref={node}
+            >
+                <Component />
+            </div>
+        );
     };
 }
