@@ -390,7 +390,7 @@ const myComponent = () => {
 ## HOCs
  
 ### `enhanceWithClickOutside`
-This **[HOC][11]** allows to wrap component to call a function when a click event occurs outside the component. The function that will be call must be named handleClickOutside and should receive an event as parameter.
+This **[HOC][11]** allows to the wrapped component to call a function when a click event occurs outside the component. The function that will be call must be named handleClickOutside and should receive an event as parameter.
 
 ### Example
 
