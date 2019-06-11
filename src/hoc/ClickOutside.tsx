@@ -48,7 +48,7 @@ export function enhanceWithClickOutside(Component: any) {
     };
 }
 
-export function enhanceFunctionComponentWithClickOutside(Component: any, onClickOutside: any) {
+export function useClickOutside(Component: any, onClickOutside: any) {
     return (props: any) => {
         const node: any = React.useRef();
 
