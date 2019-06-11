@@ -24,7 +24,7 @@ Table of contents
       * [useToggle](#usetoggle)
     * [HOCs](#hocs)
       * [enhanceWithClickOutside](#enhancewithclickoutside)
-      * [enhanceFunctionComponentWithClickOutside](#enhancefunctioncomponentwithclickoutside)
+      * [useClickOutside](#useclickoutside)
     * [Functions](#functions)
       * [asyncOnEnterKey](#asynconenterkey)
       * [colorGenerator](#colorgenerator)   
@@ -431,7 +431,7 @@ const Test = () => {
 
 ```
 
-### `enhanceFunctionComponentWithClickOutside`
+### `useClickOutside`
 This **[HOC][11]** allows to call a given function when a click event occurs outside the component.
 
 
@@ -456,7 +456,7 @@ const myComponent = () => {
     );
 
     const functionToApply = () => setColor('red');
-    const Enhanced = enhanceFunctionComponentWithClickOutside(toBeEnhanced, functionToApply);
+    const Enhanced = useClickOutside(toBeEnhanced, functionToApply);
 
     return (
         <div
