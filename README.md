@@ -443,38 +443,33 @@ This **[HOC][11]** allows to call a given function when a click event occurs out
 
 ```javascript
 
-class ToBeEnhanced extends React.Component<any> {
+const myComponent = () => {
 
-    constructor(props) {
-        super(props);
-    }
+    const [color, setColor] = React.useState('green');
+    const onClick = () => setColor('green');
 
-    public render() {
+    const toBeEnhanced = () => (
+        <div
+            style={{ backgroundColor: color }}
+            onClick={onClick}
+        />
+    );
 
-        return (
-            <div
-                style={{
-                    backgroundColor: 'red',
-                    height: '100px',
-                    width: '100px',
-                }}
-            />
-        );
-    }
+    const functionToApply = () => setColor('red');
+    const Enhanced = enhanceFunctionComponentWithClickOutside(toBeEnhanced, functionToApply);
 
-    private handleClickOutside = (e) => {
-        //Do what you want in here.
-    }
-}
-
-const Enhanced = enhanceWithClickOutside(ToBeEnhanced);
-
-const Test = () => {
-
- return (
-  <Enhanced />
- );
+    return (
+        <div
+            style={{
+                height: '80px',
+                width: '80px',
+            }}
+        >
+            <Enhanced />
+        </div>
+    );
 };
+
 
 ```
 
@@ -500,13 +495,11 @@ const myComponent = () => {
 
 const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
     const [search, changeSearch] = useStateForField('');
-    const classes = getClasses();
-
+   
     const action = async() => await retrieveInput(search);
     
     return (
         <TextField
-            className={classes.searchBox}
             onKeyDown={asyncOnEnterKey(action)}
             value={search}
             onChange={changeSearch}
@@ -594,14 +587,12 @@ const response = await requestController('http://testUrl', null, 'Get', null);
 ```javascript
 const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
     const [search, changeSearch] = useStateForField('');
-    const classes = getClasses();
-
+  
     const action = () => retrieveInput(search);
     const onChange = (ev) => debounce(()=> changeSearch(ev.target.value), 500);
  
     return (
         <TextField
-            className={classes.searchBox}
             onKeyDown={onEnterKey(action)}
             value={search}
             onChange={onChange}
@@ -633,13 +624,11 @@ This function is a HOF that takes a function as parameter which will be call whe
 
 const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
     const [search, changeSearch] = useStateForField('');
-    const classes = getClasses();
 
     const action = () => retrieveInput(search);
 
     return (
         <TextField
-            className={classes.searchBox}
             onKeyDown={onEnterKey(action)}
             value={search}
             onChange={changeSearch}
