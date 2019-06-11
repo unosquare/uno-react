@@ -13,6 +13,7 @@ Table of contents
   * [💾Installation](#installation)
   * [What's in the library](#whats-in-the-library)
     * [Hooks](#hooks)
+      * [useClickOutside](#useclickoutside)
       * [useEffectWithDebounce](#useeffectwithdebounce)
       * [useEffectWithLoading](#useeffectwithloading)
       * [useNow](#usenow)
@@ -24,7 +25,6 @@ Table of contents
       * [useToggle](#usetoggle)
     * [HOCs](#hocs)
       * [enhanceWithClickOutside](#enhancewithclickoutside)
-      * [useClickOutside](#useclickoutside)
     * [Functions](#functions)
       * [asyncOnEnterKey](#asynconenterkey)
       * [colorGenerator](#colorgenerator)   
@@ -48,6 +48,48 @@ We are using hooks, so you need to work with React ^16.8.0.
 In this section, we present the different components that are available in the uno-react library. Please keep in mind that everything in the library is opt-in. uno-react is completely opt-in. It won't force you to use any of its components, classes or methods.
 
 ## Hooks
+
+### `useClickOutside`
+This hook allows to call a given function when a click event occurs outside the component.
+
+### Parameters
+
+- `component` **[functionComponent][13]** The component to be wrapped.
+- `callback` **[function][8]** The function that will be called when the click event occurs outside the component.
+
+### Example
+
+```javascript
+
+const myComponent = () => {
+
+    const [color, setColor] = React.useState('green');
+    const onClick = () => setColor('green');
+
+    const toBeEnhanced = () => (
+        <div
+            style={{ backgroundColor: color }}
+            onClick={onClick}
+        />
+    );
+
+    const functionToApply = () => setColor('red');
+    const Enhanced = useClickOutside(toBeEnhanced, functionToApply);
+
+    return (
+        <div
+            style={{
+                height: '80px',
+                width: '80px',
+            }}
+        >
+            <Enhanced />
+        </div>
+    );
+};
+
+
+```
 
 ### `useEffectWithDebounce`
 
@@ -428,48 +470,6 @@ const Test = () => {
   <Enhanced />
  );
 };
-
-```
-
-### `useClickOutside`
-This **[HOC][11]** allows to call a given function when a click event occurs outside the component.
-
-
-### Parameters
-- `component` **[functionComponent][13]** The component to be wrapped.
-- `callback` **[function][8]** The function that will be called when the click event occurs outside the component.
-
-### Example
-
-```javascript
-
-const myComponent = () => {
-
-    const [color, setColor] = React.useState('green');
-    const onClick = () => setColor('green');
-
-    const toBeEnhanced = () => (
-        <div
-            style={{ backgroundColor: color }}
-            onClick={onClick}
-        />
-    );
-
-    const functionToApply = () => setColor('red');
-    const Enhanced = useClickOutside(toBeEnhanced, functionToApply);
-
-    return (
-        <div
-            style={{
-                height: '80px',
-                width: '80px',
-            }}
-        >
-            <Enhanced />
-        </div>
-    );
-};
-
 
 ```
 
