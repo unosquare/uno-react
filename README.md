@@ -13,6 +13,7 @@ Table of contents
   * [💾Installation](#installation)
   * [What's in the library](#whats-in-the-library)
     * [Hooks](#hooks)
+      * [useClickOutside](#useclickoutside)
       * [useEffectWithDebounce](#useeffectwithdebounce)
       * [useEffectWithLoading](#useeffectwithloading)
       * [useNow](#usenow)
@@ -47,6 +48,48 @@ We are using hooks, so you need to work with React ^16.8.0.
 In this section, we present the different components that are available in the uno-react library. Please keep in mind that everything in the library is opt-in. uno-react is completely opt-in. It won't force you to use any of its components, classes or methods.
 
 ## Hooks
+
+### `useClickOutside`
+This hook allows to call a given function when a click event occurs outside the component.
+
+### Parameters
+
+- `component` **[functionComponent][13]** The component to be wrapped.
+- `callback` **[function][8]** The function that will be called when the click event occurs outside the component.
+
+### Example
+
+```javascript
+
+const myComponent = () => {
+
+    const [color, setColor] = React.useState('green');
+    const onClick = () => setColor('green');
+
+    const toBeEnhanced = () => (
+        <div
+            style={{ backgroundColor: color }}
+            onClick={onClick}
+        />
+    );
+
+    const functionToApply = () => setColor('red');
+    const Enhanced = useClickOutside(toBeEnhanced, functionToApply);
+
+    return (
+        <div
+            style={{
+                height: '80px',
+                width: '80px',
+            }}
+        >
+            <Enhanced />
+        </div>
+    );
+};
+
+
+```
 
 ### `useEffectWithDebounce`
 
@@ -430,7 +473,6 @@ const Test = () => {
 
 ```
 
-
 ## Functions
  
  ### `asyncOnEnterKey`
@@ -453,13 +495,11 @@ const myComponent = () => {
 
 const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
     const [search, changeSearch] = useStateForField('');
-    const classes = getClasses();
-
+   
     const action = async() => await retrieveInput(search);
     
     return (
         <TextField
-            className={classes.searchBox}
             onKeyDown={asyncOnEnterKey(action)}
             value={search}
             onChange={changeSearch}
@@ -547,14 +587,12 @@ const response = await requestController('http://testUrl', null, 'Get', null);
 ```javascript
 const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
     const [search, changeSearch] = useStateForField('');
-    const classes = getClasses();
-
+  
     const action = () => retrieveInput(search);
     const onChange = (ev) => debounce(()=> changeSearch(ev.target.value), 500);
  
     return (
         <TextField
-            className={classes.searchBox}
             onKeyDown={onEnterKey(action)}
             value={search}
             onChange={onChange}
@@ -586,13 +624,11 @@ This function is a HOF that takes a function as parameter which will be call whe
 
 const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
     const [search, changeSearch] = useStateForField('');
-    const classes = getClasses();
 
     const action = () => retrieveInput(search);
 
     return (
         <TextField
-            className={classes.searchBox}
             onKeyDown={onEnterKey(action)}
             value={search}
             onChange={changeSearch}
@@ -796,3 +832,5 @@ const form = () => {
 [11]: https://reactjs.org/docs/higher-order-components.html
 
 [12]: https://www.npmjs.com/package/react-form-validator-core
+
+[13]: https://reactjs.org/docs/components-and-props.html#function-and-class-components
