@@ -1,11 +1,12 @@
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/styles/makeStyles';
 import * as React from 'react';
 import Component from '../components/Component';
+import SectionLink from '../components/SectionLink';
 import Apis from '../utils/componentsApi';
 import Codes from '../utils/componentsCode';
-import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
     container: {
@@ -16,16 +17,31 @@ const useStyles = makeStyles({
     content: {
         marginTop: 10,
     },
+    examples : {
+        marginRight: '80px',
+    },
+    link: {
+        textDecoration: 'none',
+    },
     logo: {
         width: '300px',
     },
     paper: {
+        paddingBottom: 30,
         paddingLeft: 30,
         paddingRight: 30,
         width: '100%',
     },
     section: {
         paddingTop: '75px',
+    },
+    toc: {
+        paddingBottom: 30,
+        paddingTop: 30,
+        width: '100%',
+    },
+    tocTitle: {
+        paddingLeft: 20,
     },
 });
 
@@ -34,6 +50,7 @@ export default () => {
 
     return (
         <Grid container={true} className={classes.container}>
+            <Grid item={true} xs={9} className={classes.examples}>
             <Paper className={classes.paper}>
             <Typography className={classes.section} variant='h3' id='Hooks'>Hooks</Typography>
             <Component
@@ -173,6 +190,32 @@ export default () => {
                     code={Codes.ValidatorForm}
             />
             </Paper>
+            </Grid>
+            <Grid item={true} xs={2}>
+                <Paper className={classes.toc}>
+                    <Typography variant='h6' className={classes.tocTitle}>Content</Typography>
+                    <hr />
+                    <SectionLink name='useClickOutside'/>
+                    <SectionLink name='useEffectWithDebounce'/>
+                    <SectionLink name='useEffectWithLoading'/>
+                    <SectionLink name='useNow'/>
+                    <SectionLink name='usePersistedState'/>
+                    <SectionLink name='useResolutionSwitch'/>
+                    <SectionLink name='useStateForField'/>
+                    <SectionLink name='useStateForModel'/>
+                    <SectionLink name='useStateForModelWithLoading'/>
+                    <SectionLink name='useToggle'/>
+                    <SectionLink name='enhanceWithClickOutside'/>
+                    <SectionLink name='asyncOnEnterKey'/>
+                    <SectionLink name='colorGenerator'/>
+                    <SectionLink name='createFetchController'/>
+                    <SectionLink name='debounce'/>
+                    <SectionLink name='humanize'/>
+                    <SectionLink name='onEnterKey'/>
+                    <SectionLink name='toTitleCase'/>
+                    <SectionLink name='ValidatorForm'/>
+                </Paper>
+            </Grid>
         </Grid>
     );
 };
