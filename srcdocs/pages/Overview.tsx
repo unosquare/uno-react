@@ -61,7 +61,7 @@ export default (props: any) => {
                 </Typography>
                 <Divider className={classes.divider} />
                 <Typography variant='subtitle1' paragraph={true}>
-                    Uno-React is available as a <a
+                    uno-react is available as a <a
                         href='https://www.npmjs.com/package/uno-react'
                         className={classes.link}
                         target='_blank'
@@ -130,7 +130,7 @@ export default (props: any) => {
                     <a
                         href='https://www.npmjs.com/package/uno-material-ui'
                         className={classes.link}
-                    >Uno-Material-UI
+                    >uno-material-ui
                     </a> is a set of custom Material-UI components that extend
                      their funcionalities in specific scenarios.
                 </Typography>
