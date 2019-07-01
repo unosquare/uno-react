@@ -34,7 +34,7 @@ function validateEndDate(startValue: any, endValue: any) {
 
 ValidatorForm.addValidationRule('validateEndDate', validateEndDate);
 
-function startDateGreaterThanEndDate(endValue: any, startValue: any) {
+function startDateGreaterThanEndDate(startValue: any, endValue: any) {
     if (endValue !== null) {
         const startDate = parse(startValue);
         const endDate = parse(endValue);
