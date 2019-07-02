@@ -26,7 +26,7 @@ ValidatorForm.addValidationRule('isNotAllBlanks', isNotAllBlanks);
 
 ValidatorForm.addValidationRule('maxNaturalNumber', maxNaturalNumber);
 
-function validateEndDate(startValue: any, endValue: any) {
+function validateEndDate(endValue: any, startValue: any) {
     const startDate = parse(startValue);
     const endDate = parse(endValue);
     return (differenceInMinutes(endDate, startDate) > 0);
@@ -34,7 +34,7 @@ function validateEndDate(startValue: any, endValue: any) {
 
 ValidatorForm.addValidationRule('validateEndDate', validateEndDate);
 
-function startDateGreaterThanEndDate(endValue: any, startValue: any) {
+function startDateGreaterThanEndDate(startValue: any, endValue: any) {
     if (endValue !== null) {
         const startDate = parse(startValue);
         const endDate = parse(endValue);
