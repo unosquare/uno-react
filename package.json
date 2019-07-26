@@ -1,6 +1,6 @@
 {
   "name": "uno-react",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "Common functions, HOCs and hooks for React.",
   "main": "lib/index.js",
   "scripts": {
@@ -29,22 +29,22 @@
   },
   "homepage": "https://github.com/unosquare/uno-react#readme",
   "devDependencies": {
-    "@material-ui/core": "^4.1.2",
+    "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
-    "@material-ui/styles": "^4.1.2",
-    "@types/react": "16.8.22",
-    "@types/react-dom": "16.8.4",
+    "@material-ui/styles": "^4.2.1",
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.5",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-clean-easy": "^1.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-highlight": "^0.12.0",
     "react-router-dom": "^5.0.1",
-    "react-router-hash-link": "^1.2.1",
+    "react-router-hash-link": "^1.2.2",
     "tslint": "^5.18.0",
     "tslint-react": "^4.0.0",
-    "typescript": "^3.5.2",
-    "uno-material-ui": "^1.0.3"
+    "typescript": "^3.5.3",
+    "uno-material-ui": "^1.2.2"
   },
   "peerDependencies": {
     "react": "^16.8.6",
