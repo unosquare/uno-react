@@ -7,27 +7,24 @@ import { HashLink } from 'react-router-hash-link';
 import { MenuList, NavBar } from 'uno-material-ui';
 import logo from '../static/uno-react-logo-white.svg';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({
     button: {
         color: '#fff',
     },
     link: {
         textDecoration: 'none',
     },
-    logo: {
-        width: '210px',
-    },
     sub: {
         marginLeft: '20px',
     },
 }));
 
-export default (props: any) => {
-    const classes = useStyles(props);
+export default () => {
+    const classes = useStyles({});
 
     return (
         <React.Fragment>
-            <NavBar title={<img className={classes.logo} src={logo} />} />
+            <NavBar logo={logo} />
             <MenuList>
                 <Link to='/uno-react/' className={classes.link}>
                     <ListItem button={true}>
