@@ -11,7 +11,7 @@ export declare function enhanceWithClickOutside(Component: any): {
         render(): JSX.Element;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K>) | Pick<{}, K>, callback?: () => void): void;
-        forceUpdate(callBack?: () => void): void;
+        forceUpdate(callback?: () => void): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: React.ReactNode;
         }>;
