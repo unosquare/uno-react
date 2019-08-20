@@ -1,5 +1,5 @@
-import differenceInMinutes from 'date-fns/difference_in_minutes';
-import parse from 'date-fns/parse';
+import differenceInMinutes from 'date-fns/differenceInMinutes';
+import parseISO from 'date-fns/parseISO';
 import { ValidatorForm } from 'react-form-validator-core';
 
 const lettersRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])');
@@ -26,21 +26,16 @@ ValidatorForm.addValidationRule('isNotAllBlanks', isNotAllBlanks);
 
 ValidatorForm.addValidationRule('maxNaturalNumber', maxNaturalNumber);
 
-function validateEndDate(endValue: any, startValue: any) {
-    const startDate = parse(startValue);
-    const endDate = parse(endValue);
+function validateEndDate(endValue: string, startValue: string) {
+    const startDate = parseISO(startValue);
+    const endDate = parseISO(endValue);
     return (differenceInMinutes(endDate, startDate) > 0);
 }
 
 ValidatorForm.addValidationRule('validateEndDate', validateEndDate);
 
-function startDateGreaterThanEndDate(startValue: any, endValue: any) {
-    if (endValue !== null) {
-        const startDate = parse(startValue);
-        const endDate = parse(endValue);
-        return (differenceInMinutes(endDate, startDate) > 0);
-    }
-    return true;
+function startDateGreaterThanEndDate(startValue: string, endValue: string) {
+    return endValue !== null ? validateEndDate(endValue, startValue) : true;
 }
 
 ValidatorForm.addValidationRule('startDateGreaterThanEndDate', startDateGreaterThanEndDate);
