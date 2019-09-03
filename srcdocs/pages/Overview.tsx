@@ -79,7 +79,7 @@ export default (props: any) => {
                                 href='https://date-fns.org/'
                                 className={classes.link}
                             >
-                                date-fns - Version: ^1.30.1
+                                date-fns - Version: ^2.0.1
                             </a>
                         </li>
                         <li>
@@ -88,22 +88,6 @@ export default (props: any) => {
                                 className={classes.link}
                             >
                                 react-form-validator-core -  Version: ^0.6.4
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href='https://reactjs.org/'
-                                className={classes.link}
-                            >
-                                React - Version: 16.8.6
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href='https://es.reactjs.org/docs/react-dom.html'
-                                className={classes.link}
-                            >
-                                React-Dom - Version: 16.8.6
                             </a>
                         </li>
                     </ul>
