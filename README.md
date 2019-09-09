@@ -7,34 +7,35 @@
 
 Common functions, HOCs and hooks for React.
 
-Table of contents
-=================
+## Table of contents
 
-  * [💾Installation](#installation)
-  * [What's in the library](#whats-in-the-library)
-    * [Hooks](#hooks)
-      * [useClickOutside](#useclickoutside)
-      * [useEffectWithDebounce](#useeffectwithdebounce)
-      * [useEffectWithLoading](#useeffectwithloading)
-      * [useNow](#usenow)
-      * [usePersistedState](#usepersistedstate)
-      * [useResolutionSwitch](#useresolutionswitch)
-      * [useStateForField](#usestateforfield)
-      * [useStateForModel](#usestateformodel)
-      * [useStateForModelWithLoading](#usestateformodelwithloading)
-      * [useToggle](#usetoggle)
-    * [HOCs](#hocs)
-      * [enhanceWithClickOutside](#enhancewithclickoutside)
-    * [Functions](#functions)
-      * [asyncOnEnterKey](#asynconenterkey)
-      * [colorGenerator](#colorgenerator)   
-      * [createFetchController](#createfetchcontroller)
-      * [debounce](#debounce)
-      * [humanize](#humanize)
-      * [onEnterKey](#onenterkey)
-      * [toTitleCase](#totitlecase)
-      * [ValidatorForm](#validatorform)
-      
+* [💾Installation](#installation)
+* [What's in the library](#whats-in-the-library)
+* [Hooks](#hooks)
+    * [useClickOutside](#useclickoutside)
+    * [useEffectWithDebounce](#useeffectwithdebounce)
+    * [useEffectWithLoading](#useeffectwithloading)
+    * [useNow](#usenow)
+    * [usePersistedState](#usepersistedstate)
+    * [useResolutionSwitch](#useresolutionswitch)
+    * [useStateForField](#usestateforfield)
+    * [useStateForModel](#usestateformodel)
+    * [useStateForModelWithLoading](#usestateformodelwithloading)
+    * [useToggle](#usetoggle)
+* [HOCs](#hocs)
+    * [enhanceWithClickOutside](#enhancewithclickoutside)
+* [Functions](#functions)
+    * [asyncOnEnterKey](#asynconenterkey)
+    * [colorGenerator](#colorgenerator)
+    * [createFetchController](#createfetchcontroller)
+    * [debounce](#debounce)
+    * [humanize](#humanize)
+    * [onEnterKey](#onenterkey)
+    * [toTitleCase](#totitlecase)
+    * [ValidatorForm](#validatorform)
+* [Classes](#classs)
+    * [SimpleObservable](#SimpleObservable)
+
 ## Installation
 
 ```bash
@@ -45,11 +46,12 @@ We are using hooks, so you need to work with React ^16.8.0.
 
 ## What's in the library
 
-In this section, we present the different components that are available in the uno-react library. Please keep in mind that everything in the library is opt-in. uno-react is completely opt-in. It won't force you to use any of its components, classes or methods.
+In this section, we present the different hooks/functions that are available in the uno-react library. Please keep in mind that everything in the library is opt-in. uno-react is completely opt-in. It won't force you to use any of its hooks, classes or functions.
 
 ## Hooks
 
 ### `useClickOutside`
+
 This hook allows to call a given function when a click event occurs outside the component.
 
 ### Parameters
@@ -183,7 +185,7 @@ This hook keep the current **[Date][7]** object updated. The `value` will be upd
 ```javascript
 const myComponent = () => {
     const [now] = useNow();
-    
+
     return (
         <div>
             Seconds: {now.getSeconds()}
@@ -275,9 +277,9 @@ Similar to `useStateForModel` this hook helps us to keep the value of a variable
 ```javascript
 const myComponent = () => {
     const [ myValue, handleChange, setMyValue ] = useStateForField('Unosquare');
-    
+
     const reset = () => setMyValue('Unosquare');
-    
+
     return (
         <div>
             <h1>{myValue}</h1>
@@ -307,7 +309,6 @@ This hook allows us to keep updated the values of a model that are related to an
 
 - model: **[Object][3]** the current model, that keeps the information updated.
 - handleChange: **[Function][8]** this function should be called on the onChange event.
-
 
 ### Example
 
@@ -807,6 +808,12 @@ const form = () => {
 };
 
 ```
+
+## Classes
+
+### `SimpleObservable`
+
+// TODO
 
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

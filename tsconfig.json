@@ -2,7 +2,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": { "*": ["types/*"] },
-        "target": "es6",
+        "target": "es5",
         "lib": [
             "dom",
             "dom.iterable",
@@ -19,7 +19,7 @@
         "jsx": "react",
         "outDir": "./lib",
         "declaration": true,
-        "sourceMap": true,
+        "sourceMap": false
     },
     "include": ["src/**/*.ts", "src/**/*.tsx"],
     "exclude": ["test/**/*.*", "node_modules"]
