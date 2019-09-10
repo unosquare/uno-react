@@ -1,4 +1,4 @@
-export default class SimpleObservable {
+export class SimpleObservable {
     private observers: Array<((change?: string) => void)> = [];
 
     public subscribe(observer: (change?: string) => void): () => void {
