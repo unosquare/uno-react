@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/uno-react.svg)](https://badge.fury.io/js/uno-react)
-[![Build Status](https://travis-ci.org/unosquare/uno-react.svg?branch=master)](https://travis-ci.org/unosquare/uno-react)
+![Buils status](https://github.com/unosquare/uno-react/workflows/Node.js%20Package/badge.svg)
 
 # uno-react
 
