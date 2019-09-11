@@ -43,8 +43,8 @@
     "react-router-hash-link": "^1.2.2",
     "tslint": "^5.20.0",
     "tslint-react": "^4.0.0",
-    "typescript": "^3.6.2",
-    "uno-material-ui": "^1.4.2"
+    "typescript": "^3.6.3",
+    "uno-material-ui": "^1.5.0"
   },
   "peerDependencies": {
     "react": "^16.9.0",
