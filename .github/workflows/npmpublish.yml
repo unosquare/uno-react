@@ -16,6 +16,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm run lint
-      - run: npm test
+      - name: Prepare
+        run: npm ci
+      - name: TSLint checks
+        uses: mooyoul/tslint-actions@v1.1.1
+      - name: Unit test
+        run: npm test
