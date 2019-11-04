@@ -20,5 +20,7 @@ jobs:
         run: npm ci
       - name: TSLint checks
         uses: mooyoul/tslint-actions@v1.1.1
+        with:
+          pattern: 'src/**/*.ts src/**/*.tsx'
       - name: Unit test
         run: npm test
