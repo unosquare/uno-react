@@ -10,7 +10,7 @@ Common functions, HOCs and hooks for React.
 
 ## Table of contents
 
-* [💾Installation](#installation)
+* [Installation](#installation)
 * [What's in the library](#whats-in-the-library)
 * [Hooks](#hooks)
     * [useClickOutside](#useclickoutside)
@@ -39,11 +39,11 @@ Common functions, HOCs and hooks for React.
 
 ## Installation
 
+We are using hooks, so you need to work with React ^16.8.0.
+
 ```bash
 > npm i uno-react
 ```
-
-We are using hooks, so you need to work with React ^16.8.0.
 
 ## What's in the library
 
