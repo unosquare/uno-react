@@ -1,4 +1,4 @@
-name: Node.js Package
+name: npm Publish
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
           key: node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             node-
-      - name: npm
+      - name: npm build
         run: |
           npm ci
           npm run build
