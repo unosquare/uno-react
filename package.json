@@ -31,7 +31,7 @@
   "devDependencies": {
     "@material-ui/core": "^4.7.0",
     "@material-ui/icons": "^4.5.1",
-    "@types/react": "16.9.13",
+    "@types/react": "16.9.15",
     "@types/react-dom": "16.9.4",
     "cssnano": "^4.1.10",
     "react": "^16.12.0",
