@@ -1,1 +1,1 @@
-export declare const useNow: (interval?: number) => any[];
+export declare const useNow: (interval?: number) => Date[];
