@@ -1,1 +1,1 @@
-export declare const useResolutionSwitch: (outerWidth?: number, timeout?: number) => boolean[];
+export declare const useResolutionSwitch: (outerWidth?: number, timeout?: number) => any[];

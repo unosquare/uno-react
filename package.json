@@ -29,24 +29,14 @@
   },
   "homepage": "https://github.com/unosquare/uno-react#readme",
   "devDependencies": {
-    "@material-ui/core": "^4.8.0",
-    "@material-ui/icons": "^4.5.1",
-    "@types/react": "16.9.16",
-    "@types/react-dom": "16.9.4",
-    "cssnano": "^4.1.10",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-highlight": "^0.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-router-hash-link": "^1.2.2",
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
     "eslint": "^6.7.2",
-    "prettier": "^1.19.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "typescript": "^3.7.3",
-    "uno-material-ui": "^1.7.11"
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "typescript": "^3.7.3"
   },
   "peerDependencies": {
     "react": "^16.12.0",

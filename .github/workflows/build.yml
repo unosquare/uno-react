@@ -14,8 +14,7 @@ jobs:
           key: node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             node-
-      - name: npm build and coverage
+      - name: npm build and coverage (pending)
         run: |
           npm ci
           npm run build
-          npm test
