@@ -16,7 +16,7 @@ export function useEffectWithLoading(effect: any, initialValue: any, inputs: Rea
             }
         });
 
-        return (() => _isMounted = false);
+        return () => (_isMounted = false);
     }, inputs || []);
 
     return [getter, isLoading];

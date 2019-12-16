@@ -7,7 +7,7 @@ export const useNow = (interval = 1000) => {
 
     useEffect(() => {
         _timer = setInterval(updateTime, interval);
-        return (() => clearInterval(_timer));
+        return () => clearInterval(_timer);
     }, []);
 
     return [time];

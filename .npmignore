@@ -1,0 +1,9 @@
+test
+.github
+src
+.nyc_output
+.vscode
+*.json
+.eslintrc.json
+.prettierrc.js
+*.yml

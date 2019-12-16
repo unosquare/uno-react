@@ -10,15 +10,14 @@ export function useStateForModelWithLoading(effect: any, initialValue: any, inpu
         _isMounted = true;
         setIsLoading(true);
 
-        effect()
-            .then((resp: any) => {
-                if (_isMounted) {
-                    handleChange(resp);
-                    setIsLoading(false);
-                }
-            });
+        effect().then((resp: any) => {
+            if (_isMounted) {
+                handleChange(resp);
+                setIsLoading(false);
+            }
+        });
 
-        return (() => _isMounted = false);
+        return () => (_isMounted = false);
     }, inputs || []);
 
     return [getter, isLoading, handleChange];

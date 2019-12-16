@@ -10,7 +10,7 @@ export function useEffectWithDebounce(effect: any, debounce: number, inputs: Rea
 
     React.useEffect(() => {
         timeout = setTimeout(doLater, debounce);
-        return (() => clearTimeout(timeout));
+        return () => clearTimeout(timeout);
     }, inputs || []);
 
     return;

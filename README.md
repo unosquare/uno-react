@@ -26,16 +26,7 @@ Common functions, HOCs and hooks for React.
 * [HOCs](#hocs)
     * [enhanceWithClickOutside](#enhancewithclickoutside)
 * [Functions](#functions)
-    * [asyncOnEnterKey](#asynconenterkey)
-    * [colorGenerator](#colorgenerator)
-    * [createFetchController](#createfetchcontroller)
-    * [debounce](#debounce)
-    * [humanize](#humanize)
-    * [onEnterKey](#onenterkey)
-    * [toTitleCase](#totitlecase)
     * [ValidatorForm](#validatorform)
-* [Classes](#classs)
-    * [SimpleObservable](#SimpleObservable)
 
 ## Installation
 
@@ -476,183 +467,7 @@ const Test = () => {
 ```
 
 ## Functions
- 
- ### `asyncOnEnterKey`
-This function is similar to [onEnterKey](#onenterkey), the only difference is that the callback should be an async function.
-### Parameters
-- `callback` **[function][8]** The function that will be called when the "enter" key is pressed.
-### Example
-```javascript
 
-const myComponent = () => {
- 
- const onEnter = async() => await asynFunction();
- 
- return(
-  <div onKeyDown=(asyncOnEnterKey(onEnter))>   
-  <div/>
- );
-};
-
-
-const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
-    const [search, changeSearch] = useStateForField('');
-   
-    const action = async() => await retrieveInput(search);
-    
-    return (
-        <TextField
-            onKeyDown={asyncOnEnterKey(action)}
-            value={search}
-            onChange={changeSearch}
-        />
-    );
-};
-
-```
- 
-### `colorGenerator`
-This function retrieves an **[Array][1]** of RGB colors that are a result of an interpolation between to given RGB colors.
-
-### Parameters
-- `startColor` **[Array][1]** RGB color (<Red|Green|Value>) that represents the start color for the interpolation.
-- `endColor` **[Array][1]** RGB color (<Red|Green|Value>) that represents the end color for the interpolation.
-- `factor` **[Number][5]** The ratio of the output rate to the input rate(startColor -> endColor).
-
-### Returns
-- `Colors` **[Array][1]** RGB colors array.
-
-### Example
-
-```javascript
-
-const myComponent = () => {
-    const startColor = [255, 0, 0];
-    const endColor = [0, 255, 0];
-
-    const colors = ColorGenerator(startColor, endColor, 1); //Array of colors result of the interpolation.
-
-    //Here we use the array of colors to create new divs using the color data to set the backgroundColor value.
-    //Every color represents a RGB array (color[0] = red channel value, color[1] = green channel value, color[2] = blue channel value)
-    return (
-        <div
-            style={{
-                height: 'auto',
-                width: '100px',
-            }}
-        >
-            {
-                colors.map((color, index) => (
-                    <div
-                        key={index}
-                        style={{
-                            backgroundColor: `rgb(${color[0]}, ${color[1]}, ${color[2]})`,
-                            height: '10px',
-                            width: '10px',
-                        }}
-                    />
-                ))
-            }
-        </div>
-    );
-};
-
-```
-
-### `createFetchController`
-This function works as a "quick start" for [requestController](#requestcontroller), this function allows you to use a default headersResolver and a default responseSolver.
-### Parameters 
-- `options`**[Object][3]** <[headersResolver](#headersresolver) | [responseResolver](#responseresolver)>.
-***note***: this parameter is optional.
-
-### Returns
-- [requestControllerWithDefaultResolvers](#requestcontrollerwithdefaultresolvers)**[Function][8]**
-
-
-### Example
-
-```javascript
-
-const requestController = createFetchController({});
-const response = await requestController('http://testUrl', null, 'Get', null);
-
-```
-
-### `debounce`
- This function allow to apply a function after certain amount of time.
-### Parameters
-- `F` **[function][2]** A function to be executed.
-- `waitMilliseconds ` **[number][2]** The number of miliseconds to wait before execute the function.
-
-### Example
-
-```javascript
-const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
-    const [search, changeSearch] = useStateForField('');
-  
-    const action = () => retrieveInput(search);
-    const onChange = (ev) => debounce(()=> changeSearch(ev.target.value), 500);
- 
-    return (
-        <TextField
-            onKeyDown={onEnterKey(action)}
-            value={search}
-            onChange={onChange}
-        />
-    );
-};
-```
-
-### `humanize`
-This function takes a string and converts in to a more "readable" string.
-### Parameters
-- `name` **[String][2]** A string that will be humanized.
-### Returns
-- `humanized` **[String][2]** The new string.
-
-### Example
-
-```javascript
-const humanized = humanize("StringThatWillBeHumanized"); //"String That Will Be Humanized" 
-```
-
-### `onEnterKey`
-This function is a HOF that takes a function as parameter which will be call when the "enter" key is pressed, this HOF should be used as a component's prop that will be involved in keyboard events.
-### Parameters
-- `callback` **[function][8]** The function that will be called when the "enter" key is pressed.
-### Example
-
-```javascript
-
-const SearchBox: React.FunctionComponent<any> = ({retrieveInput}) => {
-    const [search, changeSearch] = useStateForField('');
-
-    const action = () => retrieveInput(search);
-
-    return (
-        <TextField
-            onKeyDown={onEnterKey(action)}
-            value={search}
-            onChange={changeSearch}
-        />
-    );
-};
-
-```
-
-### `toTitleCase`
-This function takes a string and converts it to "Title Case", that means, it uses each word (separated by a space) and capitalizes the first letter of each word.
-### Parameters
-- `title` **[String][2]** A string that will be transform to title case.
-### Returns
-- `title` **[String][2]** The new string.
-
-### Example
-
-```javascript
-const newTitle = toTitleCase("title test"); // "Title Test"
-
-```
 ### `ValidatorForm`
 This component extends the original **[ValidatorForm][12]** rules. This component works for wrap TextValidator component(s) and for register any other custom rules, this rules can be used in the wrapped components.
 
@@ -809,12 +624,6 @@ const form = () => {
 };
 
 ```
-
-## Classes
-
-### `SimpleObservable`
-
-// TODO
 
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
