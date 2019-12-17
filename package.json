@@ -7,7 +7,7 @@
     "prebuild:docs": "npx shx rm -rf docs/*",
     "build:docs": "npx parcel build ./srcdocs/index.html --no-source-maps --public-url /uno-react/ -d ./docs",
     "start": "npx parcel ./srcdocs/index.html --no-source-maps --port 8080 --open",
-    "test": "node ./test",
+    "test": "echo Error",
     "build": "tsc",
     "lint": "eslint src/**/*.{js,ts}",
     "lint:fix": "eslint src/**/*.{js,ts} --fix"
