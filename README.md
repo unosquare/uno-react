@@ -23,8 +23,6 @@ Common functions, HOCs and hooks for React.
     * [useStateForModel](#usestateformodel)
     * [useStateForModelWithLoading](#usestateformodelwithloading)
     * [useToggle](#usetoggle)
-* [HOCs](#hocs)
-    * [enhanceWithClickOutside](#enhancewithclickoutside)
 * [Functions](#functions)
     * [ValidatorForm](#validatorform)
 
@@ -420,50 +418,6 @@ const myComponent = () => {
         </div >
     );
 };
-```
-
-## HOCs
- 
-### `enhanceWithClickOutside`
-This **[HOC][11]** allows to the wrapped component to call a function when a click event occurs outside the component. The function that will be call must be named handleClickOutside and should receive an event as parameter.
-
-### Example
-
-```javascript
-
-class ToBeEnhanced extends React.Component<any> {
-
-    constructor(props) {
-        super(props);
-    }
-
-    public render() {
-
-        return (
-            <div
-                style={{
-                    backgroundColor: 'red',
-                    height: '100px',
-                    width: '100px',
-                }}
-            />
-        );
-    }
-
-    private handleClickOutside = (e) => {
-        //Do what you want in here.
-    }
-}
-
-const Enhanced = enhanceWithClickOutside(ToBeEnhanced);
-
-const Test = () => {
-
- return (
-  <Enhanced />
- );
-};
-
 ```
 
 ## Functions

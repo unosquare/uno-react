@@ -1,17 +1,15 @@
 import * as React from 'react';
 
-export function useEffectWithDebounce(effect: any, debounce: number, inputs: React.DependencyList) {
-    let timeout: any;
+export function useEffectWithDebounce(effect: () => void, debounce: number, inputs: React.DependencyList): void {
+    let timeout: number;
 
-    const doLater = () => {
+    const doLater = (): void => {
         timeout = undefined;
         effect();
     };
 
     React.useEffect(() => {
         timeout = setTimeout(doLater, debounce);
-        return () => clearTimeout(timeout);
+        return (): void => clearTimeout(timeout);
     }, inputs || []);
-
-    return;
 }

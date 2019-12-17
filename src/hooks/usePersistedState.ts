@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-export function usePersistedState(defaultValue: any, keyName: string) {
+export function usePersistedState(defaultValue: any, keyName: string): [any, React.Dispatch<any>] {
     const [getter, setter] = React.useState(defaultValue);
 
-    const setterWithUpdateLocalStorage = (value: any) => {
+    const setterWithUpdateLocalStorage = (value: any): void => {
         setter(value);
         localStorage.setItem(keyName, JSON.stringify(value));
     };
