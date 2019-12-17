@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useClickOutside(Component: {}, onClickOutside: () => void) {
+export function useClickOutside(Component: any, onClickOutside: () => void) {
     return (props: {}) => {
         const node: any = React.useRef();
 
@@ -12,7 +12,7 @@ export function useClickOutside(Component: {}, onClickOutside: () => void) {
 
         React.useEffect(() => {
             document.addEventListener('click', handleClick);
-            return () => document.removeEventListener('click', handleClick);
+            return (): void => document.removeEventListener('click', handleClick);
         }, []);
 
         return (

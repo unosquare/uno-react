@@ -6,7 +6,7 @@
 
 *:star: Please star this project if you find it useful!*
 
-Common functions, HOCs and hooks for React.
+Common functions, and hooks for React.
 
 ## Table of contents
 

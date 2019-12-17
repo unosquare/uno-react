@@ -52,6 +52,6 @@ ValidatorForm.addValidationRule(
     (value: string, comparedValue: string): boolean => value === comparedValue,
 );
 
-ValidatorForm.addValidationRule('password', (value: string): boolean => value.match(passwordRegex));
+ValidatorForm.addValidationRule('password', (value: string): boolean => !!value.match(passwordRegex));
 
 export { startDateGreaterThanEndDate, ValidatorForm, validateEndDate };
