@@ -50,6 +50,6 @@
   "dependencies": {
     "date-fns": "^2.8.1",
     "react-form-validator-core": "^0.6.4",
-    "uno-js": "^0.2.4"
+    "uno-js": "^0.3.1"
   }
 }
