@@ -1,7 +1,7 @@
 {
   "name": "uno-react",
   "version": "0.10.7",
-  "description": "Common functions, HOCs and hooks for React.",
+  "description": "Common functions, and hooks for React.",
   "main": "lib/index.js",
   "scripts": {
     "prebuild:docs": "npx shx rm -rf docs/*",
@@ -50,6 +50,6 @@
   "dependencies": {
     "date-fns": "^2.8.1",
     "react-form-validator-core": "^0.6.4",
-    "uno-js": "^0.2.2"
+    "uno-js": "^0.2.4"
   }
 }
