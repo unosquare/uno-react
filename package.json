@@ -32,13 +32,13 @@
     "@types/react-dom": "^16.9.4",
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.2",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.4"
   },
   "peerDependencies": {
     "react": "^16.12.0",
@@ -50,6 +50,6 @@
   "dependencies": {
     "date-fns": "^2.8.1",
     "react-form-validator-core": "^0.6.4",
-    "uno-js": "^0.3.1"
+    "uno-js": "^0.3.2"
   }
 }
