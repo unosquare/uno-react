@@ -1,5 +1,4 @@
-import differenceInMinutes from 'date-fns/differenceInMinutes';
-import parseISO from 'date-fns/parseISO';
+import { parseISO } from 'uno-js';
 import { ValidatorForm } from 'react-form-validator-core';
 
 const lettersRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])');
@@ -23,11 +22,8 @@ ValidatorForm.addValidationRule('isNotAllBlanks', isNotAllBlanks);
 
 ValidatorForm.addValidationRule('maxNaturalNumber', maxNaturalNumber);
 
-function validateEndDate(endValue: string, startValue: string): boolean {
-    const startDate = parseISO(startValue);
-    const endDate = parseISO(endValue);
-    return differenceInMinutes(endDate, startDate) > 0;
-}
+const validateEndDate = (endValue: string, startValue: string): boolean =>
+    parseISO(startValue).getTime() > parseISO(endValue).getTime();
 
 ValidatorForm.addValidationRule('validateEndDate', validateEndDate);
 
