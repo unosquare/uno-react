@@ -19,8 +19,4 @@ To install uno-react through npm, you only need to run the following command:
 > npm i uno-react
 ```
 
-## What's in the library
-
-In this section, we present the different hooks/functions that are available in the uno-react library. Please keep in mind that everything in the library is opt-in. uno-react is completely opt-in. It won't force you to use any of its hooks, classes or functions.
-
 Check the documentation of this library at [https://unosquare.github.io/uno/uno-react](https://unosquare.github.io/uno/uno-react)
