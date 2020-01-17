@@ -34,7 +34,7 @@
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   },
   "peerDependencies": {
     "react": "^16.12.0",
@@ -45,6 +45,6 @@
   ],
   "dependencies": {
     "react-form-validator-core": "^0.6.4",
-    "uno-js": "^0.5.0"
+    "uno-js": "^0.5.1"
   }
 }
