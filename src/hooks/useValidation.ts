@@ -13,7 +13,7 @@ export const useValidation =
           return last;
         }, {});
   
-      const _isValid = Object.keys(errors).some(x => errors[x]);
+      const _isValid = !Object.keys(errors).some(x => errors[x]);
   
       setErrors(errors);
       setIsValid(_isValid);
