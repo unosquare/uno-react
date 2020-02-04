@@ -1,24 +1,38 @@
 import { useEffect, useState } from 'react';
+import { useStateForModel } from './useStateForModel';
 
-export const useValidation = (fn: (string, any, {}) => string , value: any): [boolean, {}] => {
-    const [initialValue, _] = useState(value);
-    const [errors, setErrors] = useState({});
-    const [isValid, setIsValid] = useState(true);
-  
-    useEffect(() => {
-      const errors = Object.keys(value).reduce((last, current) => {
-          const hasChanged = initialValue[current] != value[current];
-          last[current] = !hasChanged ? '' : fn(current, value[current], value);
+export const useValidation = (
+  fn: (propName: string, prop: any, model: {}) => string,
+  value: Record<string, any>
+) => {
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isValid, setIsValid] = useState(true);
+  const [model, setModel] = useStateForModel(value);
+  const [flags, setFlags] = useState<Record<string, boolean>>({});
 
-          return last;
-        }, {});
+  useEffect(() => {
+    const errors = Object.keys(value).reduce(
+      (last: Record<string, string>, current: string) => {
+        if (model[current] !== value[current] || flags[current]) {
+          flags[current] = true;
+          last[current] = fn(current, value[current], value);
+        } else {
+          flags[current] = false;
+        }
+        return last;
+      },
+      {}
+    );
 
-      const _isValid = !Object.keys(errors).some(x => errors[x]);
+    setFlags(flags);
+    
+    const _isValid =
+      !Object.keys(errors).some(x => errors[x]) &&
+      !Object.keys(flags).some(x => flags[x] === false);
 
-      setErrors(errors);
-      setIsValid(_isValid);
-  
-    }, [value]); 
+    setErrors(errors);
+    setIsValid(_isValid);
+  }, [value]);
 
-    return [isValid, errors];
+  return [errors, isValid];
 };
