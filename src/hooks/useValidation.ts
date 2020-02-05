@@ -3,31 +3,44 @@ import { useStateForModel } from './useStateForModel';
 
 export const useValidation = (
     fn: (propName: string, prop: any, model: {}) => string,
-    value: Record<string, any>,
-): [Record<string, string>, boolean] => {
+    value: Record<string, any>
+  ): [boolean, Record<string, string>] => {
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isValid, setIsValid] = useState(true);
     const [model, setModel] = useStateForModel(value);
-    const [flags, setFlags] = useState<Record<string, boolean>>({});
-
+    const [hasChanged, setHasChanged] = useState<Record<string, boolean>>({});
+  
     useEffect(() => {
-        const errors = Object.keys(value).reduce((last: Record<string, string>, current: string) => {
-            if (model[current] !== value[current] || flags[current]) {
-                flags[current] = true;
-                last[current] = fn(current, value[current], value);
-            } else {
-                flags[current] = false;
-            }
-            return last;
-        }, {});
-
-        setFlags(flags);
-
-        const _isValid = !Object.keys(errors).some(x => errors[x]) && !Object.keys(flags).some(x => flags[x] === false);
-
-        setErrors(errors);
-        setIsValid(_isValid);
+      let _hasChanged = { ...hasChanged };
+      const errors = Object.keys(model).reduce(
+        (last: Record<string, string>, current: string) => {
+          const error = fn(current, value[current], value);
+  
+          if (!error) {
+            last[current] = "";
+            _hasChanged[current] = true;
+          } else {
+            last[current] = !_hasChanged[current] ? "" : error;
+          }
+  
+          if (!_hasChanged[current] && value[current] !== model[current]) {
+            _hasChanged[current] = true;
+            last[current] = error;
+          }
+  
+          return last;
+        },
+        {}
+      );
+  
+      setHasChanged(_hasChanged);
+      const _isValid =
+        !Object.keys(errors).some(x => errors[x]) &&
+        !Object.keys(model).some(x => !_hasChanged[x]);
+  
+      setErrors(errors);
+      setIsValid(_isValid);
     }, [value]);
-
-    return [errors, isValid];
-};
+  
+    return [isValid, errors];
+  };
