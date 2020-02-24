@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { useStateForModel } from './useStateForModel';
+import { useToggle } from './useToggle';
 
 export function useApiForm(
     datasource: string | Request | (() => Promise<Response>),
     transform?: (responseObject: object) => object,
 ) {
     const [getter, setter] = useStateForModel({});
-    const [isLoading, setIsLoading] = React.useState(true);
-    const [error, setError] = React.useState(false);
+    const [isLoading, toggleIsLoading] = useToggle(true);
+    const [error, toggleError] = useToggle(false);
 
     React.useEffect(() => {
         let data = null;
@@ -20,12 +21,12 @@ export function useApiForm(
         data.then(x => {
             if (x.ok) {
                 x.json().then(y => {
-                    setter(transform ? transform(y) : y)
-                    setIsLoading(false);
+                    setter(transform ? transform(y) : y);
+                    toggleIsLoading();
                 });
             } else {
-                setError(true);
-                setIsLoading(false);
+                toggleError();
+                toggleIsLoading();
             }
         });
     }, []);
