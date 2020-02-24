@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useStateForModel } from './useStateForModel';
 
 export function useApiForm(
-    datasource: string | Request | (() => Promise<object>),
+    datasource: string | Request | (() => Promise<Response>),
     transform?: (responseObject: object) => object,
 ) {
     const [getter, setter] = useStateForModel({});
