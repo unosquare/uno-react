@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useStateForModel(initialValue: any) {
+export function useStateForModel<T>(initialValue: T): [T, (event: any) => void] {
     const [getter, setter] = React.useState(initialValue);
 
     const handleChange = (event: any): void => {

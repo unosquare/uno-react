@@ -1,26 +1,24 @@
 import * as React from 'react';
 import { useStateForModel } from './useStateForModel';
 import { useToggle } from './useToggle';
+import { useValidation } from './useValidation';
 
-export function useApiForm(
-    datasource: string | Request | (() => Promise<Response>),
+export function useApiFormWithValidation<T>(
+    dataSource: string | Request | (() => Promise<Response>),
+    validation: (propName: string, prop: any, model: {}) => string,
     transform?: (responseObject: object) => object,
-) {
-    const [getter, setter] = useStateForModel({});
+): [T, (event: any) => void, boolean, boolean, boolean, Record<string, string>] {
+    const [getter, setter] = useStateForModel<T>({} as T);
     const [isLoading, toggleIsLoading] = useToggle(true);
     const [error, toggleError] = useToggle(false);
+    const [isValid, errors] = useValidation(validation, getter);
 
     React.useEffect(() => {
-        let data = null;
-        if (typeof datasource === 'string' || datasource instanceof Request) {
-            data = fetch(datasource);
-        } else if (typeof datasource === 'function') {
-            data = datasource();
-        }
+        const data = typeof dataSource === 'function' ? dataSource() : fetch(dataSource);
 
-        data.then(x => {
+        data.then((x: Response) => {
             if (x.ok) {
-                x.json().then(y => {
+                x.json().then((y: any) => {
                     setter(transform ? transform(y) : y);
                     toggleIsLoading();
                 });
@@ -30,6 +28,15 @@ export function useApiForm(
             }
         });
     }, []);
+
+    return [getter, setter, isLoading, error, isValid, errors];
+}
+
+export function useApiForm<T>(
+    dataSource: string | Request | (() => Promise<Response>),
+    transform?: (responseObject: object) => object,
+): [T, (event: any) => void, boolean, boolean] {
+    const [getter, setter, isLoading, error] = useApiFormWithValidation<T>(dataSource, () => '', transform);
 
     return [getter, setter, isLoading, error];
 }
