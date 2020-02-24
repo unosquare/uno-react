@@ -11,7 +11,7 @@ export function useApiFormWithValidation<T>(
     const [getter, setter] = useStateForModel<T>({} as T);
     const [isLoading, toggleIsLoading] = useToggle(true);
     const [error, toggleError] = useToggle(false);
-    const [isValid, errors] = useValidation(validation, getter);
+    const [isValid, errors] = useValidation(validation, getter, 100, true);
 
     React.useEffect(() => {
         const data = typeof dataSource === 'function' ? dataSource() : fetch(dataSource);
