@@ -17,16 +17,20 @@ export const useValidation = (
             const errors = Object.keys(value).reduce((last: Record<string, string>, current: string) => {
                 const error = validation(current, value[current], value);
 
-                if (!error) {
-                    last[current] = '';
-                    _hasChanged[current] = true;
-                } else {
-                    last[current] = !_hasChanged[current] ? '' : error;
-                }
-
-                if (!_hasChanged[current] && value[current] !== value[current]) {
-                    _hasChanged[current] = true;
+                if (disabledHasChange) {
                     last[current] = error;
+                } else {
+                    if (!error) {
+                        last[current] = '';
+                        _hasChanged[current] = true;
+                    } else {
+                        last[current] = !_hasChanged[current] ? '' : error;
+                    }
+
+                    if (!_hasChanged[current] && value[current] !== value[current]) {
+                        _hasChanged[current] = true;
+                        last[current] = error;
+                    }
                 }
 
                 return last;
