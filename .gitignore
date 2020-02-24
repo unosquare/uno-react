@@ -65,3 +65,4 @@ typings/
 
 # Ignore folder named `dist`
 dist
+lib
