@@ -1,41 +1,48 @@
-import { useEffect, useState } from 'react';
-import { useStateForModel } from './useStateForModel';
+import { useState } from 'react';
+import { useEffectWithDebounce } from './useEffectWithDebounce';
 
 export const useValidation = (
-    fn: (propName: string, prop: any, model: {}) => string,
+    validation: (propName: string, prop: any, model: {}) => string,
     value: Record<string, any>,
+    debounce = 100,
+    disabledHasChange = false,
 ): [boolean, Record<string, string>] => {
     const [errors, setErrors] = useState<Record<string, string>>({});
-    const [isValid, setIsValid] = useState(true);
-    const [model, setModel] = useStateForModel(value);
+    const [isValid, setIsValid] = useState(false);
     const [hasChanged, setHasChanged] = useState<Record<string, boolean>>({});
 
-    useEffect(() => {
-        const _hasChanged = { ...hasChanged };
-        const errors = Object.keys(model).reduce((last: Record<string, string>, current: string) => {
-            const error = fn(current, value[current], value);
+    useEffectWithDebounce(
+        () => {
+            const _hasChanged = { ...hasChanged };
+            const errors = Object.keys(value).reduce((last: Record<string, string>, current: string) => {
+                const error = validation(current, value[current], value);
 
-            if (!error) {
-                last[current] = '';
-                _hasChanged[current] = true;
-            } else {
-                last[current] = !_hasChanged[current] ? '' : error;
-            }
+                if (!error) {
+                    last[current] = '';
+                    _hasChanged[current] = true;
+                } else {
+                    last[current] = !_hasChanged[current] ? '' : error;
+                }
 
-            if (!_hasChanged[current] && value[current] !== model[current]) {
-                _hasChanged[current] = true;
-                last[current] = error;
-            }
+                if (!_hasChanged[current] && value[current] !== value[current]) {
+                    _hasChanged[current] = true;
+                    last[current] = error;
+                }
 
-            return last;
-        }, {});
+                return last;
+            }, {});
 
-        setHasChanged(_hasChanged);
-        const _isValid = !Object.keys(errors).some(x => errors[x]) && !Object.keys(model).some(x => !_hasChanged[x]);
+            setHasChanged(_hasChanged);
+            const _isValid =
+                !Object.keys(errors).some(x => errors[x]) &&
+                (disabledHasChange || !Object.keys(value).some(x => !_hasChanged[x]));
 
-        setErrors(errors);
-        setIsValid(_isValid);
-    }, [value]);
+            setErrors(errors);
+            setIsValid(_isValid);
+        },
+        debounce,
+        [value],
+    );
 
     return [isValid, errors];
 };

@@ -16,9 +16,9 @@ export function useApiFormWithValidation<T>(
     React.useEffect(() => {
         const data = typeof dataSource === 'function' ? dataSource() : fetch(dataSource);
 
-        data.then((x: Response) => {
-            if (x.ok) {
-                x.json().then((y: any) => {
+        data.then((response: Response) => {
+            if (response.ok) {
+                response.json().then((y: any) => {
                     setter(transform ? transform(y) : y);
                     toggleIsLoading();
                 });
