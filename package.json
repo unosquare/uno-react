@@ -45,6 +45,6 @@
   ],
   "dependencies": {
     "react-form-validator-core": "^0.6.5",
-    "uno-js": "^0.6.3"
+    "uno-js": "^0.7.1"
   }
 }
