@@ -32,9 +32,13 @@ export function useApiFormWithValidation<T>(
                 setStatus(FormStatus.ErrorLoading);
             }
         });
-    }, []);
+    }, [dataSource]);
 
-    return [getter, setter, isValid ? status : FormStatus.ErrorValidation, errors];
+    if (status !== FormStatus.Loading && status !== FormStatus.ErrorLoading) {
+        setStatus(isValid ? FormStatus.Valid : FormStatus.ErrorValidation);
+    }
+
+    return [getter, setter, status, errors];
 }
 
 export function useApiForm<T>(
