@@ -34,9 +34,11 @@ export function useApiFormWithValidation<T>(
         });
     }, [dataSource]);
 
-    if (status !== FormStatus.Loading && status !== FormStatus.ErrorLoading) {
-        setStatus(isValid ? FormStatus.Valid : FormStatus.ErrorValidation);
-    }
+    React.useEffect(() => {
+        if (status !== FormStatus.Loading && status !== FormStatus.ErrorLoading) {
+            setStatus(isValid ? FormStatus.Valid : FormStatus.ErrorValidation);
+        }
+    }, [getter]);
 
     return [getter, setter, status, errors];
 }
