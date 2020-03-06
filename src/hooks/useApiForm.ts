@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useStateForModel } from './useStateForModel';
-import { useValidation } from './useValidation';
+import { useEffectWithDebounce } from './useEffectWithDebounce';
+import { useStateForModelWithValidation } from './useStateForModelWithValidation';
 
 export enum FormStatus {
     Valid,
@@ -14,9 +14,8 @@ export function useApiFormWithValidation<T>(
     validation: (propName: string, prop: any, model: {}) => string,
     transform?: (responseObject: object) => object,
 ): [T, (event: any) => void, FormStatus, Record<string, string>] {
-    const [getter, setter] = useStateForModel<T>({} as T);
-    const [status, setStatus] = React.useState(FormStatus.Valid);
-    const [isValid, errors] = useValidation(validation, getter, 100, true);
+    const [getter, setter, isValid, errors] = useStateForModelWithValidation<T>({} as T, validation, 300);
+    const [status, setStatus] = React.useState(FormStatus.Loading);
 
     React.useEffect(() => {
         setStatus(FormStatus.Loading);
@@ -34,11 +33,15 @@ export function useApiFormWithValidation<T>(
         });
     }, [dataSource]);
 
-    React.useEffect(() => {
-        if (status !== FormStatus.Loading && status !== FormStatus.ErrorLoading) {
-            setStatus(isValid ? FormStatus.Valid : FormStatus.ErrorValidation);
-        }
-    }, [getter]);
+    useEffectWithDebounce(
+        () => {
+            if (status !== FormStatus.Loading && status !== FormStatus.ErrorLoading) {
+                setStatus(isValid ? FormStatus.Valid : FormStatus.ErrorValidation);
+            }
+        },
+        300,
+        [isValid],
+    );
 
     return [getter, setter, status, errors];
 }
