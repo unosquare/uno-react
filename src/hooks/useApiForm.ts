@@ -40,7 +40,7 @@ export function useApiFormWithValidation<T>(
             }
         },
         300,
-        [isValid],
+        [errors],
     );
 
     return [getter, setter, status, errors];
