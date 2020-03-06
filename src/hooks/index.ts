@@ -2,6 +2,7 @@ export * from './useApiForm';
 export * from './useClickOutside';
 export * from './useStateForField';
 export * from './useStateForModel';
+export * from './useStateForModelWithValidation';
 export * from './useStateForModelWithLoading';
 export * from './useEffectWithLoading';
 export * from './usePersistedState';
