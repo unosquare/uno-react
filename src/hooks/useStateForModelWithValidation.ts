@@ -35,7 +35,7 @@ export function useStateForModelWithValidation<T>(
             }, {});
 
             setErrors(errors);
-            setIsValid(!Object.keys(errors).some(x => errors[x]));
+            setIsValid(!Object.keys(errors).some((x) => errors[x]));
         },
         debounce,
         [getter],

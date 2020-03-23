@@ -38,8 +38,8 @@ export const useValidation = (
 
             setHasChanged(_hasChanged);
             const _isValid =
-                !Object.keys(errors).some(x => errors[x]) &&
-                (disabledHasChange || !Object.keys(value).some(x => !_hasChanged[x]));
+                !Object.keys(errors).some((x) => errors[x]) &&
+                (disabledHasChange || !Object.keys(value).some((x) => !_hasChanged[x]));
 
             setErrors(errors);
             setIsValid(_isValid);
