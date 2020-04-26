@@ -67,6 +67,15 @@
     },
     "testMatch": [
       "**/src/**/*.test.+(ts|js)"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "cobertura"
     ]
   }
 }
