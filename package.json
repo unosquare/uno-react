@@ -4,7 +4,8 @@
   "description": "Common functions, and hooks for React.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo Error",
+    "test": "jest --runInBand",
+    "test:coverage": "jest --coverage",
     "build": "tsc",
     "lint": "eslint src/**/*.{js,ts}",
     "lint:fix": "eslint src/**/*.{js,ts} --fix"
@@ -26,14 +27,21 @@
   },
   "homepage": "https://github.com/unosquare/uno-react#readme",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.3",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@types/jest": "^25.2.1",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
+    "jest": "^25.4.0",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
@@ -46,5 +54,19 @@
   "dependencies": {
     "react-form-validator-core": "^0.6.5",
     "uno-js": "^0.7.10"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testMatch": [
+      "**/src/**/*.test.+(ts|js)"
+    ]
   }
 }
