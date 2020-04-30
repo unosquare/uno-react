@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { getQueryParam } from 'uno-js';
 
-export const useUrlId = (idName: string, window: any): [number, (event: any) => void, () => void, () => void] => {
+export const useUrlId = (
+    idName: string,
+    window: any,
+): [number | string, (event: any) => void, () => void, () => void] => {
     const [getId, setId] = React.useState(null);
 
     React.useEffect(() => {
