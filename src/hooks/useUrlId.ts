@@ -4,16 +4,16 @@ import { getQueryParam } from 'uno-js';
 export const useUrlId = (
     idName: string,
     window: any,
-): [string | number | null, (event: any) => void, () => void, () => void] => {
-    const [getId, setId] = React.useState(null);
+): [string | number | null, () => void, () => void] => {
+    const [getId, setId] = React.useState<string | number | null>(null);
 
     React.useEffect(() => {
         setId(getQueryParam(idName, window.location.href));
     }, [idName, window.location]);
 
-    const getBaseUrl = () => window.location.href.split('?')[0];
-    const reset = () => window.history.pushState('', '', getBaseUrl());
-    const complete = () => window.history.pushState('', '', `${getBaseUrl()}?${idName}=${getId}`);
+    const getBaseUrl = (): void => window.location.href.split('?')[0];
+    const reset = (): void => window.history.pushState('', '', getBaseUrl());
+    const complete = (): void => window.history.pushState('', '', `${getBaseUrl()}?${idName}=${getId}`);
 
-    return [getId, setId, reset, complete];
+    return [getId, reset, complete];
 };
