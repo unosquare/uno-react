@@ -4,7 +4,7 @@ import { getQueryParam } from 'uno-js';
 export const useUrlId = (
     idName: string,
     window: any,
-): [number | string, (event: any) => void, () => void, () => void] => {
+): [string | number | null, (event: any) => void, () => void, () => void] => {
     const [getId, setId] = React.useState(null);
 
     React.useEffect(() => {
