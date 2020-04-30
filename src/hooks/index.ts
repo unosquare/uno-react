@@ -11,3 +11,4 @@ export * from './useNow';
 export * from './useResolutionSwitch';
 export * from './useEffectWithDebounce';
 export * from './useValidation';
+export * from './useUrlId';
