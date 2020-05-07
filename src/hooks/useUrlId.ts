@@ -6,7 +6,7 @@ export type key = string | number | null;
 export const getBaseUrl = (window: any): string => window.location.href.split('?')[0];
 export const resetBaseUrl = (window: any): void => window.history.pushState('', '', getBaseUrl(window));
 
-export const useUrlId = (idName: string, window: any): [key, (value: key) => void, () => void, () => void] => {
+export const useUrlId = (idName: string, window: any): [key, (value: key) => void, () => void] => {
     const [getId, setId] = React.useState<key>(null);
 
     React.useEffect(() => {
@@ -14,7 +14,11 @@ export const useUrlId = (idName: string, window: any): [key, (value: key) => voi
     }, [idName, window.location]);
 
     const complete = (): void => window.history.pushState('', '', `${getBaseUrl(window)}?${idName}=${getId}`);
+    React.useEffect(() => {
+        if (getId) complete();
+    }, [getId]);
+
     const reset = (): void => resetBaseUrl(window);
-    
-    return [getId, setId, reset, complete];
+
+    return [getId, setId, reset];
 };
