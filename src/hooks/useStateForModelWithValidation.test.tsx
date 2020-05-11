@@ -12,10 +12,7 @@ export const validationsComment = (propName: string, propValue: any) => {
 };
 
 const TestComponent: React.FunctionComponent = () => {
-    const [model, onChange, isValid, error] = useStateForModelWithValidation(
-        { Comment: '' },
-        validationsComment,
-    );
+    const [model, onChange, isValid, error] = useStateForModelWithValidation({ Comment: '' }, validationsComment);
     const _onClick = (event: any) => { return 'I have been submitted'; };
     return (
         <>
@@ -31,5 +28,8 @@ describe('Tests for useStateForModelWithValidation hook', () => {
     it('Renders a form that uses the hook', () => {
         const errorMessage = getByText('Submit');
         expect(errorMessage).toBeTruthy();
+    });
+    it('Changes the model\'s state', () => {
+
     });
 });
