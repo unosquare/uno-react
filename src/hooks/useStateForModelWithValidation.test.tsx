@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useStateForModelWithValidation } from './useStateForModelWithValidation';
-import { cleanup, fireEvent, queryByAttribute, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 export const validationsComment = (propName: string, propValue: any) => {
     switch (propName) {
@@ -16,9 +16,12 @@ const TestComponent: React.FunctionComponent = () => {
     const _onClick = (event: any) => {
         return 'I have been submitted';
     };
+    const onChangeComment = (event: any) => {
+        onChange(event);
+    };
     return (
         <>
-            <input type="text" data-testid="Comment" name="Comment" value={model.Comment} onChange={onChange} />
+            <input type="text" data-testid="Comment" name="Comment" value={model.Comment} onChange={onChangeComment} />
             <span>{error.Comment}</span>
             <button type="submit" disabled={!isValid} onClick={_onClick}>
                 Submit
@@ -28,19 +31,15 @@ const TestComponent: React.FunctionComponent = () => {
 };
 
 describe('Tests for useStateForModelWithValidation hook', () => {
-    beforeEach(() => {
-        cleanup();
-    });
+    const { getByText, getByTestId } = render(<TestComponent />);
     it('Renders a form that uses the hook', () => {
-        const { getByText } = render(<TestComponent />);
-        const errorMessage = getByText('Submit');
-        expect(errorMessage).toBeTruthy();
-    });
-    it("Changes the model's state", () => {
-        const { debug, getByTestId } = render(<TestComponent />);
         const input = getByTestId('Comment');
-        fireEvent.change(input, 'I am a comment');
-        debug(input);
-        expect(input).toHaveValue('I am a comment');
+        const button = getByText('Submit');
+        const error = getByText('There is an error');
+        expect(input).toBeTruthy();
+        expect((input as HTMLInputElement).value).toBe('');
+        expect(button).toBeTruthy();
+        expect((button as HTMLButtonElement).disabled).toBeTruthy();
+        expect(error.textContent).toBe('There is an error');
     });
 });
