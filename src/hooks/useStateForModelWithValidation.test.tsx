@@ -13,7 +13,7 @@ export const validationsComment = (propName: string, propValue: any) => {
 };
 
 const TestComponent: React.FunctionComponent = () => {
-    const [model, onChange, isValid, error] = useStateForModelWithValidation({ Comment: '' }, validationsComment);
+    const [model, onChange, isValid, error] = useStateForModelWithValidation({ Comment: '' }, validationsComment, 0);
     const _onClick = (event: any) => {
         return 'I have been submitted';
     };
@@ -37,15 +37,25 @@ describe('Tests for useStateForModelWithValidation hook', () => {
         debug();
         const input = getByTestId('Comment');
         const button = getByText('Submit');
+        const error = getByTestId('error');
         expect(input).toHaveValue('');
         expect(button).toBeDisabled();
+        expect(error).toHaveTextContent('');
     });
     it('Add text, error does not exist', () => {
-        const { debug, getByTestId } = render(<TestComponent />);
-        debug();
+        // Arrange
+        const { getByText, getByTestId } = render(<TestComponent />);
         const input = getByTestId('Comment');
+        const button = getByText('Submit');
+        const error = getByTestId('error');
+        
+        // Act
         userEvent.type(input, 'Simio is watching');
+        
+        // Assert
         expect(input).toHaveValue('Simio is watching');
+        expect(error).toHaveTextContent('');
+        expect(button).not.toBeDisabled();
     });
     it('Empty input text, error exists', () => {
         const { debug, getByTestId } = render(<TestComponent />);
