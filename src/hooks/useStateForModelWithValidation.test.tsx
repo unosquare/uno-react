@@ -18,9 +18,11 @@ const TestComponent: React.FunctionComponent = () => {
     };
     return (
         <>
-            <input type="text" id="Comment" name="Comment" value={model.Comment} onChange={onChange}/>
+            <input type="text" id="Comment" name="Comment" value={model.Comment} onChange={onChange} />
             <span>{error.Comment}</span>
-            <button type="submit" disabled={!isValid} onClick={_onClick}>Submit</button>
+            <button type="submit" disabled={!isValid} onClick={_onClick}>
+                Submit
+            </button>
         </>
     );
 };
