@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useStateForModelWithValidation } from './useStateForModelWithValidation';
-import { render } from '@testing-library/react';
+import { cleanup, fireEvent, queryByAttribute, render } from '@testing-library/react';
 
 export const validationsComment = (propName: string, propValue: any) => {
     switch (propName) {
@@ -18,7 +18,7 @@ const TestComponent: React.FunctionComponent = () => {
     };
     return (
         <>
-            <input type="text" id="Comment" name="Comment" value={model.Comment} onChange={onChange} />
+            <input type="text" data-testid="Comment" name="Comment" value={model.Comment} onChange={onChange} />
             <span>{error.Comment}</span>
             <button type="submit" disabled={!isValid} onClick={_onClick}>
                 Submit
@@ -28,9 +28,19 @@ const TestComponent: React.FunctionComponent = () => {
 };
 
 describe('Tests for useStateForModelWithValidation hook', () => {
-    const { getByText } = render(<TestComponent />);
+    beforeEach(() => {
+        cleanup();
+    });
     it('Renders a form that uses the hook', () => {
+        const { getByText } = render(<TestComponent />);
         const errorMessage = getByText('Submit');
         expect(errorMessage).toBeTruthy();
+    });
+    it("Changes the model's state", () => {
+        const { debug, getByTestId } = render(<TestComponent />);
+        const input = getByTestId('Comment');
+        fireEvent.change(input, 'I am a comment');
+        debug(input);
+        expect(input).toHaveValue('I am a comment');
     });
 });
