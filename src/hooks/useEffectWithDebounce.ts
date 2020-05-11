@@ -1,7 +1,15 @@
 import * as React from 'react';
 
 export function useEffectWithDebounce(effect: () => void, debounce: number, inputs: React.DependencyList): void {
-    let timeout: number;
+    if (debounce === 0 || (navigator && navigator.userAgent.includes('jsdom'))) {
+        React.useEffect(() => {
+            effect();
+        }, inputs || []);
+
+        return;
+    }
+
+    let timeout: any;
 
     const doLater = (): void => {
         timeout = undefined;
