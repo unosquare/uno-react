@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useStateForModelWithValidation } from './useStateForModelWithValidation';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 export const validationsComment = (propName: string, propValue: any) => {
     switch (propName) {
@@ -22,7 +23,7 @@ const TestComponent: React.FunctionComponent = () => {
     return (
         <>
             <input type="text" data-testid="Comment" name="Comment" value={model.Comment} onChange={onChangeComment} />
-            <span>{error.Comment}</span>
+            <span data-testid="error">{error.Comment}</span>
             <button type="submit" disabled={!isValid} onClick={_onClick}>
                 Submit
             </button>
@@ -31,15 +32,30 @@ const TestComponent: React.FunctionComponent = () => {
 };
 
 describe('Tests for useStateForModelWithValidation hook', () => {
-    const { getByText, getByTestId } = render(<TestComponent />);
-    it('Renders a form that uses the hook', () => {
+    it('Disabled button, error does not exist', () => {
+        const { debug, getByText, getByTestId } = render(<TestComponent />);
+        debug();
         const input = getByTestId('Comment');
         const button = getByText('Submit');
-        const error = getByText('There is an error');
-        expect(input).toBeTruthy();
-        expect((input as HTMLInputElement).value).toBe('');
-        expect(button).toBeTruthy();
-        expect((button as HTMLButtonElement).disabled).toBeTruthy();
-        expect(error.textContent).toBe('There is an error');
+        expect(input).toHaveValue('');
+        expect(button).toBeDisabled();
+    });
+    it('Add text, error does not exist', () => {
+        const { debug, getByTestId } = render(<TestComponent />);
+        debug();
+        const input = getByTestId('Comment');
+        userEvent.type(input, 'Simio is watching');
+        expect(input).toHaveValue('Simio is watching');
+    });
+    it('Empty input text, error exists', () => {
+        const { debug, getByTestId } = render(<TestComponent />);
+        debug();
+        const input = getByTestId('Comment');
+        const error = getByTestId('error');
+        userEvent.type(input, 'Simio is watching');
+        expect(input).toHaveValue('Simio is watching');
+        userEvent.clear(input);
+        expect(input).toHaveValue('');
+        expect(error).toHaveTextContent('There is an error');
     });
 });
