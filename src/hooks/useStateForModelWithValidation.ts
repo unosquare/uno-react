@@ -16,7 +16,7 @@ export function useStateForModelWithValidation<T>(
 ): [T, (event: any) => void, boolean, Record<string, string>] {
     const [getter, setter] = React.useState(initialValue);
     const [errors, setErrors] = React.useState(getErrors(getter, validation));
-    
+
     const handleChange = (event: any): void => {
         if (event.target) {
             const { name, value } = event.target;
@@ -33,11 +33,7 @@ export function useStateForModelWithValidation<T>(
         }
     };
 
-    useEffectWithDebounce(
-        () => setErrors(getErrors(getter, validation)),
-        debounce,
-        [getter],
-    );
+    useEffectWithDebounce(() => setErrors(getErrors(getter, validation)), debounce, [getter]);
 
     return [getter, handleChange, !Object.keys(errors).some((x) => errors[x]), errors];
 }

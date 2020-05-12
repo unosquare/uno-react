@@ -17,7 +17,7 @@ const TestComponent: React.FunctionComponent = () => {
     const _onClick = (event: any) => {
         return 'I have been submitted';
     };
-    
+
     return (
         <>
             <input type="text" data-testid="Comment" name="Comment" value={model.Comment} onChange={onChange} />
@@ -47,10 +47,10 @@ describe('Tests for useStateForModelWithValidation hook', () => {
         const input = getByTestId('Comment');
         const button = getByText('Submit');
         const error = getByTestId('error');
-        
+
         // Act
         await userEvent.type(input, 'Simio is watching');
-        
+
         // Assert
         expect(input).toHaveValue('Simio is watching');
         expect(error).toBeEmpty();
@@ -63,7 +63,7 @@ describe('Tests for useStateForModelWithValidation hook', () => {
     //     const input = getByTestId('Comment');
     //     const error = getByTestId('error');
     //     const button = getByText('Submit');
-        
+
     //     // Act
     //     await userEvent.type(input, 'Simio is watching');
     //     userEvent.clear(input);
