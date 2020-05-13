@@ -10,14 +10,17 @@ export const useUrlId = (idName: string, window: any): [key, (value: key) => voi
     const [getId, setId] = React.useState<key>(null);
 
     React.useEffect(() => {
-        setId(getQueryParam(idName, window.location.href));
+        setId(getQueryParam(idName.toLocaleLowerCase(), window.location.href.toLocaleLowerCase()));
     }, [idName, window.location]);
 
     React.useEffect(() => {
         if (getId) window.history.pushState('', '', `${getBaseUrl(window)}?${idName}=${getId}`);
     }, [getId]);
 
-    const reset = (): void => resetBaseUrl(window);
+    const reset = (): void => {
+        resetBaseUrl(window);
+        setId(null);
+    };
 
     return [getId, setId, reset];
 };
