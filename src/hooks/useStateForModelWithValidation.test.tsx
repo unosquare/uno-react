@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useStateForModelWithValidation } from './useStateForModelWithValidation';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 export const validationsComment = (propName: string, propValue: any) => {
@@ -50,27 +50,26 @@ describe('Tests for useStateForModelWithValidation hook', () => {
 
         // Act
         await userEvent.type(input, 'Simio is watching');
-
         // Assert
         expect(input).toHaveValue('Simio is watching');
         expect(error).toBeEmpty();
-        expect(button).not.toBeDisabled();
+        expect(button).toBeEnabled();
     });
 
-    // it('Empty input text, error exists', async () => {
-    //     // Arrange
-    //     const { getByText, getByTestId } = render(<TestComponent />);
-    //     const input = getByTestId('Comment');
-    //     const error = getByTestId('error');
-    //     const button = getByText('Submit');
+    it('Empty input text, error exists', async () => {
+        // Arrange
+        const { debug, getByText, getByTestId } = render(<TestComponent />);
+        const input = getByTestId('Comment');
+        const error = getByTestId('error');
+        const button = getByText('Submit');
 
-    //     // Act
-    //     await userEvent.type(input, 'Simio is watching');
-    //     userEvent.clear(input);
+        // Act
+        await userEvent.type(input, 'Simio is watching');
+        fireEvent.change(input, { target: { value: '' }});
 
-    //     // Assert
-    //     expect(input).toHaveValue('');
-    //     expect(error).toHaveTextContent('');
-    //     expect(button).toBeDisabled();
-    // });
+        // Assert
+        expect(input).toHaveAttribute('value','');
+        expect(error).not.toBeEmpty();
+        expect(button).toBeDisabled();
+    });
 });
