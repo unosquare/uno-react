@@ -29,14 +29,14 @@
     },
     "homepage": "https://github.com/unosquare/uno-react#readme",
     "devDependencies": {
-        "@testing-library/jest-dom": "^5.8.0",
-        "@testing-library/react": "^10.0.4",
-        "@testing-library/react-hooks": "^3.2.1",
-        "@testing-library/user-event": "^10.3.5",
+        "@testing-library/jest-dom": "^5.9.0",
+        "@testing-library/react": "^10.2.1",
+        "@testing-library/react-hooks": "^3.3.0",
+        "@testing-library/user-event": "^11.3.1",
         "@types/jest": "^25.2.3",
-        "@typescript-eslint/eslint-plugin": "^3.0.0",
-        "@typescript-eslint/parser": "^3.0.0",
-        "eslint": "^7.1.0",
+        "@typescript-eslint/eslint-plugin": "^3.2.0",
+        "@typescript-eslint/parser": "^3.2.0",
+        "eslint": "^7.2.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-prettier": "^3.1.3",
         "jest": "^26.0.1",
@@ -44,8 +44,8 @@
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-test-renderer": "^16.13.1",
-        "ts-jest": "^26.0.0",
-        "typescript": "^3.9.3"
+        "ts-jest": "^26.1.0",
+        "typescript": "^3.9.5"
     },
     "peerDependencies": {
         "react": "^16.13.1",
@@ -56,7 +56,7 @@
     ],
     "dependencies": {
         "react-form-validator-core": "^0.6.5",
-        "uno-js": "^0.7.23"
+        "uno-js": "^0.7.26"
     },
     "jest": {
         "moduleFileExtensions": [
