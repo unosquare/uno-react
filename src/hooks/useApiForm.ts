@@ -7,6 +7,7 @@ export enum FormStatus {
     Loading,
     ErrorLoading,
     ErrorValidation,
+    Saving,
 }
 
 export function useApiFormWithValidation<T>(
