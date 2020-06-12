@@ -13,7 +13,7 @@ export function useStateForModelWithValidation<T>(
     initialValue: T,
     validation: ValidationFunc,
     debounce = 100,
-): [T, (event: any) => void, boolean, Record<string, string>, (event: any) => void] {
+): [T, (event: any) => void, boolean, Record<string, string>, React.Dispatch<Record<string, string>>] {
     const [getter, setter] = React.useState(initialValue);
     const [errors, setErrors] = React.useState(getErrors(getter, validation));
 
