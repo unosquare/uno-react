@@ -65,10 +65,10 @@ describe('Tests for useStateForModelWithValidation hook', () => {
 
         // Act
         await userEvent.type(input, 'Simio is watching');
-        fireEvent.change(input, { target: { value: '' }});
+        fireEvent.change(input, { target: { value: '' } });
 
         // Assert
-        expect(input).toHaveAttribute('value','');
+        expect(input).toHaveAttribute('value', '');
         expect(error).not.toBeEmpty();
         expect(button).toBeDisabled();
     });
