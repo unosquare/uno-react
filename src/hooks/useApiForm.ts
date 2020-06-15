@@ -14,8 +14,8 @@ export function useApiFormWithValidation<T>(
     dataSource: string | Request | (() => Promise<Response>),
     validation: (propName: string, prop: any, model: {}) => string,
     transform?: (responseObject: object) => object,
-): [T, (event: any) => void, FormStatus, Record<string, string>] {
-    const [getter, setter, isValid, errors] = useStateForModelWithValidation<T>({} as T, validation, 300);
+): [T, (event: any) => void, FormStatus, Record<string, string>, React.Dispatch<Record<string, string>>] {
+    const [getter, setter, isValid, errors, setErrors] = useStateForModelWithValidation<T>({} as T, validation, 300);
     const [status, setStatus] = React.useState(FormStatus.Loading);
 
     React.useEffect(() => {
@@ -44,7 +44,7 @@ export function useApiFormWithValidation<T>(
         [isValid, errors],
     );
 
-    return [getter, setter, status, errors];
+    return [getter, setter, status, errors, setErrors];
 }
 
 export function useApiForm<T>(
