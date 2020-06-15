@@ -9,7 +9,7 @@ export function useEffectWithDebounce(effect: () => void, debounce: number, inpu
         return;
     }
 
-    let timeout: any;
+    let timeout: NodeJS.Timeout;
 
     const doLater = (): void => {
         timeout = undefined;

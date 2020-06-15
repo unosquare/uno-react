@@ -11,9 +11,9 @@ export function isNotAllBlanks(value: string, minlength: number): boolean {
     return value.replace(/\s/g, '').length >= minlength;
 }
 
-export function maxNaturalNumber(value: string, maxInt: any): boolean {
+export function maxNaturalNumber(value: string, maxInt: number): boolean {
     const valueReal = +Number(value);
-    const maxInteger = +Number(maxInt);
+    const maxInteger = maxInt;
 
     return valueReal >= 0 && valueReal <= maxInteger;
 }
