@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useEffectWithDebounce } from './useEffectWithDebounce';
 
+export type BasicTypes = string | number | boolean | Record<string, unknown>;
+
 export const useValidation = (
-    validation: (propName: string, prop: any, model: {}) => string,
-    value: Record<string, any>,
+    validation: (propName: string, prop: BasicTypes, model: Record<string, BasicTypes>) => string,
+    value: Record<string, BasicTypes>,
     debounce = 100,
     disabledHasChange = false,
 ): [boolean, Record<string, string>] => {

@@ -1,4 +1,4 @@
-export const valueToResponse = (value: any): Promise<Response> =>
+export const valueToResponse = (value: Record<string, unknown>): Promise<Response> =>
     new Promise<Response>((resolve) =>
         resolve({
             ok: true,

@@ -37,7 +37,7 @@ describe('Tests for useStateForModelWithValidation hook', () => {
         const error = getByTestId('error');
 
         expect(input).toHaveValue('');
-        expect(error).not.toBeEmpty();
+        expect(error).not.toBeEmptyDOMElement();
         expect(button).toBeDisabled();
     });
 
@@ -52,7 +52,7 @@ describe('Tests for useStateForModelWithValidation hook', () => {
         await userEvent.type(input, 'Simio is watching');
         // Assert
         expect(input).toHaveValue('Simio is watching');
-        expect(error).toBeEmpty();
+        expect(error).toBeEmptyDOMElement();
         expect(button).toBeEnabled();
     });
 
@@ -69,7 +69,7 @@ describe('Tests for useStateForModelWithValidation hook', () => {
 
         // Assert
         expect(input).toHaveAttribute('value', '');
-        expect(error).not.toBeEmpty();
+        expect(error).not.toBeEmptyDOMElement();
         expect(button).toBeDisabled();
     });
 });

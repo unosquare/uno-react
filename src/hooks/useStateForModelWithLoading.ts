@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { useStateForModel } from './useStateForModel';
 
-export function useStateForModelWithLoading(effect: any, initialValue: any, inputs: React.DependencyList) {
-    const [getter, handleChange] = useStateForModel(initialValue);
+export function useStateForModelWithLoading<T>(
+    effect: () => Promise<any>,
+    initialValue: T,
+    inputs: React.DependencyList,
+): [T, boolean, (event: any) => void] {
+    const [getter, handleChange] = useStateForModel<T>(initialValue);
     const [isLoading, setIsLoading] = React.useState(true);
     let _isMounted = false;
 

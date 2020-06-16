@@ -1,10 +1,6 @@
 import * as React from 'react';
 
-export function useEffectWithLoading(
-    effect: Function,
-    initialValue: Record<string, any>,
-    inputs: React.DependencyList,
-) {
+export function useEffectWithLoading<T>(effect: () => Promise<any>, initialValue: T, inputs: React.DependencyList) {
     const [getter, setter] = React.useState(initialValue);
     const [isLoading, setIsLoading] = React.useState(true);
     let _isMounted = false;

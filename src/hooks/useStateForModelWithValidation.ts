@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { useEffectWithDebounce } from './useEffectWithDebounce';
+import { BasicTypes } from './useValidation';
 
-export type ValidationFunc = (propName: string, propValue: any, model: {}) => string;
+export type ValidationFunc<T> = (propName: string, propValue: BasicTypes, model: T) => string;
 
-export const getErrors = (getter: any, validation: ValidationFunc) =>
-    Object.keys(getter as {}).reduce((last: Record<string, string>, current: string) => {
+export function getErrors<T>(getter: T, validation: ValidationFunc<T>): Record<string, string> {
+    return Object.keys(getter).reduce((last: Record<string, string>, current: string) => {
         last[current] = validation(current, getter[current], getter);
         return last;
     }, {});
+}
 
 export function useStateForModelWithValidation<T>(
     initialValue: T,
-    validation: ValidationFunc,
+    validation: ValidationFunc<T>,
     debounce = 100,
 ): [T, (event: any) => void, boolean, Record<string, string>, React.Dispatch<Record<string, string>>] {
     const [getter, setter] = React.useState(initialValue);
