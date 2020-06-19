@@ -7,7 +7,7 @@ export function useApiFormWithValidation<T>(
     dataSource: string | Request | (() => Promise<Response>),
     validation: (propName: string, prop: any, model: T) => string,
     transform?: (responseObject: Record<string, unknown>) => Record<string, unknown>,
-): [T, (event: any) => void, FormStatus, Record<string, string>, React.Dispatch<Record<string, string>>] {
+): [T, (event: any) => void, FormStatus, Record<string, string>, (e: Record<string, string>) => void] {
     const [getter, setter, isValid, errors, setErrors] = useStateForModelWithValidation<T>({} as T, validation, 300);
     const [status, setStatus] = React.useState(FormStatus.Loading);
 
