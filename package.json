@@ -29,8 +29,8 @@
     },
     "homepage": "https://github.com/unosquare/uno-react#readme",
     "devDependencies": {
-        "@testing-library/jest-dom": "^5.11.0",
-        "@testing-library/react": "^10.4.6",
+        "@testing-library/jest-dom": "^5.11.1",
+        "@testing-library/react": "^10.4.7",
         "@testing-library/react-hooks": "^3.3.0",
         "@testing-library/user-event": "^12.0.11",
         "@types/jest": "^26.0.4",
@@ -44,8 +44,8 @@
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-test-renderer": "^16.13.1",
-        "ts-jest": "^26.1.2",
-        "typescript": "^3.9.6"
+        "ts-jest": "^26.1.3",
+        "typescript": "^3.9.7"
     },
     "peerDependencies": {
         "react": "^16.13.1",
@@ -56,7 +56,7 @@
     ],
     "dependencies": {
         "react-form-validator-core": "^0.7.0",
-        "uno-js": "^0.7.31"
+        "uno-js": "^0.7.33"
     },
     "jest": {
         "moduleFileExtensions": [
