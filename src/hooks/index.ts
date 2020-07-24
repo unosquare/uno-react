@@ -5,6 +5,8 @@ export * from './useStateForField';
 export * from './useStateForModel';
 export * from './useStateForModelWithValidation';
 export * from './useStateForModelWithLoading';
+export * from './useOptimizedFormModel';
+export * from './useSplitFormModel';
 export * from './useEffectWithLoading';
 export * from './usePersistedState';
 export * from './useToggle';
