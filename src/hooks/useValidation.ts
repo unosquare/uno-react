@@ -22,8 +22,8 @@ export const useValidation = (
                 if (disabledHasChange) {
                     last[current] = error;
                 } else {
-                    if (!error) {
-                        last[current] = '';
+                    if (error) {
+                        last[current] = error;
                         _hasChanged[current] = true;
                     } else {
                         last[current] = !_hasChanged[current] ? '' : error;
@@ -41,7 +41,8 @@ export const useValidation = (
             setHasChanged(_hasChanged);
             const _isValid =
                 !Object.keys(errors).some((x) => errors[x]) &&
-                (disabledHasChange || !Object.keys(value).some((x) => !_hasChanged[x]));
+                (disabledHasChange ||
+                    !Object.keys(value).some((x) => (_hasChanged[x] === undefined ? false : !_hasChanged[x])));
 
             setErrors(errors);
             setIsValid(_isValid);
