@@ -57,7 +57,7 @@
         "lib"
     ],
     "dependencies": {
-        "react-form-validator-core": "^0.7.0",
+        "react-form-validator-core": "^1.0.0",
         "uno-js": "^0.7.35"
     },
     "jest": {
