@@ -9,6 +9,7 @@ import fetchMock from 'jest-fetch-mock';
 type Comment = { Comment: string; CommentId: number; Author: string };
 
 const TestComponent: React.FunctionComponent = () => {
+    const saveResponse = jest.fn();
     const getComment = React.useCallback(() => fetch('http://someurl/entity'), []);
     const entityTransform = (response: any) => ({
         ...response,
@@ -17,7 +18,7 @@ const TestComponent: React.FunctionComponent = () => {
     const [comment, onPropChange, status, flyingChanges] = useOptimizedFormModel<Comment>(getComment, entityTransform);
     const onSaveClick = () => {
         const commentUpdated = { ...comment, ...flyingChanges() };
-        console.log(commentUpdated);
+        saveResponse(commentUpdated);
     };
 
     return (
@@ -68,7 +69,7 @@ describe('useOptimizedFormModel', () => {
         await userEvent.type(authorInput, 'Author updated');
         expect(authorInput).toHaveValue('Author updated');
 
-        await userEvent.click(button);
+        userEvent.click(button);
         expect(authorInput).toHaveValue('Author updated');
     });
 });

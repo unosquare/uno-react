@@ -11,6 +11,7 @@ type Comment = { Comment: string; CommentId: number; Author: string };
 type PartialComment = Pick<Comment, 'Comment'>;
 
 const TestComponent: React.FunctionComponent = () => {
+    const onSaveClick = jest.fn();
     const getComment = React.useCallback(() => fetch('http://someurl/entity'), []);
     const entityTransform = (response: any) => ({
         ...response,
@@ -22,10 +23,7 @@ const TestComponent: React.FunctionComponent = () => {
     };
 
     const [partialModel, onUpdate] = useSplitFormModel(preModel, comment, () => '', onPropChange, status);
-    const onSaveClick = () => {
-        console.log('saved');
-    };
-
+    
     return (
         <>
             <input type="text" data-testid="Comment" name="Comment" value={partialModel.Comment} onChange={onUpdate} />
@@ -61,7 +59,7 @@ describe('useSplitFormModel', () => {
         await userEvent.type(commentInput, 'Comment updated');
         expect(commentInput).toHaveValue('12345Comment updated');
 
-        await userEvent.click(button);
+        userEvent.click(button);
         expect(commentInput).toHaveValue('12345Comment updated');
     });
 });
