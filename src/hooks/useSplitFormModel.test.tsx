@@ -23,7 +23,7 @@ const TestComponent: React.FunctionComponent = () => {
     };
 
     const [partialModel, onUpdate] = useSplitFormModel(preModel, comment, () => '', onPropChange, status);
-    
+
     return (
         <>
             <input type="text" data-testid="Comment" name="Comment" value={partialModel.Comment} onChange={onUpdate} />
