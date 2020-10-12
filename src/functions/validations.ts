@@ -1,5 +1,3 @@
-import { parseISO } from 'uno-js';
-
 export function isNotAllBlanks(value: string, minlength: number): boolean {
     return value.replace(/\s/g, '').length >= minlength;
 }
@@ -12,7 +10,7 @@ export function maxNaturalNumber(value: string, maxInt: number): boolean {
 }
 
 export function validateEndDate(endValue: string, startValue: string): boolean {
-    return parseISO(startValue).getTime() > parseISO(endValue).getTime();
+    return new Date(startValue).getTime() > new Date(endValue).getTime();
 }
 
 export function startDateGreaterThanEndDate(startValue: string, endValue: string): boolean {
