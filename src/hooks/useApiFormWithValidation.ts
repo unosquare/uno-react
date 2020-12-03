@@ -12,6 +12,8 @@ export function useApiFormWithValidation<T>(
     const [status, setStatus] = React.useState(FormStatus.Loading);
 
     React.useEffect(() => {
+        if (!dataSource) return;
+
         setStatus(FormStatus.Loading);
         const data = typeof dataSource === 'function' ? dataSource() : fetch(dataSource);
 
