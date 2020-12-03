@@ -17,6 +17,8 @@ export function useApiFormWithValidation<T>(
         setStatus(FormStatus.Loading);
         const data = typeof dataSource === 'function' ? dataSource() : fetch(dataSource);
 
+        if (!data) return;
+
         data.then((response: Response) => {
             if (response.ok) {
                 response.json().then((y: any) => {
