@@ -1,4 +1,4 @@
-import { FormStatus } from './useApiForm';
+import { FormStatus } from './FormStatus';
 import { useApiFormWithValidation } from './useApiFormWithValidation';
 
 export function useOptimizedFormModel<T>(
