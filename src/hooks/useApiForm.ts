@@ -1,12 +1,5 @@
+import { FormStatus } from './FormStatus';
 import { useApiFormWithValidation } from './useApiFormWithValidation';
-
-export enum FormStatus {
-    Valid,
-    Loading,
-    ErrorLoading,
-    ErrorValidation,
-    Saving,
-}
 
 export function useApiForm<T>(
     dataSource: string | Request | (() => Promise<Response>),
