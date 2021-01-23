@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useOptimizedFormModel } from './useOptimizedFormModel';
-import { FormStatus } from './useApiForm';
+import { FormStatus } from './FormStatus';
 import fetchMock from 'jest-fetch-mock';
 import { useSplitFormModel } from './useSplitFormModel';
 

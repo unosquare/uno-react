@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffectWithDebounce } from './useEffectWithDebounce';
 import { useStateForModelWithValidation } from './useStateForModelWithValidation';
-import { FormStatus } from './useApiForm';
+import { FormStatus } from './FormStatus';
 
 export function useApiFormWithValidation<T>(
     dataSource: string | Request | (() => Promise<Response>),
