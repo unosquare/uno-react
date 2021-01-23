@@ -11,3 +11,8 @@ test('should get flag depends on window outerSize besides the default outerWith 
     const { result } = renderHook(() => useResolutionSwitch(2020));
     expect(result.current[0]).toBe(true);
 });
+
+test('should get flag depends on window outerSize besides the default outerWith and timeout given ', () => {
+    const { result } = renderHook(() => useResolutionSwitch(2020, 1000));
+    expect(result.current[0]).toBe(true);
+});
