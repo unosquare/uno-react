@@ -17,3 +17,15 @@ test('should get year', () => {
 
     expect(result.current[0].getFullYear()).toBe(new Date().getFullYear());
 });
+
+test('should get day passing an interval', () => {
+    const { result } = renderHook(() => useNow(1500));
+
+    expect(result.current[0].getDay()).toBe(new Date().getDay());
+});
+
+test('should get getUTCDate passing an interval', () => {
+    const { result } = renderHook(() => useNow(1500));
+
+    expect(result.current[0].getUTCDate()).toBe(new Date().getUTCDate());
+});
