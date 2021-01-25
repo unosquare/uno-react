@@ -14,7 +14,7 @@ test('should keep the value of a variable that is related to an input(event)', (
 });
 
 test('should set a value of a variable that is related to an input(event) and reset to defaultValue', () => {
-    const defaultValue: any = '';
+    const defaultValue = '';
     const { result } = renderHook(() => useStateForField(defaultValue));
     const event = {
         target: { value: 'the-value' },
@@ -30,7 +30,7 @@ test('should set a value of a variable that is related to an input(event) and re
 });
 
 test('should not keep the value of a variable that is not related to an input(event)', () => {
-    const defaultValue: any = '';
+    const defaultValue = '';
     const { result } = renderHook(() => useStateForField(defaultValue));
     const event = {
         bubbles: false,
