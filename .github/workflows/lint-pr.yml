@@ -1,19 +1,25 @@
 name: Lint PR
 
-on: [pull_request]
+on: pull_request
 
 jobs:
   eslint:
     runs-on: ubuntu-latest
+    env:
+      CI: true
+
     steps:
-      - uses: actions/checkout@v1   
-      - uses: actions/cache@v1
+      - name: 🛎 Checkout
+        uses: actions/checkout@v2
+      - name: 📦 Cache
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             node-
-      - run: npm ci
+      - name: 🎠 npm install
+        run: npm ci
       - name: Lint
         uses: a-b-r-o-w-n/eslint-action@v1
         with:

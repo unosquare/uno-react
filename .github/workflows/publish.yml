@@ -6,20 +6,25 @@ on:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
+    env:
+      CI: true
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/cache@v1
+      - name: 🛎 Checkout
+        uses: actions/checkout@v2
+      - name: 📦 Cache
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             node-
-      - name: npm build
+      - name: 🏗 npm build
         run: |
           npm ci
           npm run build
-      - name: Publish
+      - name: 🍱 Publish
         uses: mikeal/merge-release@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

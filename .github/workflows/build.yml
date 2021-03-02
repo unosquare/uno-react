@@ -1,24 +1,29 @@
 name: Node CI
 
-on: [push]
+on: pull_request
 
 jobs:
   build:
     runs-on: [ubuntu-latest]
-    
+    env:
+      CI: true
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/cache@v1
+      - name: 🛎 Checkout
+        uses: actions/checkout@v2
+      - name: 📦 Cache
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             node-
-      - name: npm build and coverage (pending)
+      - name: 🏗 npm build and coverage
         run: |
           npm ci
           npm run build
           npm run cest
-      - uses: codecov/codecov-action@v1
+      - name: 🎯 Coverage
+        uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
