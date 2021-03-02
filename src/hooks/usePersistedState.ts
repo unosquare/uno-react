@@ -1,12 +1,15 @@
 import * as React from 'react';
 
-export function usePersistedState(defaultValue: any, keyName: string): [any, React.Dispatch<any>] {
+export function usePersistedState(localStorage: any, defaultValue: any, keyName: string): [any, React.Dispatch<any>] {
     const [getter, setter] = React.useState(defaultValue);
 
-    const setterWithUpdateLocalStorage = (value: any): void => {
-        setter(value);
-        localStorage.setItem(keyName, JSON.stringify(value));
-    };
+    const setterWithUpdateLocalStorage = React.useCallback(
+        (value: any): void => {
+            setter(value);
+            localStorage.setItem(keyName, JSON.stringify(value));
+        },
+        [keyName, localStorage],
+    );
 
     React.useEffect(() => {
         if (localStorage[keyName]) {
@@ -14,7 +17,7 @@ export function usePersistedState(defaultValue: any, keyName: string): [any, Rea
         } else {
             setterWithUpdateLocalStorage(defaultValue);
         }
-    }, []);
+    }, [localStorage, defaultValue, keyName, setterWithUpdateLocalStorage]);
 
     return [getter, setterWithUpdateLocalStorage];
 }

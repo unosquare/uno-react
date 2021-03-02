@@ -8,10 +8,9 @@ export function useStateForModelWithLoading<T>(
 ): [T, boolean, (event: any) => void] {
     const [getter, handleChange] = useStateForModel<T>(initialValue);
     const [isLoading, setIsLoading] = React.useState(true);
-    let _isMounted = false;
 
     React.useEffect(() => {
-        _isMounted = true;
+        let _isMounted = true;
         setIsLoading(true);
 
         effect().then((resp: any) => {
@@ -24,7 +23,7 @@ export function useStateForModelWithLoading<T>(
         return (): void => {
             _isMounted = false;
         };
-    }, inputs || []);
+    }, [effect, handleChange, ...inputs]);
 
     return [getter, isLoading, handleChange];
 }

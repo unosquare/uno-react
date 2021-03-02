@@ -3,10 +3,9 @@ import * as React from 'react';
 export function useEffectWithLoading<T>(effect: () => Promise<any>, initialValue: T, inputs: React.DependencyList) {
     const [getter, setter] = React.useState(initialValue);
     const [isLoading, setIsLoading] = React.useState(true);
-    let _isMounted = false;
 
     React.useEffect(() => {
-        _isMounted = true;
+        let _isMounted = true;
         setIsLoading(true);
 
         effect().then((resp: any) => {
@@ -19,7 +18,7 @@ export function useEffectWithLoading<T>(effect: () => Promise<any>, initialValue
         return (): void => {
             _isMounted = false;
         };
-    }, inputs || []);
+    }, [effect, ...inputs]);
 
     return [getter, isLoading];
 }

@@ -24,7 +24,7 @@ export function useSplitFormModel<T extends P, P>(
 
             onChange(changes);
         }
-    }, [status, refEntity]);
+    }, [initModel, onChange, status, refEntity]);
 
     return [model, update];
 }

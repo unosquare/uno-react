@@ -11,6 +11,14 @@ export function useApiFormWithValidation<T>(
     const [getter, setter, isValid, errors, setErrors] = useStateForModelWithValidation<T>({} as T, validation, 300);
     const [status, setStatus] = React.useState(FormStatus.Loading);
 
+    const updateValues = React.useCallback(
+        (y) => {
+            setter(transform ? transform(y) : y);
+            setStatus(isValid ? FormStatus.Valid : FormStatus.ErrorValidation);
+        },
+        [transform],
+    );
+
     React.useEffect(() => {
         if (!dataSource) return;
 
@@ -21,15 +29,12 @@ export function useApiFormWithValidation<T>(
 
         data.then((response: Response) => {
             if (response.ok) {
-                response.json().then((y: any) => {
-                    setter(transform ? transform(y) : y);
-                    setStatus(isValid ? FormStatus.Valid : FormStatus.ErrorValidation);
-                });
+                response.json().then(updateValues);
             } else {
                 setStatus(FormStatus.ErrorLoading);
             }
         });
-    }, [dataSource]);
+    }, [updateValues, dataSource]);
 
     useEffectWithDebounce(
         () => {
