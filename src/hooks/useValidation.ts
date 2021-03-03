@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useEffectWithDebounce } from './useEffectWithDebounce';
 
 export type BasicTypes = string | number | boolean | Record<string, unknown>;
@@ -13,43 +13,41 @@ export const useValidation = (
     const [isValid, setIsValid] = useState(false);
     const [hasChanged, setHasChanged] = useState<Record<string, boolean>>({});
 
-    useEffectWithDebounce(
-        () => {
-            const _hasChanged = { ...hasChanged };
-            const errors = Object.keys(value).reduce((last: Record<string, string>, current: string) => {
-                const error = validation(current, value[current], value);
+    const effect = useCallback(() => {
+        const _hasChanged = { ...hasChanged };
+        const errors = Object.keys(value).reduce((last: Record<string, string>, current: string) => {
+            const error = validation(current, value[current], value);
 
-                if (disabledHasChange) {
+            if (disabledHasChange) {
+                last[current] = error;
+            } else {
+                if (error) {
                     last[current] = error;
+                    _hasChanged[current] = true;
                 } else {
-                    if (error) {
-                        last[current] = error;
-                        _hasChanged[current] = true;
-                    } else {
-                        last[current] = !_hasChanged[current] ? '' : error;
-                    }
-
-                    if (!_hasChanged[current] && value[current] !== value[current]) {
-                        _hasChanged[current] = true;
-                        last[current] = error;
-                    }
+                    last[current] = !_hasChanged[current] ? '' : error;
                 }
 
-                return last;
-            }, {});
+                if (!_hasChanged[current] && value[current] !== value[current]) {
+                    _hasChanged[current] = true;
+                    last[current] = error;
+                }
+            }
 
-            setHasChanged(_hasChanged);
-            const _isValid =
-                !Object.keys(errors).some((x) => errors[x]) &&
-                (disabledHasChange ||
-                    !Object.keys(value).some((x) => (_hasChanged[x] === undefined ? false : !_hasChanged[x])));
+            return last;
+        }, {});
 
-            setErrors(errors);
-            setIsValid(_isValid);
-        },
-        debounce,
-        [value],
-    );
+        setHasChanged(_hasChanged);
+        const _isValid =
+            !Object.keys(errors).some((x) => errors[x]) &&
+            (disabledHasChange ||
+                !Object.keys(value).some((x) => (_hasChanged[x] === undefined ? false : !_hasChanged[x])));
+
+        setErrors(errors);
+        setIsValid(_isValid);
+    }, [hasChanged, value]);
+
+    useEffectWithDebounce(effect, debounce);
 
     return [isValid, errors];
 };

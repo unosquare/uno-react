@@ -35,7 +35,11 @@ export function useStateForModelWithValidation<T>(
         }
     };
 
-    useEffectWithDebounce(() => setErrors(getErrors(getter, validation)), debounce, [getter]);
+    const effect = React.useCallback(() => {
+        setErrors(getErrors(getter, validation));
+    }, [getter]);
+
+    useEffectWithDebounce(effect, debounce);
 
     const validateAndSetErrors = (e: Record<string, string>) => {
         if (e) {
