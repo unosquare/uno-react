@@ -12,7 +12,7 @@ export function usePersistedState(localStorage: any, defaultValue: any, keyName:
     );
 
     React.useEffect(() => {
-        if (localStorage[keyName]) {
+        if (localStorage.getItem(keyName) !== null) {
             setter(JSON.parse(localStorage.getItem(keyName)));
         } else {
             setterWithUpdateLocalStorage(defaultValue);

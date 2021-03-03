@@ -1,18 +1,31 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useResolutionSwitch } from './useResolutionSwitch';
 
-test('should get flag depends on window outerSize besides the default outerWith ', () => {
-    const { result } = renderHook(() => useResolutionSwitch());
+const mockOuterWidth = (width: number) => {
+    Object.defineProperty(window, 'outerWidth', {
+        writable: true,
+        configurable: true,
+        value: width,
+      });
+};
 
+test('should get flag depends on window outerSize besides the default outerWith ', () => {
+    mockOuterWidth(1001);
+
+    const { result } = renderHook(() => useResolutionSwitch(window));
     expect(result.current[0]).toBe(false);
 });
 
 test('should get flag depends on window outerSize besides the default outerWith given', () => {
-    const { result } = renderHook(() => useResolutionSwitch(2020));
+    mockOuterWidth(1001);
+
+    const { result } = renderHook(() => useResolutionSwitch(window, 2020));
     expect(result.current[0]).toBe(true);
 });
 
 test('should get flag depends on window outerSize besides the default outerWith and timeout given ', () => {
-    const { result } = renderHook(() => useResolutionSwitch(2020, 1000));
+    mockOuterWidth(1001);
+
+    const { result } = renderHook(() => useResolutionSwitch(window, 2020, 1000));
     expect(result.current[0]).toBe(true);
 });
