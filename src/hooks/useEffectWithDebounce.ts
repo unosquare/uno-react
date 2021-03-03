@@ -11,7 +11,7 @@ export function useEffectWithDebounce(effect: () => void, debounce: number): voi
             effect();
         };
 
-        let timeout = setTimeout(doLater, debounce);
+        const timeout = setTimeout(doLater, debounce);
         return (): void => clearTimeout(timeout);
     }, [effect, debounce]);
 }
