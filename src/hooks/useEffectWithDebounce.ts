@@ -1,23 +1,17 @@
 import * as React from 'react';
 
-export function useEffectWithDebounce(effect: () => void, debounce: number, inputs: React.DependencyList): void {
-    if (debounce === 0 || (navigator && navigator.userAgent.includes('jsdom'))) {
-        React.useEffect(() => {
-            effect();
-        }, inputs || []);
-
-        return;
-    }
-
-    let timeout: any;
-
-    const doLater = (): void => {
-        timeout = undefined;
-        effect();
-    };
-
+export function useEffectWithDebounce(effect: () => void, debounce: number): void {
     React.useEffect(() => {
-        timeout = setTimeout(doLater, debounce);
+        if (debounce === 0 || (navigator && navigator.userAgent.includes('jsdom'))) {
+            effect();
+            return;
+        }
+
+        const doLater = (): void => {
+            effect();
+        };
+
+        const timeout = setTimeout(doLater, debounce);
         return (): void => clearTimeout(timeout);
-    }, inputs || []);
+    }, [effect, debounce]);
 }

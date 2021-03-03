@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { debounce } from 'uno-js';
 
-export const useResolutionSwitch = (outerWidth = 1000, timeout = 500): [boolean] => {
+export const useResolutionSwitch = (window: any, outerWidth = 1000, timeout = 500): [boolean] => {
     const [isMobileResolution, setMobileResolution] = React.useState(false);
-    const handleResolutionChange = (): void => setMobileResolution(window.outerWidth < outerWidth);
+    const handleResolutionChange = React.useCallback((): void => setMobileResolution(window.outerWidth < outerWidth), [
+        window.outerWidth,
+        outerWidth,
+    ]);
 
     const listener = debounce(handleResolutionChange, timeout);
 
@@ -12,7 +15,7 @@ export const useResolutionSwitch = (outerWidth = 1000, timeout = 500): [boolean]
         handleResolutionChange();
 
         return (): void => window.removeEventListener('resize', listener);
-    }, []);
+    }, [window, listener, handleResolutionChange]);
 
     return [isMobileResolution];
 };
