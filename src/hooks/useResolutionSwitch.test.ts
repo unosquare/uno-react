@@ -6,7 +6,7 @@ const mockOuterWidth = (width: number) => {
         writable: true,
         configurable: true,
         value: width,
-      });
+    });
 };
 
 test('should get flag depends on window outerSize besides the default outerWith ', () => {
