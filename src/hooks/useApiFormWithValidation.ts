@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useEffectWithDebounce } from './useEffectWithDebounce';
-import { useStateForModelWithValidation } from './useStateForModelWithValidation';
-import { FormStatus } from './FormStatus';
+import useEffectWithDebounce from './useEffectWithDebounce';
+import useStateForModelWithValidation from './useStateForModelWithValidation';
+import FormStatus from './FormStatus';
 
-export function useApiFormWithValidation<T>(
+function useApiFormWithValidation<T>(
     dataSource: string | Request | (() => Promise<Response>),
     validation: (propName: string, prop: any, model: T) => string,
     transform?: (responseObject: Record<string, unknown>) => Record<string, unknown>,
@@ -43,3 +43,5 @@ export function useApiFormWithValidation<T>(
 
     return [getter, setter, status, errors, setErrors];
 }
+
+export default useApiFormWithValidation;

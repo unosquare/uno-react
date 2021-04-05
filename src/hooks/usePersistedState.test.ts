@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { usePersistedState } from './usePersistedState';
+import usePersistedState from './usePersistedState';
 
 test('should save default value in LocalStatorage ', () => {
     const key = 'exampleToken';

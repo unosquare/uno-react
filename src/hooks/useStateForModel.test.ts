@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { useStateForModel } from './useStateForModel';
+import useStateForModel from './useStateForModel';
 
 test('Should keep updated the values of a model that are related to an input(event) handling the inputs onChange calls', () => {
     const initialValue = {
@@ -34,6 +34,7 @@ test('Should keep updated the values of a model that are related to an input(eve
         id: 1,
         name: 'John',
         lastName: 'Doe',
+        bubbles: undefined,
     };
     const { result } = renderHook(() => useStateForModel(initialValue));
 
@@ -52,7 +53,7 @@ test('Should keep updated the values of a model that are related to an input(eve
         result.current[1](eventInputLastName);
     });
     initialValue.name = 'value name';
-    initialValue['bubbles'] = false;
+    initialValue.bubbles = false;
 
     expect(result.current[0]).toStrictEqual(initialValue);
 });

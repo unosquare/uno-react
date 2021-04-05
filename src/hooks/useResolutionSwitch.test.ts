@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { useResolutionSwitch } from './useResolutionSwitch';
+import useResolutionSwitch from './useResolutionSwitch';
 
 const mockOuterWidth = (width: number) => {
     Object.defineProperty(window, 'outerWidth', {

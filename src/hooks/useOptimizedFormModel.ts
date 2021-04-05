@@ -1,7 +1,7 @@
-import { FormStatus } from './FormStatus';
-import { useApiFormWithValidation } from './useApiFormWithValidation';
+import FormStatus from './FormStatus';
+import useApiFormWithValidation from './useApiFormWithValidation';
 
-export function useOptimizedFormModel<T>(
+function useOptimizedFormModel<T>(
     getEntity: () => Promise<Response>,
     transform: (responseObject: Record<string, unknown>) => Record<string, unknown>,
 ): [T, (value: any) => void, FormStatus, () => Partial<T>] {
@@ -19,3 +19,5 @@ export function useOptimizedFormModel<T>(
 
     return [entity, onPropChange, status, () => flyingChanges];
 }
+
+export default useOptimizedFormModel;

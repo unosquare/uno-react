@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function usePersistedState(localStorage: any, defaultValue: any, keyName: string): [any, React.Dispatch<any>] {
+function usePersistedState(localStorage: any, defaultValue: any, keyName: string): [any, React.Dispatch<any>] {
     const [getter, setter] = React.useState(defaultValue);
 
     const setterWithUpdateLocalStorage = React.useCallback(
@@ -21,3 +21,5 @@ export function usePersistedState(localStorage: any, defaultValue: any, keyName:
 
     return [getter, setterWithUpdateLocalStorage];
 }
+
+export default usePersistedState;

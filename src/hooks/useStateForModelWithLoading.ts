@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useStateForModel } from './useStateForModel';
+import useStateForModel from './useStateForModel';
 
-export function useStateForModelWithLoading<T>(
+function useStateForModelWithLoading<T>(
     effect: () => Promise<any>,
     initialValue: T,
-    inputs: React.DependencyList,
 ): [T, boolean, (event: any) => void] {
     const [getter, handleChange] = useStateForModel<T>(initialValue);
     const [isLoading, setIsLoading] = React.useState(true);
@@ -23,7 +22,9 @@ export function useStateForModelWithLoading<T>(
         return (): void => {
             _isMounted = false;
         };
-    }, [effect, handleChange, ...inputs]);
+    }, [effect, handleChange]);
 
     return [getter, isLoading, handleChange];
 }
+
+export default useStateForModelWithLoading;

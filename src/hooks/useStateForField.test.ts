@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { useStateForField } from './useStateForField';
+import useStateForField from './useStateForField';
 
 test('should keep the value of a variable that is related to an input(event)', () => {
     const { result } = renderHook(() => useStateForField(''));

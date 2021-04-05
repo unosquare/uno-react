@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { useNow } from './useNow';
+import useNow from './useNow';
 
 test('should get seconds', () => {
     const { result } = renderHook(() => useNow());

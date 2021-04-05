@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useStateForModel<T>(initialValue: T): [T, (event: any) => void] {
+function useStateForModel<T>(initialValue: T): [T, (event: any) => void] {
     const [getter, setter] = React.useState(initialValue);
 
     const handleChange = (event: any): void => {
@@ -21,3 +21,5 @@ export function useStateForModel<T>(initialValue: T): [T, (event: any) => void] 
 
     return [getter, handleChange];
 }
+
+export default useStateForModel;

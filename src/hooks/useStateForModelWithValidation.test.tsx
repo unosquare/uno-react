@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useStateForModelWithValidation } from './useStateForModelWithValidation';
+import useStateForModelWithValidation from './useStateForModelWithValidation';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -14,9 +14,7 @@ export const validationsComment = (propName: string, propValue: any) => {
 
 const TestComponent: React.FunctionComponent = () => {
     const [model, onChange, isValid, error] = useStateForModelWithValidation({ Comment: '' }, validationsComment);
-    const _onClick = (event: any) => {
-        return 'I have been submitted';
-    };
+    const _onClick = (event: any) => 'I have been submitted';
 
     return (
         <>
@@ -58,7 +56,7 @@ describe('Tests for useStateForModelWithValidation hook', () => {
 
     it('Empty input text, error exists', async () => {
         // Arrange
-        const { debug, getByText, getByTestId } = render(<TestComponent />);
+        const { getByText, getByTestId } = render(<TestComponent />);
         const input = getByTestId('Comment');
         const error = getByTestId('error');
         const button = getByText('Submit');

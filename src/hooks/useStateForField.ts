@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useStateForField(defaultValue: any): [any, (event: any) => void, React.Dispatch<any>] {
+function useStateForField(defaultValue: any): [any, (event: any) => void, React.Dispatch<any>] {
     const [getField, setField] = React.useState(defaultValue);
 
     const changeHandler = ({ target }): void => {
@@ -11,3 +11,5 @@ export function useStateForField(defaultValue: any): [any, (event: any) => void,
 
     return [getField, changeHandler, setField];
 }
+
+export default useStateForField;

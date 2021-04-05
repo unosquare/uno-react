@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { FormStatus } from './FormStatus';
-import { useStateForModelWithValidation, ValidationFunc } from './useStateForModelWithValidation';
+import FormStatus from './FormStatus';
+import useStateForModelWithValidation, { ValidationFunc } from './useStateForModelWithValidation';
 
-export function useSplitFormModel<T extends P, P>(
+function useSplitFormModel<T extends P, P>(
     initModel: P,
     refEntity: T,
     validation: ValidationFunc<T>,
@@ -28,3 +28,5 @@ export function useSplitFormModel<T extends P, P>(
 
     return [model, update];
 }
+
+export default useSplitFormModel;

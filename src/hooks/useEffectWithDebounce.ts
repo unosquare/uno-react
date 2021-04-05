@@ -1,10 +1,14 @@
 import * as React from 'react';
 
-export function useEffectWithDebounce(effect: () => void, debounce: number): void {
+function noop() {
+    // Do nothing
+}
+
+function useEffectWithDebounce(effect: () => void, debounce: number): void {
     React.useEffect(() => {
         if (debounce === 0 || (navigator && navigator.userAgent.includes('jsdom'))) {
             effect();
-            return;
+            return (): void => noop();
         }
 
         const doLater = (): void => {
@@ -15,3 +19,5 @@ export function useEffectWithDebounce(effect: () => void, debounce: number): voi
         return (): void => clearTimeout(timeout);
     }, [effect, debounce]);
 }
+
+export default useEffectWithDebounce;

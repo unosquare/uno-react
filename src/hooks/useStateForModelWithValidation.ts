@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffectWithDebounce } from './useEffectWithDebounce';
+import useEffectWithDebounce from './useEffectWithDebounce';
 import { BasicTypes } from './useValidation';
 
 export type ValidationFunc<T> = (propName: string, propValue: BasicTypes, model: T) => string;
@@ -11,7 +11,7 @@ export function getErrors<T>(getter: T, validation: ValidationFunc<T>): Record<s
     }, {});
 }
 
-export function useStateForModelWithValidation<T>(
+function useStateForModelWithValidation<T>(
     initialValue: T,
     validation: ValidationFunc<T>,
     debounce = 100,
@@ -49,3 +49,5 @@ export function useStateForModelWithValidation<T>(
 
     return [getter, handleChange, !Object.keys(errors).some((x) => errors[x]), errors, validateAndSetErrors];
 }
+
+export default useStateForModelWithValidation;

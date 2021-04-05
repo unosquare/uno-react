@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useEffectWithDebounce } from './useEffectWithDebounce';
+import useEffectWithDebounce from './useEffectWithDebounce';
 
 export type BasicTypes = string | number | boolean | Record<string, unknown>;
 
@@ -15,7 +15,7 @@ export const useValidation = (
 
     const effect = useCallback(() => {
         const _hasChanged = { ...hasChanged };
-        const errors = Object.keys(value).reduce((last: Record<string, string>, current: string) => {
+        const currentErrors = Object.keys(value).reduce((last: Record<string, string>, current: string) => {
             const error = validation(current, value[current], value);
 
             if (disabledHasChange) {
@@ -28,7 +28,7 @@ export const useValidation = (
                     last[current] = !_hasChanged[current] ? '' : error;
                 }
 
-                if (!_hasChanged[current] && value[current] !== value[current]) {
+                if (!_hasChanged[current]) {
                     _hasChanged[current] = true;
                     last[current] = error;
                 }
@@ -39,13 +39,13 @@ export const useValidation = (
 
         setHasChanged(_hasChanged);
         const _isValid =
-            !Object.keys(errors).some((x) => errors[x]) &&
+            !Object.keys(currentErrors).some((x) => currentErrors[x]) &&
             (disabledHasChange ||
                 !Object.keys(value).some((x) => (_hasChanged[x] === undefined ? false : !_hasChanged[x])));
 
-        setErrors(errors);
+        setErrors(currentErrors);
         setIsValid(_isValid);
-    }, [hasChanged, value]);
+    }, [hasChanged, value, validation, disabledHasChange]);
 
     useEffectWithDebounce(effect, debounce);
 

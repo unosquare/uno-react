@@ -2,10 +2,10 @@ import * as React from 'react';
 import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useOptimizedFormModel } from './useOptimizedFormModel';
-import { FormStatus } from './FormStatus';
+import useOptimizedFormModel from './useOptimizedFormModel';
+import FormStatus from './FormStatus';
 import fetchMock from 'jest-fetch-mock';
-import { useSplitFormModel } from './useSplitFormModel';
+import useSplitFormModel from './useSplitFormModel';
 
 type Comment = { Comment: string; CommentId: number; Author: string };
 type PartialComment = Pick<Comment, 'Comment'>;

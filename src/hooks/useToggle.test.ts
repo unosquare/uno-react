@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { useToggle } from './useToggle';
+import useToggle from './useToggle';
 
 test('should get default boolean value ', () => {
     const { result } = renderHook(() => useToggle());
