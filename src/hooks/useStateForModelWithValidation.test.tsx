@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import * as React from 'react';
 import useStateForModelWithValidation from './useStateForModelWithValidation';
 import { render, fireEvent } from '@testing-library/react';
