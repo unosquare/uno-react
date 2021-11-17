@@ -8,12 +8,13 @@ function useSplitFormModel<T extends P, P>(
     validation: ValidationFunc<T>,
     addChange: (value: any) => void,
     status: FormStatus,
-): [P, (value: any) => void] {
-    const [model, onChange] = useStateForModelWithValidation<P>(initModel, validation);
+): [P, (value: any) => void, boolean, Record<string, string>] {
+    const [model, onChange, isValid, errors] = useStateForModelWithValidation<P>(initModel, validation);
     const update = (value: any) => {
         addChange(value);
         onChange(value);
     };
+   
 
     React.useEffect(() => {
         if (status === FormStatus.Valid) {
@@ -26,7 +27,7 @@ function useSplitFormModel<T extends P, P>(
         }
     }, [status, refEntity]);
 
-    return [model, update];
+    return [model, update, isValid, errors];
 }
 
 export default useSplitFormModel;
