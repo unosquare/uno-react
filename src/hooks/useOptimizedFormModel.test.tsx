@@ -6,9 +6,9 @@ import * as React from 'react';
 import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import fetchMock from 'jest-fetch-mock';
 import useOptimizedFormModel from './useOptimizedFormModel';
 import FormStatus from './FormStatus';
-import fetchMock from 'jest-fetch-mock';
 
 type Comment = { Comment: string; CommentId: number; Author: string };
 

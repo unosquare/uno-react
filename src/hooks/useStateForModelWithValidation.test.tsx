@@ -3,11 +3,11 @@
  */
 
 import * as React from 'react';
-import useStateForModelWithValidation from './useStateForModelWithValidation';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import useStateForModelWithValidation from './useStateForModelWithValidation';
 
-export const validationsComment = (propName: string, propValue: any) => {
+const validationsComment = (propName: string, propValue: any) => {
     switch (propName) {
         case 'Comment':
             return propValue && propValue.length > 0 ? '' : 'Error';
