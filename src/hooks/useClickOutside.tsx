@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const useClickOutside = (Component: any, onClickOutside: () => void) => (props: unknown) => {
+const useClickOutside = (Component: any, onClickOutside: () => void) => function(props: unknown) {
     const node: any = React.useRef();
 
     const handleClick = React.useCallback(

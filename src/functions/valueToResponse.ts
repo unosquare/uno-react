@@ -1,9 +1,9 @@
 export const valueToResponseType = <T>(value: T): Promise<Response> =>
-    new Promise<Response>((resolve) =>
+    new Promise<Response>((resolve) => {
         resolve({
             ok: true,
             json: () => new Promise((r) => r(value)),
-        } as Response),
-    );
+        } as Response);
+    });
 
 export const valueToResponse = (value: Record<string, unknown>): Promise<Response> => valueToResponseType(value);

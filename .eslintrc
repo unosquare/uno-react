@@ -17,6 +17,8 @@
         "no-param-reassign": 0,
         "guard-for-in": 0,
         "react-hooks/exhaustive-deps": 0,
-        "react-hooks/rules-of-hooks": 0
+        "react-hooks/rules-of-hooks": 0,
+        "react/function-component-definition": 0,
+        "no-promise-executor-return": "warn"
     }
 }
