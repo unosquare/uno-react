@@ -20,17 +20,27 @@ const TestComponent: React.FunctionComponent = () => {
     const entityTransform = (response: any) => ({
         ...response,
     });
+    
+    const validationsComment = (propName: string, propValue: any) => {
+        switch (propName) {
+            case 'Comment':
+                return propValue && propValue.length > 8 ? '' : 'Error';
+            default:
+                return '';
+        }
+    };
 
     const [comment, onPropChange, status] = useOptimizedFormModel<Comment>(getComment, entityTransform);
     const preModel: PartialComment = {
         Comment: '',
     };
 
-    const [partialModel, onUpdate] = useSplitFormModel(preModel, comment, () => '', onPropChange, status);
+    const [partialModel, onUpdate, isValid, errors] = useSplitFormModel(preModel, comment, validationsComment, onPropChange, status);
 
     return (
         <>
             <input type="text" data-testid="Comment" name="Comment" value={partialModel.Comment} onChange={onUpdate} />
+            <span data-testid="error">{errors.Comment}</span>
             <button type="button" onClick={onSaveClick} disabled={status === FormStatus.Loading}>
                 Save
             </button>
@@ -65,5 +75,18 @@ describe('useSplitFormModel', () => {
 
         userEvent.click(button);
         expect(commentInput).toHaveValue('12345Comment updated');
+    });
+
+    it('should show errors when validation fails ', async () => {
+        fetchMock.mockResponse(JSON.stringify({ Comment: '' }));
+        const { getByTestId } = render(<TestComponent />);
+
+        await waitFor(() => expect(fetchMock.mock.calls.length).toEqual(1));
+
+        const commentInput = getByTestId('Comment');
+        const error = getByTestId('error');
+
+        await userEvent.type(commentInput, 'Error');
+        expect(error).not.toBeEmptyDOMElement();
     });
 });
