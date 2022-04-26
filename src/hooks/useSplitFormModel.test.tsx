@@ -20,7 +20,7 @@ const TestComponent: React.FunctionComponent = () => {
     const entityTransform = (response: any) => ({
         ...response,
     });
-    
+
     const validationsComment = (propName: string, propValue: any) => {
         switch (propName) {
             case 'Comment':
@@ -35,7 +35,13 @@ const TestComponent: React.FunctionComponent = () => {
         Comment: '',
     };
 
-    const [partialModel, onUpdate, isValid, errors] = useSplitFormModel(preModel, comment, validationsComment, onPropChange, status);
+    const [partialModel, onUpdate, isValid, errors] = useSplitFormModel(
+        preModel,
+        comment,
+        validationsComment,
+        onPropChange,
+        status,
+    );
 
     return (
         <>
