@@ -15,9 +15,7 @@ export const buildUrl = (keys?: string | string[], values?: key | key[]): string
         : keys.forEach((key, index) => {
               if (values[index] !== null) url = url.concat(`${index === 0 ? '?' : '&'}${key}=${values[index]}`);
           });
-
-    console.log({ url });
-
+          
     return url;
 };
 
