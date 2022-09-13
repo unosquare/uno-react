@@ -3,8 +3,8 @@ import { getQueryParam } from 'uno-js';
 
 export type key = string | number | null;
 
-export const getBaseUrl = (windowLocation: any): string => windowLocation.href.split('?')[0];
-export const resetBaseUrl = (window: any): void => window.history.pushState('', '', getBaseUrl(window.location));
+export const getBaseUrl = (windowLocation: Location): string => windowLocation.href.split('?')[0];
+export const resetBaseUrl = (window: Window): void => window.history.pushState('', '', getBaseUrl(window.location));
 export const buildUrl = (keys?: string | string[], values?: key | key[]): string | null => {
     if (!values || !keys) return null;
 
@@ -21,13 +21,11 @@ export const buildUrl = (keys?: string | string[], values?: key | key[]): string
 
 export const useUrlId = (
     idName: string | string[],
-    window: any,
+    window: Window,
 ): [key | key[], (value: key | key[]) => void, () => void] => {
     const [getId, setId] = React.useState<key | key[]>(null);
 
-    React.useEffect(() => typeof idName === 'object'
-        ? setId(idName.map((x) => getQueryParam(x.toLocaleLowerCase(), window.location.href.toLocaleLowerCase())))
-        : setId(getQueryParam(idName.toLocaleLowerCase(), window.location.href.toLocaleLowerCase()))
+    React.useEffect(() => typeof idName === 'object' ? setId(idName.map((x) => getQueryParam(x.toLocaleLowerCase(), window.location.href.toLocaleLowerCase()))) : setId(getQueryParam(idName.toLocaleLowerCase(), window.location.href.toLocaleLowerCase()))
     , [idName, window.location]);
 
     React.useEffect(() => {
