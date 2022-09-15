@@ -20,7 +20,7 @@ const useClickOutside = (Component: any, onClickOutside: () => void) =>
 
         return (
             <div ref={node}>
-                <Component {...props} />
+                <Component {...(props as Record<string, unknown>)} />
             </div>
         );
     };

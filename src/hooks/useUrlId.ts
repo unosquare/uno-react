@@ -25,11 +25,18 @@ export const useUrlId = (
 ): [key | key[], (value: key | key[]) => void, () => void] => {
     const [getId, setId] = React.useState<key | key[]>(null);
 
-    React.useEffect(() => typeof idName === 'object' ? setId(idName.map((x) => getQueryParam(x.toLocaleLowerCase(), window.location.href.toLocaleLowerCase()))) : setId(getQueryParam(idName.toLocaleLowerCase(), window.location.href.toLocaleLowerCase()))
-    , [idName, window.location]);
+    React.useEffect(
+        () =>
+            typeof idName === 'object'
+                ? setId(
+                      idName.map((x) => getQueryParam(x.toLocaleLowerCase(), window.location.href.toLocaleLowerCase())),
+                  )
+                : setId(getQueryParam(idName.toLocaleLowerCase(), window.location.href.toLocaleLowerCase())),
+        [idName, window.location],
+    );
 
     React.useEffect(() => {
-        if(getId !== null) window.history.pushState(null, null, buildUrl(idName, getId));
+        if (getId !== null) window.history.pushState(null, null, buildUrl(idName, getId));
     }, [idName, window.location, window.history, getId]);
 
     const reset = (): void => {
