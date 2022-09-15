@@ -22,7 +22,7 @@ jobs:
             node-
       - name: 🏗 npm build
         run: |
-          npm ci
+          npm ci --force
           npm run build
       - name: 🍱 Publish
         uses: mikeal/merge-release@master
