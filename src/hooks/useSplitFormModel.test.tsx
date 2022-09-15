@@ -22,12 +22,9 @@ const TestComponent: React.FunctionComponent = () => {
     });
 
     const validationsComment = (propName: string, propValue: any) => {
-        switch (propName) {
-            case 'Comment':
-                return propValue && propValue.length > 8 ? '' : 'Error';
-            default:
-                return '';
-        }
+        if (propName === 'Comment') return propValue && propValue.length > 8 ? '' : 'Error';
+
+        return '';
     };
 
     const [comment, onPropChange, status] = useOptimizedFormModel<Comment>(getComment, entityTransform);
@@ -35,7 +32,7 @@ const TestComponent: React.FunctionComponent = () => {
         Comment: '',
     };
 
-    const [partialModel, onUpdate, isValid, errors] = useSplitFormModel(
+    const [partialModel, onUpdate, _, errors] = useSplitFormModel(
         preModel,
         comment,
         validationsComment,

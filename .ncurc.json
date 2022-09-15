@@ -1,0 +1,8 @@
+{
+    "upgrade": true,
+    "reject": [
+      "@types/jest",
+      "jest",
+      "ts-jest"
+    ]
+  }
