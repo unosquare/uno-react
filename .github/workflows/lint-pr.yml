@@ -19,7 +19,7 @@ jobs:
           restore-keys: |
             node-
       - name: 🎠 npm install
-        run: npm ci
+        run: npm ci --force
       - name: Lint
         uses: a-b-r-o-w-n/eslint-action@v1
         with:
