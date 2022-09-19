@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import useResolutionSwitch from './useResolutionSwitch';
 
 const mockOuterWidth = (width: number) => {

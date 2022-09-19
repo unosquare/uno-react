@@ -1,4 +1,8 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+/**
+ * @jest-environment jsdom
+ */
+
+import { act, renderHook } from '@testing-library/react';
 import useStateForField from './useStateForField';
 
 test('should keep the value of a variable that is related to an input(event)', () => {

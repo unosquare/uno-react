@@ -1,4 +1,8 @@
-import { renderHook } from '@testing-library/react-hooks';
+/**
+ * @jest-environment jsdom
+ */
+
+import { renderHook } from '@testing-library/react';
 import useNow from './useNow';
 
 test('should get seconds', () => {

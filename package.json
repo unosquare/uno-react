@@ -32,7 +32,6 @@
     "devDependencies": {
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
-        "@testing-library/react-hooks": "^8.0.1",
         "@testing-library/user-event": "^14.4.3",
         "@types/jest": "^27.4.1",
         "eslint": "^8.23.1",
@@ -55,7 +54,7 @@
         "lib"
     ],
     "dependencies": {
-        "uno-js": "^2.0.45"
+        "uno-js": "^2.0.48"
     },
     "jest": {
         "moduleFileExtensions": [

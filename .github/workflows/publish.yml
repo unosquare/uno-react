@@ -12,9 +12,9 @@ jobs:
 
     steps:
       - name: 🛎 Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: 📦 Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: node-${{ hashFiles('**/package-lock.json') }}
@@ -22,7 +22,7 @@ jobs:
             node-
       - name: 🏗 npm build
         run: |
-          npm ci --force
+          npm ci
           npm run build
       - name: 🍱 Publish
         uses: mikeal/merge-release@master

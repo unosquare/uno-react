@@ -1,4 +1,8 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+/**
+ * @jest-environment jsdom
+ */
+
+import { act, renderHook } from '@testing-library/react';
 import useToggle from './useToggle';
 
 test('should get default boolean value ', () => {

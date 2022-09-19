@@ -1,4 +1,8 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+/**
+ * @jest-environment jsdom
+ */
+
+import { act, renderHook } from '@testing-library/react';
 import useStateForModel from './useStateForModel';
 
 test('Should keep updated the values of a model that are related to an input(event) handling the inputs onChange calls', () => {

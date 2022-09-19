@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import usePersistedState from './usePersistedState';
 
 test('should save default value in LocalStatorage ', () => {
