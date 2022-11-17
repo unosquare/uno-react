@@ -8,17 +8,14 @@ import userEvent from '@testing-library/user-event';
 import useStateForModelWithValidation from './useStateForModelWithValidation';
 
 const validationsComment = (propName: string, propValue: any) => {
-    switch (propName) {
-        case 'Comment':
-            return propValue && propValue.length > 0 ? '' : 'Error';
-        default:
-            return '';
-    }
+    if (propName == 'Comment') return propValue && propValue.length > 0 ? '' : 'Error';
+
+    return '';
 };
 
 const TestComponent: React.FunctionComponent = () => {
     const [model, onChange, isValid, error] = useStateForModelWithValidation({ Comment: '' }, validationsComment);
-    const _onClick = (event: any) => 'I have been submitted';
+    const _onClick = (_: any) => 'I have been submitted';
 
     return (
         <>

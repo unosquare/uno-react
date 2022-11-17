@@ -10,7 +10,7 @@ function useOptimizedFormModel<T>(
     let flyingChanges = {} as Partial<T>;
     const onPropChange = (event: any) => {
         if (event.target) {
-            const { name, value } = event.target as any;
+            const { name, value } = event.target;
             flyingChanges = { ...flyingChanges, [name]: value };
         } else {
             flyingChanges = { ...flyingChanges, ...event };
