@@ -5,7 +5,6 @@ on:
     - cron: '0 2 * * 6'
   workflow_dispatch:
   
-
 jobs:
   publish:
     uses: unosquare/bump-npm-version/.github/workflows/bump-deps.yml@master

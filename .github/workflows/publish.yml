@@ -6,26 +6,8 @@ on:
 
 jobs:
   publish:
-    runs-on: [ubuntu-latest]
-    env:
-      CI: true
-
-    steps:
-      - name: 🛎 Checkout
-        uses: actions/checkout@v3
-      - name: 📦 Cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            node-
-      - name: 🏗 npm build
-        run: |
-          npm ci
-          npm run build
-      - name: 🍱 Publish
-        uses: mikeal/merge-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    uses: unosquare/bump-npm-version/.github/workflows/publish-public.yml@master
+    secrets:
+      github-token: ${{ secrets.GPR_ACCESS_TOKEN }}
+      cache-version: ${{ secrets.CACHE_VERSION }}
+      npm-token: ${{ secrets.NPM_AUTH_TOKEN }}

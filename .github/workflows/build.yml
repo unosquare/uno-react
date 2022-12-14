@@ -1,33 +1,16 @@
-name: Node CI
+name: Build and Report Sonar
 
-on: pull_request
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
-  build:
-    runs-on: [ubuntu-latest]
-    env:
-      CI: true
-
-    steps:
-      - name: 🛎 Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: 📦 Cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            node-
-      - name: 🎠 npm install
-        run: npm ci
-      - name: Lint
-        uses: a-b-r-o-w-n/eslint-action@v2
-        with:
-          repo-token:  ${{ secrets.GITHUB_TOKEN }}
-          files: 'src/**/*'
-      - name: 🏗 npm build and coverage
-        run: |
-          npm run build
-          npm run cest
+  build:    
+    uses: unosquare/bump-npm-version/.github/workflows/build-sonar.yml@master
+    secrets:
+      github-token: ${{ secrets.GPR_ACCESS_TOKEN }}
+      cache-version: ${{ secrets.CACHE_VERSION }}
+      sonar-token: ${{ secrets.SONAR_TOKEN }}
