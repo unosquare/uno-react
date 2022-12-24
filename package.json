@@ -54,7 +54,7 @@
         "lib"
     ],
     "dependencies": {
-        "uno-js": "^2.0.70"
+        "uno-js": "^2.0.72"
     },
     "jest": {
         "moduleFileExtensions": [
