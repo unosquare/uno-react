@@ -8,7 +8,7 @@ import userEvent from '@testing-library/user-event';
 import useStateForModelWithValidation from './useStateForModelWithValidation';
 
 const validationsComment = (propName: string, propValue: any) => {
-    if (propName == 'Comment') return propValue && propValue.length > 0 ? '' : 'Error';
+    if (propName === 'Comment') return propValue && propValue.length > 0 ? '' : 'Error';
 
     return '';
 };
