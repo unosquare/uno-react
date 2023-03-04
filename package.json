@@ -34,7 +34,7 @@
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",
         "@types/jest": "^27.4.1",
-        "eslint": "^8.34.0",
+        "eslint": "^8.35.0",
         "eslint-config-unosquare": "^0.1.14",
         "eslint-plugin-prettier": "^4.2.1",
         "jest": "^27.5.1",
@@ -54,7 +54,7 @@
         "lib"
     ],
     "dependencies": {
-        "uno-js": "^2.0.80"
+        "uno-js": "^2.0.83"
     },
     "jest": {
         "moduleFileExtensions": [
