@@ -10,4 +10,4 @@ jobs:
     uses: unosquare/bump-npm-version/.github/workflows/bump-deps.yml@master
     secrets:
       github-token: ${{ secrets.GPR_ACCESS_TOKEN }}
-      npm-token: ${{ secrets.NPM_AUTH_TOKEN }}
+      npm-token: ${{ secrets.NPM_TOKEN }}
