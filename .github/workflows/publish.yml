@@ -10,4 +10,4 @@ jobs:
     secrets:
       github-token: ${{ secrets.GPR_ACCESS_TOKEN }}
       cache-version: ${{ secrets.CACHE_VERSION }}
-      npm-token: ${{ secrets.NPM_AUTH_TOKEN }}
+      npm-token: ${{ secrets.NPM_TOKEN }}
