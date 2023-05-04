@@ -9,5 +9,4 @@ jobs:
     uses: unosquare/bump-npm-version/.github/workflows/publish-public.yml@master
     secrets:
       github-token: ${{ secrets.GPR_ACCESS_TOKEN }}
-      cache-version: ${{ secrets.CACHE_VERSION }}
       npm-token: ${{ secrets.NPM_TOKEN }}
