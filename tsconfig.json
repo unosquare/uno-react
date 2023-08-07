@@ -2,7 +2,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": { "*": ["types/*"] },
-        "target": "es5",
+        "target": "es6",
         "lib": [
             "dom",
             "dom.iterable",
@@ -22,5 +22,5 @@
         "sourceMap": false
     },
     "include": ["src/**/*.ts", "src/**/*.tsx"],
-    "exclude": ["test/**/*.*", "node_modules"]
+    "exclude": ["src/**/*.spec.ts", "node_modules"]
 }
