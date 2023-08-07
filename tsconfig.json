@@ -3,11 +3,7 @@
         "baseUrl": ".",
         "paths": { "*": ["types/*"] },
         "target": "es6",
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ],
+        "lib": ["dom", "dom.iterable", "esnext"],
         "skipLibCheck": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
@@ -22,5 +18,5 @@
         "sourceMap": false
     },
     "include": ["src/**/*.ts", "src/**/*.tsx"],
-    "exclude": ["src/**/*.spec.ts", "node_modules"]
+    "exclude": ["src/**/*.spec.ts", "src/**/*.spec.tsx", "node_modules"]
 }
