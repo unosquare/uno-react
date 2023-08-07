@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { getQueryParam } from 'uno-js';
 
 export type key = string | number | null;
 
@@ -28,11 +27,9 @@ export const useUrlId = (
     React.useEffect(
         () =>
             typeof idName === 'object'
-                ? setId(
-                      idName.map((x) => getQueryParam(x.toLocaleLowerCase(), window.location.href.toLocaleLowerCase())),
-                  )
-                : setId(getQueryParam(idName.toLocaleLowerCase(), window.location.href.toLocaleLowerCase())),
-        [idName, window.location],
+                ? setId(idName.map((x) => new URLSearchParams(window.location.search).get(x)))
+                : setId(new URLSearchParams(window.location.search).get(idName)),
+        [idName, window.location.search],
     );
 
     React.useEffect(() => {

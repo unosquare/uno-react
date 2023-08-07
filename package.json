@@ -30,17 +30,17 @@
     },
     "homepage": "https://github.com/unosquare/uno-react#readme",
     "devDependencies": {
-        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",
         "@types/jest": "^27.4.1",
-        "eslint": "^8.45.0",
+        "eslint": "^8.46.0",
         "eslint-config-unosquare": "^0.3.2",
         "eslint-plugin-prettier": "^5.0.0",
         "jest": "^29.5.0",
-        "jest-environment-jsdom": "^29.6.1",
+        "jest-environment-jsdom": "^29.6.2",
         "jest-fetch-mock": "^3.0.3",
-        "prettier": "^3.0.0",
+        "prettier": "^3.0.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-test-renderer": "^18.2.0",
@@ -55,7 +55,7 @@
         "lib"
     ],
     "dependencies": {
-        "uno-js": "^3.15.0"
+        "uno-js": "^3.22.0"
     },
     "jest": {
         "moduleFileExtensions": [
