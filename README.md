@@ -1,5 +1,7 @@
 [![npm version](https://badge.fury.io/js/uno-react.svg)](https://badge.fury.io/js/uno-react)
 
+** THIS PROJECT IS DEPRECATED **
+
 # uno-react
 
 Common functions, and hooks for React.
